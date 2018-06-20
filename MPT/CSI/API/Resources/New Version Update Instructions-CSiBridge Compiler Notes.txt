@@ -1,0 +1,82 @@
+============================
+Find: 
+#elif BUILD_CSiBridgev19\r\nusing CSiBridge19;
+
+Replace: 
+#elif BUILD_CSiBridgev19\r\nusing CSiBridge19;\r\n#elif BUILD_CSiBridgev20\r\nusing CSiBridge20;
+============================
+============================
+Find: 
+#elif BUILD_CSiBridgev19\r\nusing CSiProgram = CSiBridge19;
+
+Replace: 
+#elif BUILD_CSiBridgev19\r\nusing CSiProgram = CSiBridge19;\r\n#elif BUILD_CSiBridgev20\r\nusing CSiProgram = CSiBridge20;
+============================
+============================
+Find:
+&& BUILD_CSiBridgev19
+
+Replace:
+&& BUILD_CSiBridgev19 && BUILD_CSiBridgev20
+============================
+============================
+Find:
+&& !BUILD_CSiBridgev19
+
+Replace:
+&& !BUILD_CSiBridgev19 && !BUILD_CSiBridgev20
+============================
+============================
+Find:
+|| BUILD_CSiBridgev19
+
+Replace:
+|| BUILD_CSiBridgev19 || BUILD_CSiBridgev20
+============================
+============================
+Find:
+|| !BUILD_CSiBridgev19
+
+Replace:
+|| !BUILD_CSiBridgev19 || !BUILD_CSiBridgev20
+============================
+============================
+Find:
+#if BUILD_CSiBridgev19
+
+Replace:
+#if BUILD_CSiBridgev19 || BUILD_CSiBridgev20
+============================
+============================
+Find:
+#if !BUILD_CSiBridgev19
+
+Replace:
+#if !BUILD_CSiBridgev19 && !BUILD_CSiBridgev20
+============================
+============================
+Find:
+#elif !BUILD_CSiBridgev19
+
+Replace:
+#elif !BUILD_CSiBridgev19 && !BUILD_CSiBridgev20
+============================
+============================
+Find:
+#elif BUILD_CSiBridgev19
+
+Replace:
+#elif BUILD_CSiBridgev19 || BUILD_CSiBridgev20
+
+Find: 
+#elif BUILD_CSiBridgev19 || BUILD_CSiBridgev20\r\nusing CSiProgram = CSiBridge19;
+
+Replace: 
+#elif BUILD_CSiBridgev19\r\nusing CSiProgram = CSiBridge19;
+
+Find: 
+#elif BUILD_CSiBridgev19 || BUILD_CSiBridgev20\r\nusing CSiBridge19;
+
+Replace: 
+#elif BUILD_CSiBridgev19\r\nusing CSiBridge19;
+============================

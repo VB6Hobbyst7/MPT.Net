@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC817941-4C09-4BC2-BC87-779E44478A48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MPT.Geometry</RootNamespace>
+    <AssemblyName>MPT.Geometry</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\MPT.Geometry.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MPT.Math">
+      <HintPath>..\lib\MPT.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aggregation\CompositeShape.cs" />
+    <Compile Include="Area\Circle.cs" />
+    <Compile Include="Area\Ellipse.cs" />
+    <Compile Include="Area\Hexagon.cs" />
+    <Compile Include="Area\IRegularPolygon.cs" />
+    <Compile Include="Area\Parallelogram.cs" />
+    <Compile Include="Area\Quadrilateral.cs" />
+    <Compile Include="Area\RegularPolygon.cs" />
+    <Compile Include="Area\Shape.cs" />
+    <Compile Include="Area\Trapezoid.cs" />
+    <Compile Include="Tools\Boundary.cs" />
+    <Compile Include="Tools\PointBoundary.cs" />
+    <Compile Include="Tools\PointExtents.cs" />
+    <Compile Include="Tools\PointExtents3D.cs" />
+    <Compile Include="Tools\Extents.cs" />
+    <Compile Include="Tools\Extents3D.cs" />
+    <Compile Include="Intersection\ProjectionHorizontal.cs" />
+    <Compile Include="Intersection\PointIntersection.cs" />
+    <Compile Include="Intersection\ProjectionVertical.cs" />
+    <Compile Include="Line\BSpline.cs" />
+    <Compile Include="Line\CatmullRomSpline.cs" />
+    <Compile Include="Line\ICurve.cs" />
+    <Compile Include="Area\IShape.cs" />
+    <Compile Include="Area\CircularSegment.cs" />
+    <Compile Include="Area\Polygon.cs" />
+    <Compile Include="Area\Rectangle.cs" />
+    <Compile Include="Area\CircularSector.cs" />
+    <Compile Include="Area\Square.cs" />
+    <Compile Include="Area\Triangle.cs" />
+    <Compile Include="Area\Wedge.cs" />
+    <Compile Include="GeometryLibrary.cs" />
+    <Compile Include="Line\ArcSegment.cs" />
+    <Compile Include="Line\BezierSpline.cs" />
+    <Compile Include="Line\ILine.cs" />
+    <Compile Include="Line\IPathDivision.cs" />
+    <Compile Include="Line\IPathSegment.cs" />
+    <Compile Include="Line\IPathSegment3D.cs" />
+    <Compile Include="Line\IPathSegmentCollision.cs" />
+    <Compile Include="Line\IPolarCoordinates.cs" />
+    <Compile Include="Line\IPolyLine.cs" />
+    <Compile Include="Line\LineSegment.cs" />
+    <Compile Include="Line\NURBS.cs" />
+    <Compile Include="Line\PathSegment.cs" />
+    <Compile Include="Line\PolyLine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Point\" />
+    <Folder Include="Volume\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

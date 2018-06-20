@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<model xml_schema_version="0.1" xmlns="http://www.csiberkeley.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.csiberkeley.com http://www.csiberkeley.com/sites/default/files/schemas/model_database_model_V0_3.xsd">
+  <release_status>released</release_status>
+  <regtest_name>regTest.xml</regtest_name>
+  <regtest_defaults_released>
+    <analysis_settings>
+      <solver>advanced</solver>
+      <process>separate</process>
+      <bit_type>32</bit_type>
+    </analysis_settings>
+    <copy_models_at_run>no</copy_models_at_run>
+    <copy_models_flat_at_run>yes</copy_models_flat_at_run>
+    <test_to_run>run as is</test_to_run>
+    <model_run_selection>all</model_run_selection>
+  </regtest_defaults_released>
+  <program_name>ETABS</program_name>
+  <defaults_SAP2000>
+    <program_path>SAP2000.exe</program_path>
+    <model_source_path>\Verification</model_source_path>
+    <model_destination_path>\Verification - Run</model_destination_path>
+    <documentation_path>
+      <analysis>\Manuals\Verification\Analysis<type>\Manuals\Verification\Analysis\Asolids</type><type>\Manuals\Verification\Analysis\Cables</type><type>\Manuals\Verification\Analysis\Frames</type><type>\Manuals\Verification\Analysis\Links</type><type>\Manuals\Verification\Analysis\Planes</type><type>\Manuals\Verification\Analysis\Shells</type><type>\Manuals\Verification\Analysis\Solids</type></analysis>
+      <design_steel_frame>\Manuals\Verification\Design\Steel Frame</design_steel_frame>
+      <design_concrete_frame>\Manuals\Verification\Design\Concrete Frame</design_concrete_frame>
+    </documentation_path>
+    <!--All paths are relative to CSiTester-->
+  </defaults_SAP2000>
+  <defaults_CSiBridge>
+    <program_path>CSiBridge.exe</program_path>
+    <model_source_path>\Verification</model_source_path>
+    <model_destination_path>\Verification - Run</model_destination_path>
+    <documentation_path>
+      <analysis>\Manuals\Verification\Analysis<type>\Manuals\Verification\Analysis\Asolids</type><type>\Manuals\Verification\Analysis\Cables</type><type>\Manuals\Verification\Analysis\Frames</type><type>\Manuals\Verification\Analysis\Links</type><type>\Manuals\Verification\Analysis\Planes</type><type>\Manuals\Verification\Analysis\Shells</type><type>\Manuals\Verification\Analysis\Solids</type></analysis>
+      <design_steel_frame>\Manuals\Verification\Design\Steel Frame</design_steel_frame>
+      <design_concrete_frame>\Manuals\Verification\Design\Concrete Frame</design_concrete_frame>
+    </documentation_path>
+    <!--All paths are relative to CSiTester-->
+  </defaults_CSiBridge>
+  <defaults_ETABS>
+    <program_path>ETABS.exe</program_path>
+    <model_source_path>\Verification</model_source_path>
+    <model_destination_path>\Verification - Run</model_destination_path>
+    <documentation_path>
+      <analysis>\Manuals\Verification\Analysis</analysis>
+      <design_steel_frame>\Manuals\Verification\Design\Steel Frame</design_steel_frame>
+      <design_concrete_frame>\Manuals\Verification\Design\Concrete Frame</design_concrete_frame>
+      <design_shear_wall>\Manuals\Verification\Design\Shear Wall</design_shear_wall>
+      <design_composite_beam>\Manuals\Verification\Design\Composite Beam</design_composite_beam>
+      <design_composite_column>\Manuals\Verification\Design\Composite Column</design_composite_column>
+    </documentation_path>
+    <!--All paths are relative to CSiTester-->
+  </defaults_ETABS>
+  <defaults_SAFE>
+    <program_path>SAFE.exe</program_path>
+    <model_source_path>\Verification</model_source_path>
+    <model_destination_path>\Verification - Run</model_destination_path>
+    <documentation_path>
+      <analysis>\Manuals\Verification\Analysis Verification</analysis>
+      <design>\Manuals\Verification\Design Verification<code>\Manuals\Verification\Design Verification\ACI 318-08</code><code>\Manuals\Verification\Design Verification\ACI 318-11</code><code>\Manuals\Verification\Design Verification\AS 3600-01</code><code>\Manuals\Verification\Design Verification\AS 3600-09</code><code>\Manuals\Verification\Design Verification\BS 8110-97</code><code>\Manuals\Verification\Design Verification\CSA A23.3-04</code><code>\Manuals\Verification\Design Verification\Eurocode 2-04</code><code>\Manuals\Verification\Design Verification\Hong Kong CoP-04</code><code>\Manuals\Verification\Design Verification\Hong Kong CoP-13</code><code>\Manuals\Verification\Design Verification\IS 456-00</code><code>\Manuals\Verification\Design Verification\Italian NTC 2008</code><code>\Manuals\Verification\Design Verification\NZS 3101-06</code><code>\Manuals\Verification\Design Verification\Singapore CP 65-99</code><code>\Manuals\Verification\Design Verification\Turkish TS 500-2000</code></design>
+    </documentation_path>
+    <!--All paths are relative to CSiTester-->
+  </defaults_SAFE>
+</model>

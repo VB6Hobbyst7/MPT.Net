@@ -1,0 +1,14 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--xmlns:local="clr-namespace:CSiTester.View">-->
+    
+    <Style TargetType="Window" x:Key="defaultFormStyle">
+        <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+    </Style>
+
+    <Style TargetType="UserControl" x:Key="defaultControlStyle">
+        <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
+    </Style>
+</ResourceDictionary>

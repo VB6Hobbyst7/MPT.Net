@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test_results runType="single" overWriteExisting="true">
+<!-- runType = single, psb, or development -->
+  <application>SAP2000</application>
+  <version>19.2.0.1350</version> 
+  <suite_names>
+    <!-- If none specified, then all suites will be checked -->
+    <suite_name>Design</suite_name>
+  </suite_names>
+  <test_descriptions>
+    <!-- If none specified, then all default test descriptions will be checked -->
+    <test_description>Run as is</test_description>
+  </test_descriptions>
+</test_results>

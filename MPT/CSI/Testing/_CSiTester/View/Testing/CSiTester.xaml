@@ -1,0 +1,1388 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:r="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" 
+    x:Class="CSiTester"
+    Title="CSiTester" 
+    Height="800" Width="1280" 
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    Icon="/CSiTester;component/CSiTester.ico" 
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+    Closing="Window_Closing">
+
+    <Window.Resources>
+        <Style x:Key="CellRightAlign">
+            <Setter Property="Control.HorizontalAlignment"
+                Value="Right" />
+        </Style>
+        <Style x:Key="CellVersion">
+            <Setter Property="Control.HorizontalAlignment"
+                Value="Right" />
+                <Style.Triggers>
+                <DataTrigger Binding="{Binding programVersion}" Value="-">
+                    <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CellBuild">
+            <Setter Property="Control.HorizontalAlignment"
+                Value="Right" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding programBuild}" Value="-">
+                    <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CellDateTime">
+            <Setter Property="Control.HorizontalAlignment"
+                Value="Right" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding runDateTime}" Value="-">
+                    <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CellHyperLink" TargetType="TextBlock">
+            <EventSetter Event="Hyperlink.Click" Handler="OnHyperlinkClick" />
+        </Style>
+
+        <Style x:Key="CellHyperLinkRightAlign" TargetType="TextBlock">
+            <EventSetter Event="Hyperlink.Click" Handler="OnHyperlinkClick" />
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+        </Style>
+        <Style x:Key="CellHyperLinkActualTime" TargetType="TextBlock">
+            <EventSetter Event="Hyperlink.Click" Handler="OnHyperlinkClick" />
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding timeCheckActual}" Value="-">
+                    <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SelectRun" TargetType="CheckBox">
+            <Setter Property="Control.HorizontalAlignment" Value="Center" />
+            <!--Below causes single-click checkbox behavior-->
+            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="DataGridCellRun_PreviewMouseLeftButtonDown"></EventSetter>
+        </Style>
+
+        <Style x:Key="SelectCompare" TargetType="CheckBox">
+            <Setter Property="Control.HorizontalAlignment" Value="Center" />
+            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="DataGridCellCompare_PreviewMouseLeftButtonDown"></EventSetter>
+        </Style>
+
+        <Style x:Key="cellColorRun" TargetType="TextBlock">
+            <!--Set cell style based on class data value -->
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding cellClassRun}" Value="">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassRun}" Value="green">
+                    <Setter Property="Background" Value="#FFC8FBA4"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassRun}" Value="yellow">
+                    <Setter Property="Background" Value="#FFF4FB5D"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassRun}" Value="orange">
+                    <Setter Property="Background" Value="#FFFF9F4E"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassRun}" Value="red">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding runStatus}" Value="Not Run Yet">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding runStatus}" Value="Output File Missing">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding runStatus}" Value="Not Run">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding runStatus}" Value="Running">
+                    <Setter Property="Background" Value="#FF5AFDF6"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="cellColorCompare" TargetType="TextBlock">
+            <!--Set cell style based on class data value -->
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding cellClassCompare}" Value="">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassCompare}" Value="green">
+                    <Setter Property="Background" Value="#FFC8FBA4"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassCompare}" Value="yellow">
+                    <Setter Property="Background" Value="#FFF4FB5D"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassCompare}" Value="orange">
+                    <Setter Property="Background" Value="#FFFF9F4E"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassCompare}" Value="red">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding compareStatus}" Value="Not Run Yet">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding compareStatus}" Value="Output File Missing">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding compareStatus}" Value="Not Compared">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding compareStatus}" Value="Comparing">
+                    <Setter Property="Background" Value="#FF5AFDF6"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="cellColorMaxResult" TargetType="TextBlock">
+            <EventSetter Event="Hyperlink.Click" Handler="OnHyperlinkClick" />
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+            <!--Set cell style based on class data value -->
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding cellClassMaxResult}" Value="">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassMaxResult}" Value="green">
+                    <Setter Property="Background" Value="#FFC8FBA4"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassMaxResult}" Value="yellow">
+                    <Setter Property="Background" Value="#FFF4FB5D"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassMaxResult}" Value="orange">
+                    <Setter Property="Background" Value="#FFFF9F4E"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassMaxResult}" Value="red">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding percentDifferenceMax}" Value="N/A">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding percentDifferenceMax}" Value="Comparison Error">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding percentDifferenceMax}" Value="Not Checked">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding overallResult}" Value="N/A">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding overallResult}" Value="Comparison Error">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding overallResult}" Value="Not Checked">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassMaxResult}" Value="0%">
+                    <Setter Property="Background" Value="#FFC8FBA4"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="cellColorResult" TargetType="TextBlock">
+            <!--<EventSetter Event="KeyDown" Handler="DataGridCell_KeyDown"></EventSetter>-->
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+            <!--Set cell style based on class data value -->
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="green">
+                    <Setter Property="Background" Value="#FFC8FBA4"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="yellow">
+                    <Setter Property="Background" Value="#FFF4FB5D"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="orange">
+                    <Setter Property="Background" Value="#FFFF9F4E"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="red">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding checkResultRounded}" Value="Not Checked">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding checkResultRounded}" Value="N/A">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <!--<DataTrigger Binding="{Binding compareStatus}" Value="Not Compared">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>-->
+            </Style.Triggers>
+        </Style>
+
+        <ToolTip  x:Key="myToolTipTimeAssumed" DataContext="{Binding Path=PlacementTarget.DataContext, RelativeSource={x:Static RelativeSource.Self}}" Background="{x:Null}"  BorderBrush="{x:Null}" >
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Border 
+                                    Background="#E5F4F4F5" 
+		                            BorderBrush="Black" 
+		                            BorderThickness="1" 
+		                            CornerRadius="5" 
+		                            Padding="5,0,5,3" >
+
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Run" 
+                                    Grid.Column="0" Grid.Row="0"
+                                    FontSize="12" TextAlignment="Left"  VerticalAlignment="Bottom" 
+                                    FontFamily="Microsoft Sans Serif"/>
+                        <TextBlock Text="Compare" 
+                                    Grid.Column="2" Grid.Row="0"
+                                    FontSize="12" TextAlignment="Left"  VerticalAlignment="Bottom" 
+                                    FontFamily="Microsoft Sans Serif"/>
+                        <Separator 
+				                    Grid.Column="0" Grid.Row="1" 
+				                    Grid.ColumnSpan="3"
+				                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+				                    Height="1"  Width="125"/>
+                        <TextBlock Text="{Binding timeRunAssumed}"
+                                    x:Name="LabelRunAssumed1"
+                                    Grid.Column="0" Grid.Row="2"
+                                    FontSize="12" TextAlignment="Right"  VerticalAlignment="Bottom" 
+                                    FontFamily="Microsoft Sans Serif" />
+                        <TextBlock Text="{Binding timeCompareAssumed}"
+                                    x:Name="LabelCheckAssumed1"
+                                    Grid.Column="2"  Grid.Row="2"
+                                    FontSize="12" TextAlignment="Right"  VerticalAlignment="Bottom" 
+                                    FontFamily="Microsoft Sans Serif" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </ToolTip>
+        <ToolTip  x:Key="myToolTipTimeActual" DataContext="{Binding Path=PlacementTarget.DataContext, RelativeSource={x:Static RelativeSource.Self}}" Background="{x:Null}"  BorderBrush="{x:Null}" >
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Border 
+                    Background="#E5F4F4F5" 
+		            BorderBrush="Black" 
+		            BorderThickness="1" 
+		            CornerRadius="5" 
+		            Padding="5,0,5,3" >
+
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Run" 
+                                    Grid.Column="0" Grid.Row="0"
+                                    FontSize="12" TextAlignment="Left"  VerticalAlignment="Bottom" 
+                                    FontFamily="Microsoft Sans Serif"/>
+                        <TextBlock Text="Compare" 
+                                    Grid.Column="2" Grid.Row="0"
+                                    FontSize="12" TextAlignment="Left"  VerticalAlignment="Bottom" 
+                                    FontFamily="Microsoft Sans Serif"/>
+                        <Separator 
+				                    Grid.Column="0"  Grid.Row="1" 
+				                    Grid.ColumnSpan="3"
+				                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+				                    Height="1" Width="125"/>
+                        <TextBlock Text="{Binding timeRunActual}"
+                                    x:Name="LabelRunActual1"
+                                    Grid.Column="0" Grid.Row="2"
+                                    FontSize="12" TextAlignment="Right"  VerticalAlignment="Bottom" 
+                                    FontFamily="Microsoft Sans Serif" />
+                        <TextBlock Text="{Binding timeCompareActual}"
+                                    x:Name="LabelCheckActual1"
+                                    Grid.Column="2"  Grid.Row="2"
+                                    FontSize="12" TextAlignment="Right"  VerticalAlignment="Bottom" 
+                                    FontFamily="Microsoft Sans Serif" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </ToolTip>
+
+        <ToolTip  x:Key="myToolTipExample" DataContext="{Binding Path=PlacementTarget.DataContext, RelativeSource={x:Static RelativeSource.Self}}" 
+                  Background="{x:Null}" BorderBrush="{x:Null}" 
+                  StaysOpen="True">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border 
+                Background="#E5F4F4F5" 
+		        BorderBrush="Black" 
+		        BorderThickness="1" 
+		        CornerRadius="5" 
+		        Padding="5,0,5,3" >
+                    <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" MaxHeight="900">
+                        <StackPanel Orientation="Horizontal"
+                            Margin="10">
+                            <TextBlock Text="{Binding numberCodeExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                x:Name="labelCodeExampleNumber" 
+                                FontSize="16" FontFamily="Arial" 
+                                TextAlignment="Left"  
+                                VerticalAlignment="Top" FontWeight="Bold" />
+                            <TextBlock Text=" - " 
+                                x:Name="labelExampleHyphen" 
+                                FontSize="16" FontFamily="Arial" 
+                                TextAlignment="Left"  
+                                VerticalAlignment="Top"
+                                Margin="5,0,0,0"
+                                TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding titleExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                x:Name="labelExampleTitle" 
+                                FontSize="16" FontFamily="Arial" 
+                                TextAlignment="Left"  
+                                VerticalAlignment="Top"
+                                Margin="5,0,0,0"
+                                TextWrapping="Wrap"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="popupTabMasterGrid" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                    Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+                            <DataGrid 
+                                x:Name="dataGrid_Summary" 
+                                ItemsSource="{Binding itemList}" 
+                                AutoGenerateColumns="False" 
+                                Margin="10, 1, 10, 1" 
+                                CanUserResizeColumns="True" 
+                                CanUserResizeRows="False"
+                                CanUserAddRows="False"
+                                IsManipulationEnabled="True" 
+                                IsReadOnly="True" 
+                                AlternationCount="1" 
+                                AlternatingRowBackground="#FFF1F7F9" 
+                                FontFamily="Microsoft Sans Serif">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn 
+                                    x:Name="OutputParameter" 
+                                    Header="Output Parameter" 
+                                    Binding="{Binding outputParameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                                    <DataGridTextColumn 
+                                    x:Name="BenchmarkValue" 
+                                    Header="Benchmark" 
+                                    Binding="{Binding benchmarkValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellRightAlign}"/>
+
+
+                                    <DataGridTextColumn 
+                                    x:Name="BenchmarkResultRounded" 
+                                    Header="Rounded Result" 
+                                    Binding="{Binding checkResultRounded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellRightAlign}"/>
+
+
+                                    <DataGridTextColumn 
+                                    x:Name="PercentDifferencBenchmark"
+                                    Header="% Difference from Benchmark"
+                                    Binding="{Binding percentDifferenceBenchmark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource cellColorResult}"/>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                        </StackPanel>
+
+                        <TextBlock Text="Example has too many results to display in popup." 
+                            x:Name="labelTooManyResults" 
+                            Visibility="Collapsed"
+                            TextWrapping="Wrap"
+                            FontSize="12" FontWeight="Bold" FontFamily="Arial"  Foreground="Red"
+                            TextAlignment="Center"  
+                            VerticalAlignment="Top"
+                            Margin="0,3,0,0" />
+
+                        <TextBlock Text="Click link to see example details." 
+                            TextWrapping="Wrap"
+                            FontSize="12" FontWeight="Bold" FontFamily="Arial" 
+                            TextAlignment="Center"  
+                            VerticalAlignment="Top"
+                            Margin="0,3,0,0"/>
+
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+        </ToolTip>
+
+    </Window.Resources>
+
+    <Grid x:Name="gridMain" Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="colMain" Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="145"/>
+            <!--<RowDefinition Height="32"/>-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition x:Name="rowDG" Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!--<Label x:Name="labelTesterTitle" 
+               Content="ETABS Verification Examples" 
+               HorizontalAlignment="Left" 
+               Margin="1,2,0,0" 
+               VerticalAlignment="Top" 
+               RenderTransformOrigin="0,0" 
+               FontSize="24" 
+               FontFamily="Arial" 
+               FontWeight="Bold" 
+               Panel.ZIndex="1000" 
+               Height="38" 
+               Grid.Column="0"/>-->
+
+        <r:Ribbon x:Name="myRibbon" 
+                  Grid.Column="0" 
+                  VerticalAlignment="Top" 
+                  Height="145" 
+                  SelectedIndex="0" 
+                  Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" 
+                  FontFamily="Microsoft Sans Serif" Foreground="Black" >
+
+            <r:Ribbon.ApplicationMenu>
+                <r:RibbonApplicationMenu x:Name="ramTab" Width="30" Height="24" CanAddToQuickAccessToolBarDirectly="True" BorderBrush="{x:Null}">
+                    <r:RibbonApplicationMenu.SmallImageSource>
+                        <DrawingImage x:Name="ramTabText">
+                            <DrawingImage.Drawing>
+                                <GlyphRunDrawing ForegroundBrush="White">
+                                    <GlyphRunDrawing.GlyphRun>
+                                        <GlyphRun
+                                            CaretStops="{x:Null}" 
+                                            ClusterMap="{x:Null}" 
+                                            IsSideways="False" 
+                                            GlyphOffsets="{x:Null}" 
+                                            GlyphIndices="41 76 79 72" 
+                                            FontRenderingEmSize="12" 
+                                            DeviceFontName="{x:Null}" 
+                                            AdvanceWidths="5.859375 2.90625 2.90625 6.275390625">
+                                            <GlyphRun.GlyphTypeface>
+                                                <GlyphTypeface FontUri="C:\WINDOWS\Fonts\SEGOEUI.TTF"/>
+                                            </GlyphRun.GlyphTypeface>
+                                        </GlyphRun>
+                                    </GlyphRunDrawing.GlyphRun>
+                                </GlyphRunDrawing>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </r:RibbonApplicationMenu.SmallImageSource>
+                    <r:RibbonApplicationMenu.Background>
+                        <ImageBrush x:Name="myRibbonAppMenuBackground" ImageSource="/CSiTester;component/Resources/CSI_icon_logo.ico"/>
+                    </r:RibbonApplicationMenu.Background>
+                    <r:RibbonApplicationMenuItem x:Name="ramSingleTab" Header="Display Examples on Single Tab" ImageSource="/CSiTester;component/Resources/Icons/32px/Tabs Merge Var1.png" />
+                    <r:RibbonApplicationMenuItem x:Name="ramMultiTab" Header="Display Examples on Grouped Tabs" ImageSource="/CSiTester;component/Resources/Icons/32px/Tabs Split Var1.png" />
+                    <!--<r:RibbonApplicationMenuItem x:Name="ramRestoreDefaults" Header="Restore Default Settings" ImageSource="/CSiTester;component/Resources/Icons/32px/New File.png" />
+                    <r:RibbonApplicationMenuItem x:Name="ramResetDestination" Header="Reset Session" ImageSource="/CSiTester;component/Resources/Icons/32px/Folder - Dir Reset.png" />-->
+                    <r:RibbonApplicationMenuItem x:Name="ramSaveSettings" Header="Save Settings" ImageSource="/CSiTester;component/Resources/Icons/32px/Save.png" />
+                    <r:RibbonApplicationMenuItem x:Name="ramExit" Header="Exit" />
+                </r:RibbonApplicationMenu>
+            </r:Ribbon.ApplicationMenu>
+            <r:Ribbon.QuickAccessToolBar>
+                <r:RibbonQuickAccessToolBar x:Name="rqaToolbar">
+                    <DockPanel>
+                        <r:RibbonButton x:Name="qatBtnSave" 
+                            DockPanel.Dock="Left" 
+                            SmallImageSource="/CSiTester;component/Resources/Icons/32px/Save.png"/>
+                        <r:RibbonButton x:Name="qatResetDestination" 
+                            SmallImageSource="/CSiTester;component/Resources/Icons/32px/Folder - Dir Reset.png"/>
+                    </DockPanel>
+                </r:RibbonQuickAccessToolBar>
+            </r:Ribbon.QuickAccessToolBar>
+
+            <r:RibbonTab x:Name="rtBasic" 
+                         Grid.Column="0" Grid.Row="0"
+                         VerticalAlignment="Top" 
+                         Height="89" 
+                         Margin="0,0,0,-1" 
+                         Visibility="Visible" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Foreground="Black">
+                <r:RibbonTab.Header>
+                    <TextBlock x:Name="rtBasicHeader" Text="Home" />
+                </r:RibbonTab.Header>
+                <!--<r:RibbonTab.Style>
+                    <Trigger Property="IsInControlGroup" Value="True">
+                        <Setter TargetName="OuterBorder" Property="BorderThickness" Value="0,0,1,0" />
+                    </Trigger>
+                </r:RibbonTab.Style>-->
+                <StackPanel Orientation="Horizontal"
+                                Margin="-5,-75,0,0">
+                    <r:RibbonGroup x:Name="rbnGrpBCheck" 
+                            Header="Run &amp; Compare" 
+                            Height="89" 
+                            Margin="0,2" 
+                            HorizontalAlignment="Center" VerticalAlignment="Top" Padding="3,0">
+                        <!--<r:RibbonButton x:Name="btnBCheck" 
+                                        HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        Height="66"  Width="64"
+                                        Margin="8,0" 
+                                        Label="Check Examples"
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/run.png"
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/run.png"/>-->
+                        <r:RibbonSplitButton x:Name="btnBCheck" 
+                                        HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                        Height="66"  Width="66"
+                                        Margin="8,0" 
+                                        Label="Check Examples"
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/run.png"
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/run.png">
+                            <r:RibbonMenuItem x:Name="chkMenuItem_Check" 
+                                    Header="Check Examples (Run/Compare)"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/run.png">
+                            </r:RibbonMenuItem>
+                            <Separator />
+                            <r:RibbonMenuItem x:Name="chkMenuItem_UpdateResults" 
+                                    Header="Update Results File (Compare)"
+                                    IsCheckable="True"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/File Results.png">
+                            </r:RibbonMenuItem>
+                        </r:RibbonSplitButton>
+
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpBClear" 
+                                Header="Delete" 
+                                Height="89" 
+                                Margin="0,2" 
+                                VerticalAlignment="Top">
+                        <!--<r:RibbonButton x:Name="btnBClear" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="66"
+                                        Margin="0" 
+                                        Label="Destination Directories" 
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/Lock2-Unlocked.png" 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/Lock2-Unlocked.png">
+                        </r:RibbonButton>-->
+                        <r:RibbonSplitButton x:Name="btnBClear" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="76"
+                                        Margin="0" 
+                                        Label="Destination Directories" 
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/Lock2-Unlocked.png" 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/Lock2-Unlocked.png">
+                            <r:RibbonMenuItem x:Name="chkMenuItem_Clear" 
+                                    Header="Delete Destination Directories"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Lock2-Unlocked.png">
+                            </r:RibbonMenuItem>
+                            <Separator />
+                            <r:RibbonMenuItem x:Name="chkMenuItem_RestoreDefaultSettings" 
+                                    Header="Restore Default Settings"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/New File.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="chkMenuItem_ResetSettings" 
+                                    Header="Reset Settings"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Folder - Dir Reset.png">
+                            </r:RibbonMenuItem>
+                        </r:RibbonSplitButton>
+                        
+                        <!--<r:RibbonToggleButton x:Name="btnDeleteAnalysisFilesToggle" 
+                                        Content="" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="64"  Width="64"
+                                        Margin="0" 
+                                        Label="Analysis Files"
+                                        ToolTipTitle="Delete Analysis Files" 
+                                        ToolTipDescription="Deletes all files generated for analysis. Leaves exported tables &amp; log files." 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/64px/Trash.png"
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/64px/Trash.png" />-->
+                        <r:RibbonSplitButton x:Name="btnDeleteAnalysisFilesToggleSplit" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="64"
+                                        Margin="0" 
+                                        Label="Analysis Files"
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/64px/Trash.png"
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/64px/Trash.png" >
+                            <r:RibbonMenuItem x:Name="chkMenuItem_DeleteAfterRun" 
+                                    Header="_Delete After Run"
+                                    IsCheckable="True"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Trash.png">
+                            </r:RibbonMenuItem>
+                            <Separator IsEnabled="False"/>
+                            <r:RibbonMenuItem x:Name="chkMenuItem_StandardFiles" 
+                                    Header="_Standard Files"
+                                    IsCheckable="True"
+                                    IsEnabled="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Trash.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="chkMenuItem_LogWarningFiles" 
+                                    Header="_Log &amp; Warning Files"
+                                    IsCheckable="True"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Incident 3D.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="chkMenuItem_ExportedTableFiles" 
+                                    Header="_Exported Table Files"
+                                    IsCheckable="True"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/File - Table 3.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="chkMenuItem_ModelTextFiles" 
+                                    Header="_Model Text Files"
+                                    IsCheckable="True"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/File - Model Text Export.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="chkMenuItem_AllExceptModelFile" 
+                                    Header="_All Except Model File"
+                                    IsCheckable="True"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Trash.png">
+                            </r:RibbonMenuItem>
+                        </r:RibbonSplitButton>
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpBPaths" 
+                                           Header="Paths" 
+                                           VerticalAlignment="Top"
+                                           Margin="0,2" 
+                                           Height="89" >
+                        <r:RibbonButton x:Name="btnBrowseProgramBasic" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="66"
+                                        Margin="0" 
+                                        Label="Program" 
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/Select Program.png" 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/Select Program.png">
+                        </r:RibbonButton>
+                        <!--<r:RibbonButton x:Name="btnBrowseSourceBasic" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="66"
+                                        Margin="0" 
+                                        Label="Source" 
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/Models Source.png" 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/Models Source.png"
+                                        Click="btnBrowseSource_Click" >
+                        </r:RibbonButton>-->
+                        <r:RibbonSplitButton x:Name="btnBrowseSourceBasic" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="66"
+                                        Margin="0" 
+                                        Label="Source" 
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/Models Source.png" 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/Models Source.png">
+                            <r:RibbonMenuItem x:Name="chkMenuItem_BrowseSource" 
+                                    Header="Set Source"
+                                    IsCheckable="False">
+                            </r:RibbonMenuItem>
+                            <Separator />
+                            <r:RibbonMenuItem x:Name="chkMenuItem_RefreshSource" 
+                                    Header="Refresh Source"
+                                    IsCheckable="False">
+                            </r:RibbonMenuItem>
+                        </r:RibbonSplitButton>
+                        <!--<r:RibbonButton x:Name="btnBrowseDestinationBasic" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="66"
+                                        Margin="0" 
+                                        Label="Destination" 
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/Models Destination.png" 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/Models Destination.png"
+                                        Click="btnBrowseDestination_Click" >
+                        </r:RibbonButton>-->
+                        <r:RibbonSplitButton x:Name="btnBrowseDestinationBasic" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="70"
+                                        Margin="0" 
+                                        Label="Destination" 
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/32px/Models &amp; Files Destination.png" 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/32px/Models &amp; Files Destination.png">
+                            <r:RibbonMenuItem x:Name="chkMenuItem_BrowseDestination" 
+                                    Header="Set Destination"
+                                    IsCheckable="False">
+                            </r:RibbonMenuItem>
+                            <Separator />
+                            <r:RibbonMenuItem x:Name="chkMenuItem_InitializeDestination" 
+                                    Header="Initialize Destination"
+                                    IsCheckable="False">
+                            </r:RibbonMenuItem>
+                        </r:RibbonSplitButton>
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpBExampleSelection" 
+                            Header="Example Selection"                                        
+                            VerticalAlignment="Top" 
+                            Margin="0,2" 
+                            Height="89">
+                        <StackPanel Orientation="Horizontal"
+                                        Margin="5">
+                            <Grid x:Name="gridSelectionAll" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <Label Content="Run" 
+                                           Grid.Column="0" Grid.Row="0"
+                                           HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           Margin="0"
+                                           Height="26" Width="38" />
+                                <Button x:Name="btnRunAll" 
+                                            Grid.Column="1" Grid.Row="0"
+                                            Content="All" 
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="0,0,2,0"
+                                            Height="22" Width="45" />
+                                <Button x:Name="btnRunNone" 
+                                            Grid.Column="2" Grid.Row="0"
+                                            Content="None" 
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="2,0,5,0"
+                                            Height="22" Width="45" />
+                                <CheckBox
+                                        x:Name="chkBxRunAllTabs" 
+                                        Grid.Column="3" Grid.Row="0"    
+                                        Content="All Tabs" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                        Margin="5,0,5,0" />
+                                <Label Content="Compare" 
+                                           Grid.Column="0" Grid.Row="1"
+                                           HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           Margin="0" 
+                                           Height="26" Width="59" />
+                                <Button x:Name="btnCompareAll" 
+                                            Grid.Column="1" Grid.Row="1"
+                                            Content="All" 
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="0,0,2,0"
+                                            Width="45" Height="22" />
+                                <Button x:Name="btnCompareNone" 
+                                            Grid.Column="2" Grid.Row="1"
+                                            Content="None" 
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="2,0,5,0"
+                                            Height="22" Width="45" />
+                                <CheckBox
+                                            x:Name="chkBxCompareAllTabs" 
+                                            Grid.Column="3" Grid.Row="1"    
+                                            Content="All Tabs" 
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="5,0,5,0" />
+                            </Grid>
+                            <Grid x:Name="gridSelectionCurrent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Rectangle 
+                                            Grid.Column="0" Grid.Row="0"
+                                            Grid.ColumnSpan="4" Grid.RowSpan="2"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"  
+                                            Panel.ZIndex="-1"    
+                                            Margin="0,0,0,-1"     
+                                            Height="60" Width="163" 
+                                            Stroke="#FF8F8F8F" Fill="#FFFFF7D6"/>
+                                <TextBlock 
+                                        Grid.Column="0" Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                        Height="37" Width="50"
+                                        Margin="0" 
+                                        TextWrapping="Wrap" TextAlignment="Center"
+                                        Text="Selected Cells" />
+                                <Button x:Name="btnRunSelectionAdd" 
+                                            Grid.Column="1" Grid.Row="0"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="0" 
+                                            Height="22" Width="21" 
+                                            Content="+" 
+                                            FontWeight="Bold" FontSize="14"/>
+                                <Button x:Name="btnRunSelectionRemove" 
+                                            Grid.Column="2" Grid.Row="0"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="0" 
+                                            Height="22" Width="21"
+                                            Content="-" 
+                                            FontWeight="Bold" FontSize="14"/>
+                                <Button x:Name="btnRunSelectionReplace" 
+                                            Grid.Column="3" Grid.Row="0"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="0"
+                                            Height="22" Width="56"
+                                            Content="Replace" />
+
+                                <Button x:Name="btnCompareSelectionAdd" 
+                                            Grid.Column="1" Grid.Row="1"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="0" 
+                                            Height="22" Width="21" 
+                                            FontWeight="Bold" FontSize="14"
+                                            Content="+" />
+                                <Button x:Name="btnCompareSelectionRemove" 
+                                            Grid.Column="2" Grid.Row="1"
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="0" 
+                                            Height="22" Width="21" 
+                                            FontWeight="Bold" FontSize="14"
+                                            Content="-" />
+                                <Button x:Name="btnCompareSelectionReplace" 
+                                            Grid.Column="3" Grid.Row="1"
+                                            Content="Replace" 
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Margin="0"
+                                            Height="22" Width="56" />
+                            </Grid>
+                        </StackPanel>
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpBRunOptions" 
+                                       Header="Run Options" 
+                                       VerticalAlignment="Top"
+                                       Height="89" 
+                                       Margin="0,2">
+                        <StackPanel Orientation="Vertical" Margin="5">
+                            <StackPanel Orientation="Horizontal" Height="32"
+                                            Margin="0">
+                                <Button x:Name="btnTableExportSettings"
+                                        Content="Table Export Settings"
+                                        Height="22"
+                                        Margin="5,0"/>
+                                <CheckBox
+                                    x:Name="chkBxDeleteAnalysisFiles" 
+                                    Content="Delete Run Files" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    Margin="0,0,40,0" />
+                                <r:RibbonToggleButton x:Name="btnDeleteAnalysisFilesToggleSmall" 
+                                    Content=""
+                                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                    Height="32" 
+                                    Margin="0" 
+                                    ToolTipTitle="Delete Analysis Files" 
+                                    ToolTipDescription="Deletes all files generated for analysis. Leaves exported tables &amp; log files." 
+                                    Label="Delete Run Files" 
+                                    SmallImageSource="/CSiTester;component/Resources/Icons/32px/Trash.png" />
+                                <RadioButton x:Name="radBtn_CommandLineRun" 
+                                    Content="Command Line Run" 
+                                    HorizontalAlignment="Left"  VerticalAlignment="Center"
+                                    Margin="0" 
+                                    Width="124" />
+                                <RadioButton x:Name="radBtn_BatchRun" 
+                                    Content="Batch File Run" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    Margin="0" 
+                                    Height="16" Width="97"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox x:Name="cmbBox_Solver" 
+                                          HorizontalAlignment="Left" 
+                                          Margin="0,5,5,0" 
+                                          Width="140"/>
+                                <ComboBox x:Name="cmbBox_Process" 
+                                          HorizontalAlignment="Left" 
+                                          Margin="0,5,5,0" 
+                                          Width="114"/>
+                                <ComboBox x:Name="cmbBox_32Bit" 
+                                          HorizontalAlignment="Left" 
+                                          Margin="0,5,0,0" 
+                                          Width="113" />
+                            </StackPanel>
+                        </StackPanel>
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpBMisc" 
+                                       Header="Misc"
+                                       VerticalAlignment="Top"
+                                       Margin="0,2,-5,2" 
+                                       Height="89" >
+                        <r:RibbonButton x:Name="btnViewBatchFile" 
+                                        Content="" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="67"  Width="67"
+                                        Margin="0" 
+                                        Label="View File" 
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/64px/Batch File.png" 
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/64px/Batch File.png"
+                                        Click="btnBrowseDestination_Click" >
+                        </r:RibbonButton>
+                            <!--<Button x:Name="btnViewBatchFile"   
+                                        Content="View Batch" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="22"
+                                        Margin="0" 
+                                        ToolTip="View the batch file generated for the current run."/>-->
+                    </r:RibbonGroup>
+                </StackPanel>
+            </r:RibbonTab>
+            <r:RibbonTab x:Name="rtSuiteSetup" 
+                         Header="Suite Setup" 
+                         Height="89" 
+                         VerticalAlignment="Top" 
+                         Grid.Column="0" 
+                         Margin="0,0,0,-1" 
+                         Visibility="Visible" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+                <StackPanel Orientation="Horizontal"
+                                Margin="-5,-75,0,0">
+                    <r:RibbonGroup x:Name="rbnGrpCheck" 
+                            Header="Check" 
+                            VerticalAlignment="Top"
+                            Margin="0"  
+                            Height="89">
+                        <r:RibbonButton x:Name="btnCheck" 
+                                            Content="RibbonButton" 
+                                            HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                            Height="57"  Width="63"
+                                            Margin="0,5,0,0" 
+                                            ToolTipTitle="Check" 
+                                            ToolTipDescription="Check example models for selected runs and comparisons.">
+                            <r:RibbonButton.MouseOverBackground>
+                                <ImageBrush ImageSource="/CSiTester;component/CSiTester.ico"/>
+                            </r:RibbonButton.MouseOverBackground>
+                            <r:RibbonButton.Background>
+                                <ImageBrush ImageSource="/CSiTester;component/CSiTester.ico"/>
+                            </r:RibbonButton.Background>
+                        </r:RibbonButton>
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpClear" 
+                                Header="Clear" 
+                                Height="89" 
+                                Margin="0" 
+                                VerticalAlignment="Top">
+                        <r:RibbonButton x:Name="btnClear" 
+                                                Content="RibbonButton" 
+                                                HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                                Height="57"  Width="63"
+                                                Margin="0,5,0,0" 
+                                                ToolTipTitle="Clear" 
+                                                ToolTipDescription="Clears results from last run.">
+                            <r:RibbonButton.MouseOverBackground>
+                                <ImageBrush ImageSource="/CSiTester;component/CSiTester.ico"/>
+                            </r:RibbonButton.MouseOverBackground>
+                            <r:RibbonButton.Background>
+                                <ImageBrush ImageSource="/CSiTester;component/CSiTester.ico"/>
+                            </r:RibbonButton.Background>
+                        </r:RibbonButton>
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpProgram" 
+                            Header="Program" 
+                            VerticalAlignment="Top" 
+                            Margin="0" Height="89">
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Program Location" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Margin="0,-7,0,-7"
+                                        Height="26" Width="104"/>
+                            <Button x:Name="btnBrowseProgram" 
+                                        Content="Browse..." 
+                                        VerticalAlignment="Top" 
+                                        Margin="0" 
+                                        Height="22" Width="201" 
+                                        ToolTip=""/>
+                        </StackPanel>
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpModels" 
+                            Header="Models Location" 
+                            VerticalAlignment="Top" 
+                            Margin="0" 
+                            Height="89" >
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Models Source" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Margin="0,-7,0,-7"
+                                        Height="26" Width="120"  />
+                            <Button x:Name="btnBrowseSource" 
+                                        Content="Browse..." 
+                                        Margin="0" 
+                                        Width="201"
+                                        ToolTip="Browse for location to which models are to be copied." />
+                            <Label Content="Models Destination" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Margin="0,-7,0,-7"
+                                        Height="26" Width="120"  />
+                            <Button x:Name="btnBrowseDestination" 
+                                        Content="Browse..." 
+                                        Margin="0" 
+                                        Width="201"
+                                        Click="btnBrowseDestination_Click" 
+                                        ToolTip="Browse for location to which models are to be copied." />
+
+                            <!--<Button x:Name="btnModelsList"  
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Margin="243,-12,-290,0"
+                                        Height="22" Width="89" 
+                                        Content="Get Models List"/>-->
+                        </StackPanel>
+                    </r:RibbonGroup>
+                    <r:RibbonGroup x:Name="rbnGrpDevelopment" 
+                            Header="Development" 
+                            VerticalAlignment="Top" 
+                            Margin="0" 
+                            Height="89" >
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <Button x:Name="btnXMLBulkEditor" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                    Margin="0" 
+                                    Height="22" Width="92"
+                                    Content="XML Bulk Editor" 
+                                    ToolTip=""  />
+                                <Button x:Name="btnBulkDelete" 
+                                    HorizontalAlignment="Center"  VerticalAlignment="Center"
+                                    Margin="0" 
+                                    Height="22" 
+                                    Content="Delete Files Or Folders" 
+                                    ToolTip="" />
+                                <Button x:Name="btnTest" 
+                                    VerticalAlignment="Bottom" 
+                                    Margin="0" 
+                                    Height="22" 
+                                    ToolTip="View the batch file generated for the current run." 
+                                    Click="Button_Click_Test"
+                                    Content="Test" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <Button x:Name="btnUpdateTimes" 
+                                    HorizontalAlignment="Center"  VerticalAlignment="Center"
+                                    Margin="0" 
+                                    Height="22" 
+                                    Content="Update Times" 
+                                    ToolTip="" />
+                                <Button x:Name="btnUpdateBenchmarks" 
+                                    HorizontalAlignment="Center"  VerticalAlignment="Center"
+                                    Margin="0" 
+                                    Height="22" 
+                                    Content="Update Benchmarks" 
+                                    ToolTip="" />
+                            </StackPanel>
+                            <Button x:Name="btnCreateNewSourceModels" 
+                                    HorizontalAlignment="Center"  VerticalAlignment="Center"
+                                    Margin="0" 
+                                    Height="22" 
+                                    Content="Create New Source Model Set" 
+                                    ToolTip="" />
+                            <StackPanel Orientation="Vertical">
+                                <Button x:Name="btnVerifyExampleSchema" 
+                                    HorizontalAlignment="Center"  VerticalAlignment="Center"
+                                    Margin="0" 
+                                    Height="22" 
+                                    Content="Verify Examples Schema" 
+                                    ToolTip="" />
+                                <Button x:Name="btnViewVerifiedExampleSchema" 
+                                    HorizontalAlignment="Center"  VerticalAlignment="Center"
+                                    Margin="0" 
+                                    Height="22" 
+                                    Content="View Example Schema Verification" 
+                                    ToolTip="" />
+                            </StackPanel>
+                            <Button x:Name="btnE2ETest" 
+                                    VerticalAlignment="Bottom" 
+                                    Margin="0" 
+                                    Height="22" 
+                                    ToolTip="Runs end-to-end tests of the program." 
+                                    Content="End-to-End Test" />
+                        </StackPanel>                 
+                    </r:RibbonGroup>
+                </StackPanel>
+            </r:RibbonTab>
+        </r:Ribbon>
+
+        <TabControl x:Name="myTabControlSummary" 
+                    Grid.Row="1" Grid.Column="0" 
+                    Margin="0,0,0,0" 
+                    Height="auto" 
+                    BorderThickness="1,1,1,0" 
+                    
+                    Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" 
+                    FontFamily="Microsoft Sans Serif">
+            <!--Height="32">-->
+            <TabItem x:Name="TabMaster" Header="TabItem"></TabItem>
+        </TabControl>
+        <StackPanel Orientation="Vertical" 
+                    Grid.Row="2" Grid.Column="0" 
+                    CanVerticallyScroll="True">
+            <Border x:Name="brdr_DG_ExampleSummary" 
+                    BorderBrush="#FF8C8E94" BorderThickness="1,0,1,1">
+                <StackPanel x:Name="sp_DG_ExampleSummary" Orientation="Vertical" 
+                        CanVerticallyScroll="True" 
+                        Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}">
+                    <DataGrid 
+                        x:Name="dataGrid_ExampleSummary"  
+                        ItemsSource="{Binding examplesList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        AutoGenerateColumns="False" 
+                        Margin="5,0,5,5" 
+                        CanUserResizeColumns="True" 
+                        CanUserResizeRows="False" 
+                        CanUserAddRows="False"
+                        IsManipulationEnabled="True" 
+                        AlternationCount="1" AlternatingRowBackground="#FFF1F7F9" 
+                        FontFamily="Microsoft Sans Serif" >
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <!--<MenuItem Header="_Check Selected"
+                                Click="btnCheck_Click" />
+                            <Separator />-->
+                                <!--Header: Selections-->
+                                <MenuItem x:Name="chkMenuItem_LinkRunCompare" 
+                                    Header="_Link Run/Compare Selections"
+                                    IsCheckable="True"
+                                    Checked="btnLinkSelection_Checked"
+                                    Unchecked="btnLinkSelection_Unchecked" Background="{x:Null}">
+                                        <MenuItem.Icon>
+                                        <Image Width="20" Height="20" Source="/CSiTester;component/Resources/Icons/32px/Link Checks 3D.png" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                <Separator />
+                                <!--Header: Run Selections-->
+                                <MenuItem x:Name="chkMenuItem_RunAll" 
+                                    Header="_Run All"
+                                    Click="btnRunAll_Click" />
+                                <MenuItem x:Name="chkMenuItem_RunNone" 
+                                    Header="_Run None"
+                                    Click="btnRunNone_Click" />
+                                <Separator />
+                                <MenuItem x:Name="chkMenuItem_ApplyAllTabsRun" 
+                                    Header="_Apply to All Tabs"
+                                    IsCheckable="True"
+                                    Checked="chkBxRunAllTabs_Checked"
+                                    Unchecked="chkBxRunAllTabs_Unchecked" />
+                                <MenuItem x:Name="chkMenuItem_RunSelectionAdd" 
+                                    Header="_Add to Run Selection"
+                                    Click="btnRunSelectionAdd_Click" >
+                                    <MenuItem.Icon>
+                                        <Image Width="20" Height="20" Source="/CSiTester;component/Resources/Icons/64px/Selection Add.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="chkMenuItem_RunSelectionRemove" 
+                                    Header="_Remove from Run Selection"
+                                    Click="btnRunSelectionRemove_Click" >
+                                    <MenuItem.Icon>
+                                        <Image Width="20" Height="20" Source="/CSiTester;component/Resources/Icons/64px/Selection Remove.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="chkMenuItem_RunSelectionReplace" 
+                                    Header="_Replace Run Selection"
+                                    Click="btnRunSelectionReplace_Click" >
+                                    <MenuItem.Icon>
+                                        <Image Width="20" Height="20" Source="/CSiTester;component/Resources/Icons/64px/Selection Replace.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <Separator />
+                                <!--Header: Compare Selections-->
+                                <MenuItem x:Name="chkMenuItem_CompareAll" 
+                                    Header="_Compare All"
+                                    Click="btnCompareAll_Click" />
+                                <MenuItem x:Name="chkMenuItem_CompareNone" 
+                                    Header="_Compare None"
+                                    Click="btnCompareNone_Click" />
+                                <Separator />
+                                <MenuItem x:Name="chkMenuItem_ApplyAllTabsCompare" 
+                                    Header="_Apply to All Tabs"
+                                    IsCheckable="True"
+                                    Checked="chkBxCompareAllTabs_Checked"
+                                    Unchecked="chkBxCompareAllTabs_Unchecked" />
+                                <MenuItem x:Name="chkMenuItem_CompareSelectionAdd" 
+                                    Header="_Add to Compare Selection"
+                                    Click="btnCompareSelectionAdd_Click" >
+                                    <MenuItem.Icon>
+                                        <Image Width="20" Height="20" Source="/CSiTester;component/Resources/Icons/64px/Selection Add.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="chkMenuItem_CompareSelectionRemove" 
+                                    Header="_Remove from Compare Selection"
+                                    Click="btnCompareSelectionRemove_Click" >
+                                    <MenuItem.Icon>
+                                        <Image Width="20" Height="20" Source="/CSiTester;component/Resources/Icons/64px/Selection Remove.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="chkMenuItem_CompareSelectionReplace" 
+                                    Header="_Replace Compare Selection"
+                                    Click="btnCompareSelectionReplace_Click" >
+                                    <MenuItem.Icon>
+                                        <Image Width="20" Height="20" Source="/CSiTester;component/Resources/Icons/64px/Selection Replace.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <!--ColumnWidth="1*">-->
+                        <DataGrid.Columns>
+                            <DataGridTextColumn 
+                                x:Name="ClassRegion" 
+                                Header="Class/Region" 
+                                Binding="{Binding classRegion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                IsReadOnly="True" />
+                            <DataGridHyperlinkColumn 
+                                    x:Name="modelID" 
+                                    Header="Model ID" 
+                                    Binding="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellHyperLink}"
+                                    Visibility="Collapsed"
+                                    IsReadOnly="True" 
+                                    ToolTipService.ShowDuration="30000">
+                                    <DataGridHyperlinkColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{DynamicResource myToolTipExample}" />
+                                        </Style>
+                                    </DataGridHyperlinkColumn.CellStyle>
+                                </DataGridHyperlinkColumn>
+                            <DataGridHyperlinkColumn 
+                                x:Name="CodeExampleNumber" 
+                                Header="Code Example &amp; Number" 
+                                Binding="{Binding numberCodeExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                ElementStyle="{StaticResource CellHyperLink}" 
+                                IsReadOnly="True" 
+                                ToolTipService.ShowDuration="30000">
+                                    <DataGridHyperlinkColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{DynamicResource myToolTipExample}" />
+                                        </Style>
+                                    </DataGridHyperlinkColumn.CellStyle>
+                            </DataGridHyperlinkColumn>
+                            <DataGridTextColumn 
+                                x:Name="ExampleTitle" 
+                                Header="Example Title" 
+                                Binding="{Binding titleExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                Width="1*"
+                                IsReadOnly="True">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{Binding titleExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridCheckBoxColumn 
+                                x:Name="Run"  
+                                Header="Run" 
+                                Binding="{Binding Path=runExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                ElementStyle="{StaticResource SelectRun}"
+                                CanUserResize="False"
+                                IsReadOnly="True" />
+                            <DataGridCheckBoxColumn 
+                                x:Name="Compare" 
+                                Header="Compare" 
+                                Binding="{Binding Path=compareExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                ElementStyle="{StaticResource SelectCompare}"
+                                CanUserResize="False" 
+                                IsReadOnly="True" />
+                            <DataGridTextColumn 
+                                x:Name="RunStatus" 
+                                Header="Run Status" 
+                                Binding="{Binding runStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                ElementStyle="{StaticResource cellColorRun}"
+                                IsReadOnly="True" />
+                            <DataGridTextColumn 
+                                x:Name="CompareStatus" 
+                                Header="Compare Status" 
+                                Binding="{Binding compareStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                ElementStyle="{StaticResource cellColorCompare}"
+                                IsReadOnly="True" />
+                            <DataGridHyperlinkColumn 
+                                x:Name="PercChange" 
+                                Header="% Change" 
+                                Binding="{Binding percentDifferenceMax, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                ElementStyle="{StaticResource cellColorMaxResult}" 
+                                IsReadOnly="True" >
+                                    <DataGridHyperlinkColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{DynamicResource myToolTipExample}" />
+                                        </Style>
+                                    </DataGridHyperlinkColumn.CellStyle>
+                            </DataGridHyperlinkColumn>
+                            <DataGridTextColumn 
+                                x:Name="Version" 
+                                Header="Version" 
+                                Binding="{Binding programVersion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                ElementStyle="{StaticResource CellVersion}" 
+                                IsReadOnly="True" />
+                            <DataGridTextColumn 
+                                x:Name="Build" 
+                                Header="Build" 
+                                Binding="{Binding programBuild, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                ElementStyle="{StaticResource CellBuild}"
+                                IsReadOnly="True" />
+                            <DataGridTextColumn 
+                                x:Name="DateTimeOfRun" 
+                                Header="Date &amp; Time of Run"
+                                Binding="{Binding runDateTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                ElementStyle="{StaticResource CellDateTime}" 
+                                IsReadOnly="True" />
+                            <DataGridHyperlinkColumn 
+                                x:Name="AssumedTime" 
+                                Header="Estimated Time" 
+                                Binding="{Binding timeCheckAssumed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                ElementStyle="{StaticResource CellHyperLinkRightAlign}"  
+                                IsReadOnly="True" >
+                                <DataGridHyperlinkColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="ToolTip" Value="{DynamicResource myToolTipTimeAssumed}" />
+                                    </Style>
+                                </DataGridHyperlinkColumn.CellStyle>
+                            </DataGridHyperlinkColumn>
+                            <DataGridHyperlinkColumn 
+                                x:Name="ActualTime" 
+                                Header="Actual Time" 
+                                Binding="{Binding timeCheckActual, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                ElementStyle="{StaticResource CellHyperLinkActualTime}"  
+                                IsReadOnly="True" >
+                                    <DataGridHyperlinkColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{DynamicResource myToolTipTimeActual}" />
+                                        </Style>
+                                    </DataGridHyperlinkColumn.CellStyle>
+                            </DataGridHyperlinkColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+
+</Window>

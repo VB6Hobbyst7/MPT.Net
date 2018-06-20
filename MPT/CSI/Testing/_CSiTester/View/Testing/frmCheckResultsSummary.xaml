@@ -1,0 +1,289 @@
+﻿<Window x:Class="frmCheckResultsSummary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Check Results" 
+        Width="455"
+        Height="440"
+        MaxHeight="800" MaxWidth="800"
+        Icon="/CSiTester;component/CSiTester.ico" 
+        ResizeMode="NoResize" 
+        SizeToContent="WidthAndHeight"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}" 
+        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+        FontFamily="Microsoft Sans Serif" WindowStartupLocation="CenterScreen" >
+    <Window.Resources>
+        <!--The following is necessary to suppress labels from interpreting underscores as access keys (i.e. the first _ is suppressed otherwise)-->
+        <Style x:Key="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <Border>
+                            <ContentPresenter
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  RecognizesAccessKey="False" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="summaryTitle" TargetType="Label">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="summaryH1" TargetType="Label">
+            <!--<Setter Property="FontWeight" Value="Black"/>-->
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="summaryH2" TargetType="Label">
+            <Setter Property="Foreground" Value="#FF0051FF"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="summaryCategory" TargetType="Label">
+            <!--<Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Black"/>-->
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="MaxPercDiff" TargetType="Label">
+            <Setter Property="Foreground" Value="#FFFF0808"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding failedSet.maxPercentDifference}" Value="0%">
+                    <Setter Property="Foreground" Value="#FF3D800E"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="summaryCheck" TargetType="Label">
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding failedSet.checkPassed}" Value="False">
+                    <Setter Property="Foreground" Value="Red"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding failedSet.checkPassed}" Value="True">
+                    <Setter Property="Foreground" Value="#FF3D800E"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+
+        <!--<Style x:Key="summaryFailed" TargetType="Label">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding checkPassed}" Value="False">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding checkPassed}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="summaryPassed" TargetType="Label">
+            <Setter Property="Foreground" Value="#FF3D800E"/>
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding checkPassed}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding checkPassed}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>-->
+    </Window.Resources>
+
+    <GroupBox Margin="5">
+    <Grid Margin="5">
+        <Grid.Resources>
+            <!--The following is necessary to suppress labels from interpreting underscores as access keys (i.e. the first _ is suppressed otherwise)-->
+            <Style x:Key="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}" TargetType="Label">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Label">
+                            <Border>
+                                <ContentPresenter
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  RecognizesAccessKey="False" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        
+            <StackPanel Orientation="Vertical" >
+            <Label x:Name="lblCheckCompleted" Content="Check Completed"
+              Style="{DynamicResource summaryTitle}" />
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                <Label  Content="Test:"
+                        Style="{DynamicResource summaryH1}"
+                        Padding="9,0,5,5"
+                        VerticalAlignment="Bottom"/>
+                <Label  x:Name="lblTestId"
+                    Content="{Binding failedSet.testID}"
+                    Style="{DynamicResource summaryH2}"
+                    Padding="2,10,2,5"
+                    VerticalAlignment="Bottom"/>
+            </StackPanel>
+                
+            <GroupBox Header="Time" >
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="212"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Label  Grid.Column="0" Grid.Row="0"
+                            Content="Started:"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource summaryCategory}"/>
+                        <Label  Grid.Column="0" Grid.Row="1"
+                            Content="Completed:"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource summaryCategory}"/>
+                        <Label  Grid.Column="0" Grid.Row="2"
+                            Content="Time to Check:"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource summaryCategory}"/>
+
+                        <Label  x:Name="lblStarted"
+                            Grid.Column="1" Grid.Row="0"
+                            Content="{Binding failedSet.timeStarted}" 
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource summaryH2}"/>
+                        <Label  x:Name="lblCompleted"
+                            Grid.Column="1" Grid.Row="1"
+                            Content="{Binding failedSet.timeCompleted}"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource summaryH2}"/>
+                        <Label  x:Name="lblTimeElapsed"
+                            Grid.Column="1" Grid.Row="2"
+                            Content="{Binding failedSet.timeElapsed}"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource summaryH2}"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            
+            <GroupBox Header="Examples">
+                <StackPanel Orientation="Vertical">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="212"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label  Grid.Column="0" Grid.Row="0"
+                            Content="Examples Ran:"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource summaryCategory}"/>
+                        <Label  Grid.Column="0" Grid.Row="1"
+                            Content="Examples Compared:"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource summaryCategory}"/>
+                        <Label  Grid.Column="0" Grid.Row="2"
+                            Content="Examples Passed:"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource summaryCategory}"/>
+                        <Label  Grid.Column="0" Grid.Row="3"
+                            Content="Examples Failed:"
+                            HorizontalAlignment="Right"
+                            Style="{DynamicResource summaryCategory}" />
+
+                        <Label  
+                                Grid.Column="0" Grid.Row="4"
+                                Content="Max % Difference from Benchmarks:"
+                                HorizontalAlignment="Right"
+                                Style="{DynamicResource summaryCategory}"/>
+
+                        <Label x:Name="lblOverallResultInternal" 
+                            Grid.Column="1" Grid.Row="4"
+                            Content="{Binding failedSet.overallResult}"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource MaxPercDiff}" />
+                        <Label x:Name="lblOverallResultPublished" 
+                            Grid.Column="1" Grid.Row="4"
+                            Content="{Binding failedSet.overallResult}"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource summaryH2}" />                      
+
+                        <Label  x:Name="lblNumExamplesRun"
+                            Grid.Column="1" Grid.Row="0"
+                            Content="{Binding failedSet.numExamplesRun}"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource summaryH2}" />
+                        <Label   x:Name="lblNumExamplesCompared"
+                            Grid.Column="1" Grid.Row="1"
+                            Content="{Binding failedSet.numExamplesCompared}"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource summaryH2}" />
+                        <Label   x:Name="lblNumExamplesPassed"
+                            Grid.Column="1" Grid.Row="2"
+                            Content="{Binding failedSet.numExamplesPassed}"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource summaryH2}"/>
+                        <Label   x:Name="lblNumExamplesFailed"
+                            Grid.Column="1" Grid.Row="3"
+                            Content="{Binding failedSet.numExamplesFailed}"
+                            HorizontalAlignment="Left"
+                            Style="{DynamicResource summaryH2}" />
+
+                        <StackPanel x:Name="resultsSummaryLabels" Orientation="Vertical" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2">
+                            <Label x:Name="lblCheckResultsSummary"
+                                Content="Check Results Summary"
+                                Style="{DynamicResource summaryCheck}"/>
+                            <!--<Label 
+                                Content="Examples Failed to Run"
+                                Style="{DynamicResource summaryFailed}" />
+                            <Label 
+                                Content="See 'Failed Examples' Tab for More Details"
+                                Style="{DynamicResource summaryFailed}" />-->
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <Button x:Name="btnOK" 
+                Content="OK" 
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"
+                Padding="30,0,30,0" Click="btnOK_Click"/>
+
+        </StackPanel>
+    </Grid>
+    </GroupBox>
+</Window>

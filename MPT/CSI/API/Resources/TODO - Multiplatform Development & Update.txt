@@ -1,0 +1,9 @@
+TODO:
+1. Create program that sets up project for multiple CSi program builds
+2. Have the program also update to new versions (see 'New Version Update Instructions.txt'.
+
+Also consider:
+https://stackoverflow.com/questions/3672920/two-different-dll-with-same-namespace
+
+Place shared resources in a higher namespace, with compiler notes changing namespaces of the rest of the application.
+See what happens to the shared resources when two projects are referenced.

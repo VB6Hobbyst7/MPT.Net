@@ -1,0 +1,323 @@
+Note: To do a global find/replace of multiline (e.g. when adding a new API version), use something like the following:
+
+Replace (or Find in Files to avoid opening them):
+
+Search Mode: Extended
+
+If 'Find in Files':
+
+Directory:
+C:\TFS\Regression Tester\Main\DLLs\MPT.Tools\MPT.CSI\API
+
+Filter:
+*.cs
+
+
+Replace 'using' references first. Then other compiler tags.
+
+Latest
+BUILD_ETABS2016
+BUILD_SAP2000v19
+BUILD_CSiBridgev19
+
+
+ETABS
+============================
+Find: 
+#elif BUILD_ETABS2016\r\nusing ETABS2016;
+
+Replace: 
+#elif BUILD_ETABS2016\r\nusing ETABS2016;\r\n#elif BUILD_ETABSLatest\r\nusing ETABSLatest;
+============================
+============================
+Find: 
+#elif BUILD_ETABS2016\r\nusing CSiProgram = ETABS2016;
+
+Replace: 
+#elif BUILD_ETABS2016\r\nusing CSiProgram = ETABS2016;\r\n#elif BUILD_ETABSLatest\r\nusing CSiProgram = ETABSLatest;
+============================
+============================
+Find:
+&& BUILD_ETABS2016
+
+Replace:
+&& BUILD_ETABS2016 && BUILD_ETABSLatest
+============================
+============================
+Find:
+&& !BUILD_ETABS2016
+
+Replace:
+&& !BUILD_ETABS2016 && !BUILD_ETABSLatest
+============================
+============================
+Find:
+|| BUILD_ETABS2016
+
+Replace:
+|| BUILD_ETABS2016 || BUILD_ETABSLatest
+============================
+============================
+Find:
+|| !BUILD_ETABS2016
+
+Replace:
+|| !BUILD_ETABS2016 || !BUILD_ETABSLatest
+============================
+============================
+Find:
+#if BUILD_ETABS2016
+
+Replace:
+#if BUILD_ETABS2016 || BUILD_ETABSLatest
+============================
+============================
+Find:
+#if !BUILD_ETABS2016
+
+Replace:
+#if !BUILD_ETABS2016 && !BUILD_ETABSLatest
+============================
+============================
+Find:
+#elif !BUILD_ETABS2016
+
+Replace:
+#elif !BUILD_ETABS2016 && !BUILD_ETABSLatest
+============================
+============================
+Find:
+#elif BUILD_ETABS2016
+
+Replace:
+#elif BUILD_ETABS2016 || BUILD_ETABSLatest
+
+Find: 
+#elif BUILD_ETABS2016 || BUILD_ETABSLatest\r\nusing CSiProgram = ETABS2016;
+
+Replace: 
+#elif BUILD_ETABS2016\r\nusing CSiProgram = ETABS2016;
+
+Find: 
+#elif BUILD_ETABS2016 || BUILD_ETABSLatest\r\nusing ETABS2016;
+
+Replace: 
+#elif BUILD_ETABS2016\r\nusing ETABS2016;
+============================
+
+Create Build Configurations
+
+Within: 
+MPT.CSI.API.csproj
+MPT.CSI.API.EndToEndTests.csproj
+============================
+Find:
+<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABS2016|AnyCPU'">
+  <DebugSymbols>true</DebugSymbols>
+  <OutputPath>bin\AnyCPU\Debug-ETABS2016\</OutputPath>
+  <DefineConstants>TRACE;DEBUG;BUILD_ETABS2016</DefineConstants>
+  <DebugType>full</DebugType>
+  <PlatformTarget>AnyCPU</PlatformTarget>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <DocumentationFile>bin\AnyCPU\Debug-ETABS2016\MPT.CSI.API.XML</DocumentationFile>
+</PropertyGroup>
+...
+<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABS2016|AnyCPU'">
+  <OutputPath>bin\AnyCPU\Release-ETABS2016\</OutputPath>
+  <DefineConstants>TRACE;DEBUG;BUILD_ETABS2016</DefineConstants>
+  <Optimize>true</Optimize>
+  <DebugType>pdbonly</DebugType>
+  <PlatformTarget>AnyCPU</PlatformTarget>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <DocumentationFile>bin\AnyCPU\Release-ETABS2016\MPT.CSI.API.XML</DocumentationFile>
+</PropertyGroup>
+
+Replace:
+<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABSLatest|AnyCPU'">
+  <DebugSymbols>true</DebugSymbols>
+  <OutputPath>bin\AnyCPU\Debug-ETABSLatest\</OutputPath>
+  <DefineConstants>TRACE;DEBUG;BUILD_ETABSLatest</DefineConstants>
+  <DebugType>full</DebugType>
+  <PlatformTarget>AnyCPU</PlatformTarget>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <DocumentationFile>bin\AnyCPU\Debug-ETABSLatest\MPT.CSI.API.XML</DocumentationFile>
+</PropertyGroup>
+<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABS2016|AnyCPU'">
+  <DebugSymbols>true</DebugSymbols>
+  <OutputPath>bin\AnyCPU\Debug-ETABS2016\</OutputPath>
+  <DefineConstants>TRACE;DEBUG;BUILD_ETABS2016</DefineConstants>
+  <DebugType>full</DebugType>
+  <PlatformTarget>AnyCPU</PlatformTarget>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <DocumentationFile>bin\AnyCPU\Debug-ETABS2016\MPT.CSI.API.XML</DocumentationFile>
+</PropertyGroup>
+...
+<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABS2016|AnyCPU'">
+  <OutputPath>bin\AnyCPU\Release-ETABS2016\</OutputPath>
+  <DefineConstants>TRACE;DEBUG;BUILD_ETABS2016</DefineConstants>
+  <Optimize>true</Optimize>
+  <DebugType>pdbonly</DebugType>
+  <PlatformTarget>AnyCPU</PlatformTarget>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <DocumentationFile>bin\AnyCPU\Release-ETABS2016\MPT.CSI.API.XML</DocumentationFile>
+</PropertyGroup>
+<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABSLatest|AnyCPU'">
+  <OutputPath>bin\AnyCPU\Release-ETABSLatest\</OutputPath>
+  <DefineConstants>TRACE;DEBUG;BUILD_ETABSLatest</DefineConstants>
+  <Optimize>true</Optimize>
+  <DebugType>pdbonly</DebugType>
+  <PlatformTarget>AnyCPU</PlatformTarget>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <DocumentationFile>bin\AnyCPU\Release-ETABSLatest\MPT.CSI.API.XML</DocumentationFile>
+</PropertyGroup>
+============================
+
+
+Within:
+MPT.CSI.API.sln
+============================
+Find:
+Debug-ETABS2016|Any CPU = Debug-ETABS2016|Any CPU
+Debug-ETABS2016|x86 = Debug-ETABS2016|x86
+...
+Release-ETABS2016|Any CPU = Release-ETABS2016|Any CPU
+Release-ETABS2016|x86 = Release-ETABS2016|x86
+
+---- (API.csproj)
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABS2016|Any CPU.ActiveCfg = Debug-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABS2016|x86.ActiveCfg = Debug-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABS2016|x86.Build.0 = Debug-ETABS2016|Any CPU
+---- (API.csproj)
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABS2016|Any CPU.ActiveCfg = Release-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABS2016|x86.ActiveCfg = Release-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABS2016|x86.Build.0 = Release-ETABS2016|Any CPU 
+
+---- (API.EndToEndTests.csproj)
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABS2016|Any CPU.ActiveCfg = Debug-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABS2016|x86.ActiveCfg = Debug-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABS2016|x86.Build.0 = Debug-ETABS2016|Any CPU
+---- (API.EndToEndTests.csproj)
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABS2016|Any CPU.ActiveCfg = Release-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABS2016|x86.ActiveCfg = Release-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABS2016|x86.Build.0 = Release-ETABS2016|Any CPU 
+
+
+Replace:
+Debug-ETABS2016|Any CPU = Debug-ETABS2016|Any CPU
+Debug-ETABS2016|x86 = Debug-ETABS2016|x86
+Debug-ETABSLatest|Any CPU = Debug-ETABSLatest|Any CPU
+Debug-ETABSLatest|x86 = Debug-ETABSLatest|x86
+...
+Release-ETABS2016|Any CPU = Release-ETABS2016|Any CPU
+Release-ETABS2016|x86 = Release-ETABS2016|x86
+Release-ETABSLatest|Any CPU = Release-ETABSLatest|Any CPU
+Release-ETABSLatest|x86 = Release-ETABSLatest|x86
+
+---- (API.csproj)
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABS2016|Any CPU.ActiveCfg = Debug-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABS2016|x86.ActiveCfg = Debug-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABS2016|x86.Build.0 = Debug-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABSLatest|Any CPU.ActiveCfg = Debug-ETABSLatest|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABSLatest|x86.ActiveCfg = Debug-ETABSLatest|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Debug-ETABSLatest|x86.Build.0 = Debug-ETABSLatest|Any CPU
+---- (API.csproj)
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABS2016|Any CPU.ActiveCfg = Release-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABS2016|x86.ActiveCfg = Release-ETABS2016|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABS2016|x86.Build.0 = Release-ETABS2016|Any CPU 
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABSLatest|Any CPU.ActiveCfg = Release-ETABSLatest|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABSLatest|x86.ActiveCfg = Release-ETABSLatest|Any CPU
+{6460B748-90A5-4409-88F4-DE9F46C6AE86}.Release-ETABSLatest|x86.Build.0 = Release-ETABSLatest|Any CPU 
+
+---- (API.EndToEndTests.csproj)
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABS2016|Any CPU.ActiveCfg = Debug-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABS2016|x86.ActiveCfg = Debug-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABS2016|x86.Build.0 = Debug-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABSLatest|Any CPU.ActiveCfg = Debug-ETABSLatest|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABSLatest|x86.ActiveCfg = Debug-ETABSLatest|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Debug-ETABSLatest|x86.Build.0 = Debug-ETABSLatest|Any CPU
+---- (API.EndToEndTests.csproj)
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABS2016|Any CPU.ActiveCfg = Release-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABS2016|x86.ActiveCfg = Release-ETABS2016|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABS2016|x86.Build.0 = Release-ETABS2016|Any CPU 
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABSLatest|Any CPU.ActiveCfg = Release-ETABSLatest|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABSLatest|x86.ActiveCfg = Release-ETABSLatest|Any CPU
+{1553F351-AAAA-431F-9E1C-FF7753DE33F1}.Release-ETABSLatest|x86.Build.0 = Release-ETABSLatest|Any CPU 
+============================
+
+
+
+Change Build Configurations for Testing
+Within: 
+MPT.CSI.API.csproj
+MPT.CSI.API.EndToEndTests.csproj
+============================
+Find:
+--- (API.csproj)
+<PropertyGroup>
+  <Configuration Condition=" '$(Configuration)' == '' ">Debug-SAP2000v19</Configuration>
+  <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  <ProjectGuid>{6460B748-90A5-4409-88F4-DE9F46C6AE86}</ProjectGuid>
+  <OutputType>Library</OutputType>
+  <AppDesignerFolder>Properties</AppDesignerFolder>
+  <RootNamespace>MPT.CSI.API</RootNamespace>
+  <AssemblyName>MPT.CSI.API</AssemblyName>
+  <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+  <FileAlignment>512</FileAlignment>
+</PropertyGroup>
+---- (API.EndToEndTests.csproj)
+<PropertyGroup>
+  <Configuration Condition=" '$(Configuration)' == '' ">Debug-SAP2000v19</Configuration>
+  <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  <ProjectGuid>{1553F351-AAAA-431F-9E1C-FF7753DE33F1}</ProjectGuid>
+  <OutputType>Library</OutputType>
+  <AppDesignerFolder>Properties</AppDesignerFolder>
+  <RootNamespace>MPT.CSI.API.EndToEndTests</RootNamespace>
+  <AssemblyName>MPT.CSI.API.EndToEndTests</AssemblyName>
+  <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+  <FileAlignment>512</FileAlignment>
+  <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+  <IsCodedUITest>False</IsCodedUITest>
+  <TestProjectType>UnitTest</TestProjectType>
+</PropertyGroup>
+  
+Replace:
+--- (API.csproj)
+<PropertyGroup>
+  <Configuration Condition=" '$(Configuration)' == '' ">Debug-ETABSLatest</Configuration>
+  <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  <ProjectGuid>{6460B748-90A5-4409-88F4-DE9F46C6AE86}</ProjectGuid>
+  <OutputType>Library</OutputType>
+  <AppDesignerFolder>Properties</AppDesignerFolder>
+  <RootNamespace>MPT.CSI.API</RootNamespace>
+  <AssemblyName>MPT.CSI.API</AssemblyName>
+  <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+  <FileAlignment>512</FileAlignment>
+</PropertyGroup>
+---- (API.EndToEndTests.csproj)
+<PropertyGroup>
+  <Configuration Condition=" '$(Configuration)' == '' ">Debug-ETABSLatest</Configuration>
+  <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  <ProjectGuid>{1553F351-AAAA-431F-9E1C-FF7753DE33F1}</ProjectGuid>
+  <OutputType>Library</OutputType>
+  <AppDesignerFolder>Properties</AppDesignerFolder>
+  <RootNamespace>MPT.CSI.API.EndToEndTests</RootNamespace>
+  <AssemblyName>MPT.CSI.API.EndToEndTests</AssemblyName>
+  <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+  <FileAlignment>512</FileAlignment>
+  <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+  <IsCodedUITest>False</IsCodedUITest>
+  <TestProjectType>UnitTest</TestProjectType>
+</PropertyGroup>
+============================

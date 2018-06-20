@@ -1,0 +1,71 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MPT.Enums
+</name>
+</assembly>
+<members>
+<member name="M:MPT.Enums.cEnumerations.GetEnumDescription``1(``0)">
+	<summary>
+ Returns the enum description (if any), otherwise returns the name of the enum value. 
+ </summary>
+	<param name="p_enumObj">Selected enumeration to convert.</param>
+</member><member name="M:MPT.Enums.cEnumerations.GetEnumXMLAttribute``1(``0)">
+	<summary>
+ Returns the enum XML attribute (if any), otherwise returns the name of the num value.
+ </summary>
+	<typeparam name="TEnum"></typeparam>
+	<param name="p_enumObj"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:MPT.Enums.cEnumerations.ConvertStringToEnumByDescription``1(System.String)">
+	<summary>
+ Returns the enum if the string matches the enum description. Returns Nothing if no match is found. 
+ </summary>
+	<param name="p_string">String item to match to the enum by enum description.</param>
+</member><member name="M:MPT.Enums.cEnumerations.ConvertStringToEnumByXMLAttribute``1(System.String)">
+	<summary>
+ Returns the enum if the string matches the enum XML attribute (or Enum.ToString() where no attribute exists). Returns Nothing if no match is found. 
+ </summary>
+	<param name="p_string">String item to match to the enum by enum description.</param>
+</member><member name="M:MPT.Enums.cEnumerations.GetEnumDescriptionList``1(``0)">
+	<summary>
+ Returns the list of all descriptions for an enumeration list.
+ Note that there is not always a description for every enumeration item.
+ </summary>
+	<typeparam name="TEnum">Type of enumeration.</typeparam>
+	<param name="p_enumObj">Sample enumeration object from the list of enums.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:MPT.Enums.cEnumerations.GetListItemMatchingEnumByXMLAttribute``1(``0,System.Collections.Generic.IList{System.String})">
+	<summary>
+ Returns the list item that matches the provided enumeration based on the XML attribute or .ToString() property of the enumeration.
+ Returns nothing if no match was found.
+ </summary>
+	<typeparam name="TEnum">Type of enumeration.</typeparam>
+	<param name="p_enum">EnumerationToMatch</param>
+	<param name="p_values">List of values to match to the enumeration.</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:MPT.Enums.cEnumerations">
+	<summary>
+ Contains methods for working with enumerations.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:MPT.Enums.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:MPT.Enums.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:MPT.Enums.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

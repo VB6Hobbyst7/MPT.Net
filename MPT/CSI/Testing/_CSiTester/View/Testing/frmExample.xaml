@@ -1,0 +1,642 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:r="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" 
+    x:Class="frmExample"
+    Title="CSiTester" 
+    Height="400" 
+    Width="1300" 
+    WindowStartupLocation="CenterScreen" 
+    Icon="/CSiTester;component/CSiTester.ico" 
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}" 
+    FontFamily="Microsoft Sans Serif">
+    <Window.Resources>
+        <Style x:Key="CellBenchmarkMValue" TargetType="TextBlock">
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+            <Style.Triggers>
+                <!--For indicating editable cells-->
+                <DataTrigger Binding="{Binding Me.editBenchmark}" Value="True">
+                    <Setter Property="Background" Value="#FF5AFDF6"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Me.editBenchmark}" Value="False">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CellIndependentValue" TargetType="TextBlock">
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding independentValue}" Value="-">
+                    <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+
+                <!--For indicating editable cells-->
+                <DataTrigger Binding="{Binding Me.editIndependent}" Value="True">
+                    <Setter Property="Background" Value="#FF5AFDF6"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Me.editIndependent}" Value="False">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CellIndependentValuePercDiff" TargetType="TextBlock">
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding independentValue}" Value="-">
+                    <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="CellOutputParameter" TargetType="TextBlock">
+            <Setter Property="Control.HorizontalAlignment" Value="Left" />
+            <Style.Triggers>
+                <!--For indicating editable cells-->
+                <DataTrigger Binding="{Binding Me.editOutputParameter}" Value="True">
+                    <Setter Property="Background" Value="#FF5AFDF6"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Me.editOutputParameter}" Value="False">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CellResultValue">
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding checkResultRounded}" Value="-">
+                    <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="cellColorResult" TargetType="TextBlock">
+            <!--<EventSetter Event="KeyDown" Handler="DataGridCell_KeyDown"></EventSetter>-->
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+            <!--Set cell style based on class data value -->
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="green">
+                    <Setter Property="Background" Value="#FFC8FBA4"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="yellow">
+                    <Setter Property="Background" Value="#FFF4FB5D"/>
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="orange">
+                    <Setter Property="Background" Value="#FFFF9F4E"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding cellClassBenchResult}" Value="red">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding checkResultRounded}" Value="Not Checked">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding checkResultRounded}" Value="N/A">
+                    <Setter Property="Background" Value="#FFFD5A5A"/>
+                    <!--<Setter Property="Foreground" Value="Yellow"/>-->
+                    <Setter Property="FontWeight" Value="Black"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <GroupBox Margin="5">
+        <Grid
+        x:Name="gridMain" 
+        Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="rowTitles" Height="Auto"/>
+                <RowDefinition x:Name="rowEditButtons" Height="0"/>
+                <RowDefinition x:Name="rowDG"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition x:Name="rowBrowser" Height="0"/>
+                <RowDefinition x:Name="rowBrowserBtn" Height="0"/>
+            </Grid.RowDefinitions>
+
+            <!--<Label 
+                x:Name="labelCodeExampleNumber" 
+                Content="Label" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="5,0,0,0" 
+                Height="38"
+                FontWeight="Bold" FontSize="24" FontFamily="Arial" />-->
+            <Grid 
+                Grid.Row="0" Grid.Column="0"
+                Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label 
+                    x:Name="labelExampleTitle" 
+                    Content="{Binding example.titleExample, Mode=OneWay, UpdateSourceTrigger=Explicit}" 
+                    Grid.Row="0"            
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="0" 
+                    Height="28"
+                    FontFamily="Arial" FontSize="16" />
+                <StackPanel Orientation="Vertical" 
+                            Grid.Row="2"
+                            HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+                    <StackPanel x:Name="updatedBenchmarkLabels"  Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <Label 
+                            Content="Version of Last Updated Benchmark:" 
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Margin="5,0,0,0" 
+                            Height="26" Width="238"
+                            FontSize="14" />
+                        <Label 
+                            x:Name="labelBenchmarkVersion" 
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Margin="5,0,0,0" 
+                            Height="26"
+                            FontWeight="Black"  Foreground="#FF2606F1" FontSize="14"
+                            Content="{Binding example.benchmarkLastVersion, Mode=OneWay, UpdateSourceTrigger=Explicit}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <r:RibbonButton 
+                                x:Name="btnArrowLeft" 
+                                HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                Margin="0,0,2,0"
+                                Width="36"  Height="29" 
+                                BorderBrush="{x:Null}" 
+                                AllowDrop="True" 
+                                Foreground="Black">
+                            <r:RibbonButton.FocusedBackground>
+                                <ImageBrush ImageSource="/CSiTester;component/Resources/Icons/64px/Arrow-LeftHover.png"/>
+                            </r:RibbonButton.FocusedBackground>
+                            <r:RibbonButton.Background>
+                                <ImageBrush ImageSource="/CSiTester;component/Resources/Icons/64px/Arrow-Left.png"/>
+                            </r:RibbonButton.Background>
+                            <r:RibbonButton.PressedBackground>
+                                <ImageBrush ImageSource="/CSiTester;component/Resources/Icons/64px/Arrow-LeftClick.png"/>
+                            </r:RibbonButton.PressedBackground>
+                            <r:RibbonButton.MouseOverBackground>
+                                <ImageBrush ImageSource="/CSiTester;component/Resources/Icons/64px/Arrow-LeftHover.png"/>
+                            </r:RibbonButton.MouseOverBackground>
+                        </r:RibbonButton>
+                        <r:RibbonButton 
+                            x:Name="btnArrowRight" 
+                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                            Margin="2,0,0,0"  
+                            Height="29" Width="36" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="Black" 
+                            Focusable="False">
+                            <r:RibbonButton.FocusedBackground>
+                                <ImageBrush ImageSource="/CSiTester;component/Resources/Icons/64px/Arrow-RightHover.png"/>
+                            </r:RibbonButton.FocusedBackground>
+                            <r:RibbonButton.Background>
+                                <ImageBrush ImageSource="/CSiTester;component/Resources/Icons/64px/Arrow-Right.png"/>
+                            </r:RibbonButton.Background>
+                            <r:RibbonButton.PressedBackground>
+                                <ImageBrush ImageSource="/CSiTester;component/Resources/Icons/64px/Arrow-RightClick.png"/>
+                            </r:RibbonButton.PressedBackground>
+                            <r:RibbonButton.MouseOverBackground>
+                                <ImageBrush ImageSource="/CSiTester;component/Resources/Icons/64px/Arrow-RightHover.png"/>
+                            </r:RibbonButton.MouseOverBackground>
+                        </r:RibbonButton>
+
+                        <Button 
+                            x:Name="btnArrowLeftBlue" 
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Margin="0,0,2,0"  
+                            Height="22" Width="40">
+                            <Image Source="/CSiTester;component/Resources/Icons/48px/Arrow-Left-Blue - Working.png" ></Image>
+                        </Button>
+                        <Button 
+                            x:Name="btnArrowRightBlue" 
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Margin="2,0,0,0"  
+                            Height="22" Width="40">
+                            <Image Source="/CSiTester;component/Resources/Icons/48px/Arrow-Right-Blue - Working.png" ></Image>
+                        </Button>
+
+                        <r:RibbonSplitButton x:Name="btnViewAttachments" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="90"
+                                        Margin="0" 
+                                        Label="View Attachments"
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/64px/View Attachments - 3D.png"
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/64px/View Attachments - 3D.png" >
+                            <r:RibbonMenuItem x:Name="menuItem_Documentation" 
+                                    Header="Documentation"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Documentation.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="menuItem_Attachments" 
+                                    Header="General Attachments"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Attachment 3D.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="menuItem_Links" 
+                                    Header="Links"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Links 3D.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="menuItem_ExcelCalcs" 
+                                    Header="Open Excel Calculations"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/File - Excel 3D.png">
+                            </r:RibbonMenuItem>
+                        </r:RibbonSplitButton>
+                        <r:RibbonSplitButton x:Name="btnViewMoreResults" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="64"
+                                        Margin="0" 
+                                        Label="View Results"
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/64px/View Results 2 - 3D.png"
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/64px/View Results 2 - 3D.png" >
+                            <r:RibbonMenuItem x:Name="menuItem_ExportExcel" 
+                                    Header="Export View to Excel"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/File - Excel Export 3D.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="menuItem_OpenTables" 
+                                    Header="Open Exported Tables File"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Tables 2.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="menuItem_OpenModel" 
+                                    Header="Open Run Model File"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/File - Model.png">
+                            </r:RibbonMenuItem>
+                        </r:RibbonSplitButton>
+                        <r:RibbonSplitButton x:Name="btnEditExample" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                                        Height="66"  Width="66"
+                                        Margin="0" 
+                                        Label="Edit Example"
+                                        SmallImageSource="/CSiTester;component/Resources/Icons/64px/Example Edit.png"
+                                        LargeImageSource="/CSiTester;component/Resources/Icons/64px/Example Edit.png" >
+                            <r:RibbonMenuItem x:Name="menuItem_EditMode" 
+                                    Header="Edit Result Items"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Example Edit.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="menuItem_UpdateBenchmarks" 
+                                    Header="Update Benchmarks"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Benchmark Update 3D.png">
+                            </r:RibbonMenuItem>
+                            <r:RibbonMenuItem x:Name="menuItem_UpdateTimes" 
+                                    Header="Update Times"
+                                    IsCheckable="False"
+                                    ImageSource="/CSiTester;component/Resources/Icons/32px/Time Update 3D.png">
+                            </r:RibbonMenuItem>
+                        </r:RibbonSplitButton>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom"
+                        x:Name="spEditModeControls"
+                        Grid.Row="1"
+                        Margin="13,0,0,-6">
+                <Separator></Separator>
+                <StackPanel Orientation="Horizontal">
+                    <Button 
+                        x:Name="btnSaveEditBM" 
+                        Content="Save Edit" 
+                        HorizontalAlignment="Left" 
+                        Height="22" Width="120"
+                        Margin="0,5"/>
+                    <Button 
+                        x:Name="btnExitEditMode" 
+                        Content="Exit Edit Mode" 
+                        HorizontalAlignment="Left" 
+                        Height="22" Width="120"
+                        Margin="10,5"/>
+                </StackPanel>
+                <Grid x:Name="gridEditBtns" ShowGridLines="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Button 
+                        x:Name="btnEditOutputParameter" 
+                        Content="Edit" 
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"  VerticalAlignment="Bottom"
+                        Height="22"/>
+                    <Button 
+                        x:Name="btnEditIndependent" 
+                        Content="Edit" 
+                        Grid.Column="2"  VerticalAlignment="Center"
+                        Height="22" />
+                    <Button 
+                        x:Name="btnEditBM" 
+                        Content="Edit" 
+                        Grid.Column="3"
+                        HorizontalAlignment="Left"  VerticalAlignment="Center"
+                        Height="22"/>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+
+                </StackPanel>
+            </StackPanel>
+
+            <Grid x:Name="gridTimeSummary" 
+                        Grid.Column="1"
+                              HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                        Height="90" 
+                        Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="Auto" MinWidth="190"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="22"/>
+                    <RowDefinition Height="44"/>
+                </Grid.RowDefinitions>
+                <!--Top of rectangle box-->
+                <Rectangle 
+                        Grid.Column="1" 
+                        Grid.Row="1" 
+                        Fill="#FFF4F4F5" 
+                        HorizontalAlignment="Center" 
+                        Height="62" Stroke="Black" 
+                        VerticalAlignment="Top" 
+                        Width="190"/>
+                <!--Bottom of rectangle box-->
+                <Rectangle 
+                        Grid.Column="1" 
+                        Grid.Row="2" 
+                        Fill="#FFF4F4F5" 
+                        HorizontalAlignment="Center" 
+                        Height="62" 
+                        Stroke="Black" 
+                        VerticalAlignment="Bottom" 
+                        Width="190"/>
+                <Separator 
+                        Grid.Column="1" 
+                        Grid.Row="2" 
+                        HorizontalAlignment="Center" 
+                        Height="5" 
+                        VerticalAlignment="Top" 
+                        Width="177"/>
+
+                <Grid x:Name="gridRowLabels" 
+                        Grid.Column="0"
+                          Grid.Row="2" 
+                        Width="100" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="22"/>
+                        <RowDefinition Height="22"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                            Content="Estimated Time" 
+                            Grid.Row ="0" 
+                            HorizontalAlignment="Right" VerticalAlignment="Top" 
+                            Height="26"
+                            FontFamily="Microsoft Sans Serif"/>
+                    <Label 
+                            Content="Actual Time" 
+                            Grid.Row="1"
+                            HorizontalAlignment="Right" VerticalAlignment="Top" 
+                            Height="26"
+                            FontFamily="Microsoft Sans Serif"/>
+                </Grid>
+                <Grid x:Name="gridTimeHeaders" 
+                        Grid.Column="1" 
+                        Grid.Row="1" 
+                        Height="22" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Label 
+                            Content="Run" 
+                            Grid.Column="0"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Height="26" 
+                            Margin="6,0,0,-4"
+                            FontFamily="Microsoft Sans Serif"/>
+                    <Label 
+                            Content="Check" 
+                            Grid.Column="1" 
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Height="26" 
+                            Margin="6,0,0,-4"
+                            FontFamily="Microsoft Sans Serif"/>
+                    <Label 
+                            Content="Total" 
+                            Grid.Column="2"
+                            HorizontalAlignment="Left" VerticalAlignment="Top" 
+                            Height="26" 
+                            Margin="6,0,0,-4" 
+                            FontWeight="Bold" FontFamily="Microsoft Sans Serif"/>
+                </Grid>
+                <Grid x:Name="gridTimes" 
+                    Grid.Column="1" 
+                    Grid.Row="2" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="60" />
+                        <ColumnDefinition Width="Auto" MinWidth="60" />
+                        <ColumnDefinition Width="Auto" MinWidth="70" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="22"/>
+                        <RowDefinition Height="22"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                        x:Name="LabelRunAssumed" 
+                        Content ="{Binding example.timeRunAssumed, Mode=OneWay, UpdateSourceTrigger=Explicit}"
+                        Grid.Column="0" Grid.Row="0"
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Height="26"/>
+                    <Label 
+                        x:Name="LabelRunActual" 
+                        Content ="{Binding example.timeRunActual, Mode=OneWay, UpdateSourceTrigger=Explicit}"
+                        Grid.Column="0" Grid.Row="1" 
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Height="26"/>
+                    <Label 
+                        x:Name="LabelCheckAssumed" 
+                        Content ="{Binding example.timeCompareAssumed, Mode=OneWay, UpdateSourceTrigger=Explicit}"
+                        Grid.Column="1" Grid.Row="0"
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Height="26"/>
+                    <Label 
+                        x:Name="LabelCheckActual" 
+                        Content ="{Binding example.timeCompareActual, Mode=OneWay, UpdateSourceTrigger=Explicit}"
+                        Grid.Column="1" Grid.Row="1"
+                        HorizontalAlignment="Right" VerticalAlignment="Top" 
+                        Height="26"/>
+                    <Label 
+                        x:Name="LabelTotalAssumed" 
+                        Content ="{Binding example.timeCheckAssumed, Mode=OneWay, UpdateSourceTrigger=Explicit}"
+                        Grid.Column="2" Grid.Row="0"
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Height="26" />
+                    <Label 
+                        x:Name="LabelTotalActual" 
+                        Content ="{Binding example.timeCheckActual, Mode=OneWay, UpdateSourceTrigger=Explicit}"
+                        Grid.Column="2" Grid.Row="1"
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Height="26" />
+                </Grid>
+            </Grid>
+
+
+            <StackPanel 
+                Orientation="Vertical" 
+                Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
+                Margin="0,6,0,0">
+                <Border x:Name="brdr_DG_ExampleSummary" BorderBrush="#FF8C8E94" BorderThickness="1,1,1,1">
+                    <StackPanel 
+                        Orientation="Vertical" 
+                        Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" >
+
+                        <DataGrid 
+                            x:Name="dataGrid_Summary" 
+                            ItemsSource="{Binding itemList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            AutoGenerateColumns="False" 
+                            Margin="5,5,5,5" 
+                            CanUserResizeColumns="True" 
+                            CanUserResizeRows="False"
+                            CanUserAddRows="False"
+                            IsManipulationEnabled="True" 
+                            IsReadOnly="False" 
+                            AlternationCount="1" 
+                            AlternatingRowBackground="#FFF1F7F9" 
+                            FontFamily="Microsoft Sans Serif"
+                            >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn 
+                                    x:Name="subExample" 
+                                    Header="Sub Example"
+                                    IsReadOnly="True"
+                                    Binding="{Binding subExample, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn 
+                                    x:Name="OutputParameter" 
+                                    Header="Output Parameter" 
+                                    IsReadOnly="True"
+                                    Binding="{Binding outputParameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellOutputParameter}"/>
+                                <DataGridTextColumn 
+                                    x:Name="IndependentValue" 
+                                    Header="Independent" 
+                                    IsReadOnly="True"
+                                    Binding="{Binding independentValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellIndependentValue}"/>
+                                <DataGridTextColumn 
+                                    x:Name="BenchmarkValue" 
+                                    Header="Benchmark"
+                                    IsReadOnly="True"
+                                    Binding="{Binding benchmarkValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellBenchmarkMValue}"/>
+                                <DataGridTextColumn 
+                                    x:Name="PercentDifferentIndependent" 
+                                    Header="% Difference Benchmark from Independent" 
+                                    IsReadOnly="True"
+                                    Binding="{Binding percentDifferenceIndependent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellIndependentValuePercDiff}">
+                                    <DataGridTextColumn.HeaderTemplate >
+                                        <DataTemplate>
+                                            <TextBlock Text="% Difference &#x0a; (Benchmark from Independent)" Width="170" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn 
+                                    x:Name="BenchmarkResult" 
+                                    Header="Result"
+                                    IsReadOnly="True"
+                                    Binding="{Binding checkResultRaw, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellResultValue}"
+                                    Visibility="Collapsed"/>
+                                <DataGridTextColumn 
+                                    x:Name="BenchmarkResultRounded" 
+                                    Header="Result Rounded" 
+                                    IsReadOnly="True"
+                                    Binding="{Binding checkResultRounded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource CellResultValue}">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{Binding checkResultRaw}" />
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn 
+                                    x:Name="PercentDifferencBenchmark"
+                                    Header="% Difference Result from Benchmark"
+                                    IsReadOnly="True"
+                                    Binding="{Binding percentDifferenceBenchmark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    ElementStyle="{StaticResource cellColorResult}">
+                                    <DataGridTextColumn.HeaderTemplate >
+                                        <DataTemplate>
+                                            <TextBlock Text="% Difference &#x0a; (Result from Benchmark)" Width="150" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTextColumn.HeaderTemplate>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn 
+                                    x:Name="TableQuery" 
+                                    Header="Table Query" 
+                                    Binding="{Binding tableQuery}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <GridSplitter x:Name="Splitter" 
+                      Grid.Row="3" 
+                      HorizontalAlignment="Stretch" 
+                      ResizeDirection="Rows" 
+                      Margin="0,5,0,5"
+                      Height="4" 
+                      Visibility="Collapsed" 
+                      BorderBrush="Black" BorderThickness="0,1"/>
+            <Border Grid.Row="4" BorderBrush="Black" BorderThickness="1" >
+                <WebBrowser x:Name="WebBrowserPDFViewer" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+            </Border>
+            <StackPanel Grid.Row="5" 
+                Orientation="Horizontal" 
+                HorizontalAlignment="Center" >
+                <Button 
+                x:Name="btnSeparatePDFWindow" 
+                Content="Open in Separate Window"   
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                FontFamily="Microsoft Sans Serif"
+                Height="22" Width="150"
+                Margin="5,5,5,0" />
+                <Button 
+                x:Name="btnClosePDF" 
+                Content="Close Documentation View" 
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                FontFamily="Microsoft Sans Serif"
+                Margin="5,5,5,0"
+                Height="22" Width="150"/>
+            </StackPanel>
+        </Grid>
+    </GroupBox>
+</Window>
+    

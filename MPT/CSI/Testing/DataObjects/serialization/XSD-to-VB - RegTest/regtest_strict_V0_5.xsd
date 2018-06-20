@@ -1,0 +1,1866 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="xs3p.xsl"?>
+<!-- 
+
+REVISIONS (in reverse chronological order):
+
+
+10/14/2013
+
+- File created based on models database model xsd file.
+
+-->
+<xs:schema 	xmlns="http://www.csiamerica.com"
+			xmlns:csi="http://www.csiberkeley.com/resources"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 			
+			targetNamespace="http://www.csiamerica.com" 
+			elementFormDefault="qualified">
+  <xs:import schemaLocation="CSiResources_V0_1.xsd"
+			 namespace="http://www.csiberkeley.com/resources"/> 
+
+ <xs:element name="regtest">
+    <xs:annotation>
+      <xs:documentation>Schema for regtest XML configuration file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="general" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>General properties of the regression test.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="actions" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="testing" minOccurs="1" maxOccurs="1" />
+        <!-- <xs:element ref="services" minOccurs="1" maxOccurs="1" /> -->
+        <xs:element ref="job_tasklist_definitions" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="distributed_testing" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="reporting" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="gui_data" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="advanced" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="experimental" minOccurs="0" maxOccurs="1" />
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- definition of simple elements or less complicated complex elements -->
+  
+  
+  <!-- general element -->
+  
+  <xs:element name="general">
+    <xs:annotation>
+      <xs:documentation>General properties of the regression test.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="models_database_directory" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Information about models database directory.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="path" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Path to the models database directory.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="models_run_directory" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Information about models run directory.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="path" type="directory_path_with_optional_subdirectory" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Path to the models run directory.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="output_directory" minOccurs="1" maxOccurs="1">        
+          <xs:annotation>
+            <xs:documentation>Information about output directory directory.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="path" type="directory_path_with_optional_subdirectory" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Path to the output directory.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="same_as_models_run_directory" use="required" type="csi:yes_no">
+              <xs:annotation>
+                <xs:documentation>Specify whether or not the output directory
+                should be the same as models run directory.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>        
+        </xs:element>
+        <xs:element name="programs_root_directory" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Information about programs root directory.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="path" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Path to the programs root directory.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="computer_id" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>ID of the computer on which the test was run.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="computer_description" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Description of the computer on which the test was run.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="write_log_files" minOccurs="1" maxOccurs="1" type="csi:yes_no">
+          <xs:annotation>
+            <xs:documentation>Toggle whether the log files should be written or not.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element actions -->
+  
+  <xs:element name="actions">
+    <xs:annotation>
+      <xs:documentation>List of actions to run for the current regression test.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="update_test_definition_to_use_latest_build" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="autogenerate_test_id" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="copy_models" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="copy_models_flat" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="copy_models_mirror" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="write_xml_files_list" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="run_local_test" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="start_distributed_test" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="join_distributed_test" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="run_job" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  
+  <!-- element update_test_definition_to_use_latest_build -->
+        
+  <xs:element name="update_test_definition_to_use_latest_build">
+    <xs:annotation>
+      <xs:documentation>
+        Specify whether the test definition should be updated to use the latest build.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>     
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="run" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Enter "yes" to update the test definition to the latest build or "no" for not doing so.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>      
+    </xs:complexType>
+  </xs:element>
+  
+  
+    <!-- element autogenerate_test_id -->
+        
+  <xs:element name="autogenerate_test_id">
+    <xs:annotation>
+      <xs:documentation>
+        Whether or not the test id should be generated from date, program name, program version, build and optional suffix.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="suffix" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              Optional suffix for the test ID.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>           
+            <xs:restriction base="xs:string">
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="run" use="required" type="csi:yes_no">
+        <xs:annotation>
+          <xs:documentation>Specify whether the test id should be autogenerated or not.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  
+  <!-- element copy_models -->
+        
+  <xs:element name="copy_models">
+    <xs:annotation>
+      <xs:documentation>
+        Specify whether the models should be copied from model database directory to the 
+        models run directory.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="run" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Specify whether the copy operation should be performed or not.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="reuse_xml_filelist" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>
+                Specify whether the XML file list should be reused for the copy operation.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="create_subdirectories_named_as_classification" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>
+                Specify whether hierarchical directory structure based on model classification should be created in the 
+				copy target directory.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>		  
+          <xs:attribute name="copy_current_test_models_only" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>
+                Specify whether all models or only models for the test type, target program and selection specified
+                in the test configuration file should be copied.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="copy_model_files_only" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>
+                Specify whether only model files (and model XML files) should be copied or whether also attachments
+                and images should be copied.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="translate_model_xml_files" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Specify whether the model XML files should be translated to the latest version of the schema in the target copy directory.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="copy_selection_only" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Specify whether only the selected models should be copied.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>          
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- element copy_models_flat -->
+        
+  <xs:element name="copy_models_flat">
+    <xs:annotation>
+      <xs:documentation>
+        Specify whether the models should be copied from model database directory to the 
+        models run directory such that all the model files are saved in the same directory.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="custom_model_file_directory_path" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              Enter custom path to model file.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="type" use="required" type="csi:absolute_relative">
+                  <xs:annotation>
+                    <xs:documentation>Specify absolute or relative path type.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="run" use="required" type="csi:yes_no">
+        <xs:annotation>
+          <xs:documentation>Specify whether the copy models flat operation should be performed or not.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="reuse_xml_filelist" use="required" type="csi:yes_no">
+        <xs:annotation>
+          <xs:documentation>
+            Specify whether the XML file list should be reused for the copy models flat operation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="dry_run" use="required" type="csi:yes_no">
+        <xs:annotation>
+          <xs:documentation>
+            Specify whether the files should be copied or not.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="replace_model_ids_by_sequential_numbers" use="required" type="csi:yes_no">
+        <xs:annotation>
+          <xs:documentation>
+            Specify whether the model ids should be replaced by sequential numbers in the model XML
+            files in the models run directory.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="translate_model_xml_files" use="required" type="csi:yes_no">
+        <xs:annotation>
+          <xs:documentation>Specify whether the model XML files should be translated to the
+          latest version of the schema in the target copy directory.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- element copy_models_mirror -->
+        
+  <xs:element name="copy_models_mirror">
+    <xs:annotation>
+      <xs:documentation>
+        Specify whether the models should be copied from model database directory to the 
+        models run directory keeping exactly the same content of the source and target directories.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="run" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Specify whether the copy operation should be performed or not.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="translate_model_xml_files" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Specify whether the model XML files should be translated to the latest version of the schema in the target copy directory.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- element write_xml_files_list -->
+        
+  <xs:element name="write_xml_files_list">
+    <xs:annotation>
+      <xs:documentation>
+        Specify whether the file with list of XML files should be written. This will require rescanning
+        models run database directory.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="run" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Specify whether the filelist should be written or not.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- element run_local_test -->
+  
+  <xs:element name="run_local_test">
+    <xs:annotation>
+      <xs:documentation>
+        Specify whether the test should be run or not.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="run" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Enter "yes" to run the test or "no" to not run the test.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>		  
+          <xs:attribute name="run_using_batch_file" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Enter "yes" to run the test using batch file or "no" to run the test by closing and reopening the program before running each model.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>		  
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+        
+
+  <!-- element start_distributed_test -->
+  
+  <xs:element name="start_distributed_test">
+    <xs:annotation>
+      <xs:documentation>
+        Specify whether the distributed test should be initialized on the regression testing control server or not.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="run" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Enter "yes" to initialize distributed test or "no" to not initialize the test.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element join_distributed_test -->
+  
+  <xs:element name="join_distributed_test">
+    <xs:annotation>
+      <xs:documentation>
+        Specify whether distributed test should be joined or not.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="run" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Enter "yes" to join distributed test or "no" to not join the test.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element run_as_service -->
+        
+  <!--        
+  <xs:element name="run_as_service">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies actions for running RegTest as service.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="service_name" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              Name of the service to be run
+            </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>           
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="local test" />
+              <xs:enumeration value="distributed test" />
+              <xs:enumeration value="process server instructions" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="run" use="required">
+        <xs:annotation>
+          <xs:documentation>Specify whether the "run as service" action should be run or not.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="yes" />
+            <xs:enumeration value="no" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  -->
+  
+  
+  <!-- element run_job -->
+        
+  <xs:element name="run_job">
+    <xs:annotation>
+      <xs:documentation>
+        Specifies actions for running RegTest as job.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="test_type" minOccurs="1" maxOccurs="1" type="csi:run_job_test_type" />
+        <xs:element name="tasklist_type" minOccurs="1" maxOccurs="1" type="csi:tasklist_type" />
+      </xs:sequence>
+      <xs:attribute name="run" use="required" type="csi:yes_no">
+        <xs:annotation>
+          <xs:documentation>Specify whether the "run job" action should be run or not.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element services -->  
+  
+  <!--
+  <xs:element name="services">
+    <xs:annotation>
+      <xs:documentation>Definition of various services when RegTest is run as a service.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="local_test" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="distributed_test" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="process_server_instructions" minOccurs="1" maxOccurs="1" />
+      </xs:all>
+    </xs:complexType>    
+  </xs:element>
+  -->
+  
+  
+  <!-- element local_test TODO: to be completed and annotated-->  
+  
+  <!--
+  <xs:element name="local_test">
+    <xs:annotation>
+      <xs:documentation>xxx
+      </xs:documentation>
+    </xs:annotation>  
+  </xs:element>
+  -->
+  
+  
+  <!-- element distributed_test TODO: to be completed and annotated, also add restrictions -->
+  
+  <!--
+  <xs:element name="distributed_test">
+    <xs:annotation>
+      <xs:documentation>xxx
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="wait_interval" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Wait interval</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="minutes" minOccurs="1" maxOccurs="1">
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="programs" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Programs</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="program" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>Programs</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element  name="name" minOccurs="1" maxOccurs="1">
+                    </xs:element>
+                    <xs:element  name="build_sort_key_range" minOccurs="1" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element  name="min_build_sort_key" minOccurs="1" maxOccurs="1">
+                          </xs:element>
+                          <xs:element  name="max_build_sort_key" minOccurs="1" maxOccurs="1">
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>                  
+                    </xs:element>
+                    <xs:element  name="test_types" minOccurs="1" maxOccurs="1">                    
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element  name="test_type" minOccurs="1" maxOccurs="unbounded">
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>                    
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>            
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  -->
+    
+  
+  <!-- element process_server_instructions TODO: to be completed and annotated -->
+  
+  <!--
+  <xs:element name="process_server_instructions">
+    <xs:annotation>
+      <xs:documentation>xxx
+      </xs:documentation>
+    </xs:annotation>  
+  </xs:element>
+  -->
+  
+  
+  <!-- element job_tasklist_definitions -->
+  <!-- location: /regtest/job_tasklistlist_definitions -->
+  
+  <xs:element name="job_tasklist_definitions">
+    <xs:annotation>
+      <xs:documentation>Definition of tasklists for running jobs.
+      </xs:documentation>
+    </xs:annotation>    
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="static_tasklist" minOccurs="1" maxOccurs="1" /> <!-- may not be needed -->
+        <xs:element name="dynamic_initial_tasklist" minOccurs="1" maxOccurs="1" /> <!-- may not be needed -->
+        <xs:element ref="dynamic_continuous_tasklist" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>    
+  </xs:element>
+  
+
+  <!-- element dynamic_continuous_tasklist -->
+  <!-- location: /regtest/job_tasklistlist_definitions/dynamic_continuous_tasklist -->
+  <!-- TODO: add annotations and restrictions -->
+  
+  <xs:element name="dynamic_continuous_tasklist">
+    <xs:annotation>
+      <xs:documentation>Definition of dynamic continuous tasklist.
+      </xs:documentation>
+    </xs:annotation>    
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="watch_interval" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Watch interval</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="minutes" minOccurs="1" maxOccurs="1">              
+                <xs:annotation>
+                  <xs:documentation>Watch interval in minutes</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:double" />
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="programs" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Container element for programs to be included in the tasklist.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="program" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>Information about single program in the tasklist.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element  name="name" minOccurs="1" maxOccurs="1" type="csi:program_name">                    
+                      <xs:annotation>
+                        <xs:documentation>Name of the program.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element  name="build_sort_key_range" minOccurs="1" maxOccurs="1">                    
+                      <xs:annotation>
+                        <xs:documentation>Container element for build sort key range definition.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element  name="min_build_sort_key" minOccurs="1" maxOccurs="1">
+                            <xs:annotation>
+                              <xs:documentation>Minimum build number (or build sort key number) which should be used for running the test.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:double" />
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element  name="max_build_sort_key" minOccurs="1" maxOccurs="1">
+                            <xs:annotation>
+                              <xs:documentation>Minimum build number (or build sort key number) which should be used for running the test.</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:double" />
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>                  
+                    </xs:element>
+                    <xs:element name="test_types" minOccurs="1" maxOccurs="1">                    
+                      <xs:annotation>
+                        <xs:documentation>Container element for test types to be run.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="tests_no_empty" minOccurs="1" maxOccurs="unbounded" type="csi:tests" />                          
+                        </xs:sequence>
+                      </xs:complexType>                    
+                    </xs:element>
+                    <xs:element  name="test_id_suffix" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>Suffix for test id.</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>                    
+                    <xs:element  name="overwrites" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>Container element for applying overwrites to the test definition.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element  name="overwrite" minOccurs="1" maxOccurs="unbounded">
+                            <xs:annotation>
+                              <xs:documentation>Container element for single overwrite.</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element  name="element" minOccurs="1" maxOccurs="1">
+                                  <xs:annotation>
+                                    <xs:documentation>XPath address of the XML element to be overwritten, including the namespace.
+                                    Example: /n:regtest/n:testing/n:command_line
+                                    </xs:documentation>
+                                  </xs:annotation>                                  
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element  name="value" minOccurs="1" maxOccurs="1">
+                                  <xs:annotation>
+                                    <xs:documentation>Value of the overwrite.
+                                    Example: /R P1 S2 B1 /C
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>                          
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>                    
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>            
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    
+  </xs:element>
+  
+  
+  
+  <!-- element testing -->
+  <!-- location: /regtest/testing -->
+        
+  <xs:element name="testing">
+    <xs:annotation>
+      <xs:documentation>Details about a test to run.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="test_id" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>ID of the test. The recommended format is as follows:
+            DATE_PROGRAM_VERSION_TEST-TYPE, such as 2013-12-01_CSiBridge_V16.0.2_update_bridge</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="test_description" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Description of the test and its purpose.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="test_to_run" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="program" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="command_line" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="selections" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="previous_test_results_file" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="runtime_limit_overwrites" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="email_notifications" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  
+  <!-- element test to run -->
+  
+  <xs:element name="test_to_run">
+    <xs:annotation>
+      <xs:documentation>Specify the test type to run.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:annotation>
+          <xs:documentation>
+            Enter test type to run.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:extension base="test_to_run_enumeration">
+          <!-- see the base definition at the bottom of this file -->
+          <!--<xs:extension base="xs:string">-->
+          <!-- temporarily remove base=test_to_run_enumeration, which is causing validation problems due to the comment -->
+          <xs:attribute name="dry_run" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>
+                Enter "yes" for running dry run or "no" for for actually running analysis for all the models.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+        
+  
+  <!-- element program -->
+  
+  <xs:element name="program">
+    <xs:annotation>
+      <xs:documentation>Information about program that will run the regression test.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" minOccurs="1" maxOccurs="1" type="csi:program_name">
+          <xs:annotation>
+            <xs:documentation>
+              Name of the program.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="version" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              Version of the program.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="build" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              Build of the program.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="path" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Path to the program file.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="type" use="required" type="csi:absolute_relative">
+                  <xs:annotation>
+                    <xs:documentation>Path type.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- command line -->
+
+  <xs:element name="command_line">
+    <xs:annotation>
+      <xs:documentation>
+        Command line parameters for running various analysis settings
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>  
+
+
+    <!-- element selections -->
+  
+  <xs:element name="selections">
+    <xs:annotation>
+      <xs:documentation>Definition of selections specifying which models should be run.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="keywords" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              This option enables to select which models to run by a keyword. Only models
+              assigned the specified keywords will be run.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="keyword" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+                    Enter keyword.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="use" use="required" type="csi:yes_no">
+              <xs:annotation>
+                <xs:documentation>
+                  Specify whether or not the selection by keywords should be applied.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="keywords_exclusive" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              This option enables to select which models to run by including all models
+              that do not contain the selected keywords in the selection. Only models
+              NOT assigned the specified keywords will be run.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="keyword" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+                    Keyword.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="use" use="required" type="csi:yes_no">
+              <xs:annotation>
+                <xs:documentation>
+                  Specify whether or not the selection by exclusive keywords should be applied.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="model_ids" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              This option enables to select which models to run by a model ID. Only models
+              assigned the specified model IDs will be run.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="model_id" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+                    Model ID for selection.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="use" use="required" type="csi:yes_no">
+              <xs:annotation>
+                <xs:documentation>
+                  Specify whether or not the selection by model IDs should be applied.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="model_id_range" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              This option enables to select which models to run by a range of model IDs. Only models
+              within the specified model ID range will be run.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="min_model_id" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Minimum model ID for selection.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="max_model_id" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Maximum model ID for selection.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="use" use="required" type="csi:yes_no">
+              <xs:annotation>
+                <xs:documentation>
+                  Specify whether or not the selection by model ID range should be applied.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="runtime_range" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              This option enables to select which models to run by a range of model runtimes. Only models
+              within the specified runtime range will be run.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="min_runtime" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Minimum runtime.
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="minutes" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>
+                          Minimum runtime in minutes.
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer" />
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="max_runtime" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Maximum runtime.
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="minutes" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>
+                          Maximum runtime in minutes.
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:integer" />
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="use" use="required" type="csi:yes_no">
+              <xs:annotation>
+                <xs:documentation>
+                  Specify whether or not the selection by the runtime range should be applied.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>        
+        <xs:element name="program" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              This option enables to select which models to run by a program name. Only models
+              created in the specified program name will be run.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>
+                    Enter program name.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="use" use="required" type="csi:yes_no">
+              <xs:annotation>
+                <xs:documentation>
+                  Specify whether or not the selection by program name should be applied.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="model_file_extensions" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              This option enables to perform model selection based on the model
+              file extension. Only models with the specified extension will be selected.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="extension" minOccurs="1" maxOccurs="unbounded" type="csi:file_extensions_main" />
+            </xs:sequence>
+            <xs:attribute name="use" use="required" type="csi:yes_no">
+              <xs:annotation>
+                <xs:documentation>
+                  Specify whether or not the selection by model file extension should be applied.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element previous test results file -->  
+      
+  <xs:element name="previous_test_results_file">
+    <xs:annotation>
+      <xs:documentation>Information about previous test results XML file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="path" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Path to the previous test results XML file.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+      
+  <!-- element runtime_limit_overwrites -->    
+
+  <xs:element name="runtime_limit_overwrites">
+    <xs:annotation>
+      <xs:documentation>
+        Parameters that enable to overwrite the runtime limits for individual models.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="multiplier" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Runtime limit multiplier.</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:double" />
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="maximum_permitted_runtime" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Maximum permitted runtime for any single model.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="minutes" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Enter maximum permitted runtime in minutes.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:double" />
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+      
+      
+  <!-- element email notifications --> 
+      
+  <xs:element name="email_notifications">
+    <xs:annotation>
+      <xs:documentation>Controls how email notifications about completed test are sent out.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="email_addresses" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>List of email addresses.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="email_address" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>Enter email address.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="use" use="required" type="csi:yes_no">
+        <xs:annotation>
+          <xs:documentation>Specify whether the email notifications should be sent out or not.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+      
+        
+  <!-- element distributed testing -->
+  
+  <xs:element name="distributed_testing">
+    <xs:annotation>
+      <xs:documentation>Definition of parameters for distributed testing.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="server_base_url" minOccurs="1" maxOccurs="1" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Base URL for the regression testing control server.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="models_source" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- models source -->
+  
+  <xs:element name="models_source" type="csi:models_source" />
+
+  
+  <!-- reporting -->
+  
+  <xs:element name="reporting">
+    <xs:annotation>
+      <xs:documentation>Setup of reporting.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="model_results_table_cells_color_coding" minOccurs="1" maxOccurs="1" />
+        <xs:element name="percent_difference_decimal_digits" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Number of decimal digits to use when reporting percent difference.</xs:documentation>
+          </xs:annotation>
+        </xs:element>  
+        <xs:element ref="xml_stylesheet_files" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element model results table cells color coding -->
+  
+  <xs:element name="model_results_table_cells_color_coding">
+    <xs:annotation>
+      <xs:documentation>Definition of color coding for model results table cells based on the cell values.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="absolute_percent_difference_from_benchmark_or_last_best_value_if_available" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Contour definition for absolute percent difference from benchmark or
+            last best value, if available.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="contour" minOccurs="2" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="absolute_percent_difference_from_theoretical" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Contour definition for absolute percent difference theoretical value.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="contour" minOccurs="2" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="total_run_time_change_ratio" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Contour definition for total runtime change ratio.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="contour" minOccurs="2" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- contour -->
+  
+  <xs:element name="contour">
+    <xs:annotation>
+      <xs:documentation>Specifies contour limits and colors for report table cells.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="min_value_exclusive" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Minimum value for the contour range (exclusive).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="max_value_inclusive" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Maxmimum value for the contour range (inclusive).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="td_css_class" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>CSS class to be applied to table cells when values are within the given range.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="legend_description" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Description of the contour range.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="legend_comment" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>More detailed comment about the contour range.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element xml_stylesheet_files -->
+  
+  <xs:element name="xml_stylesheet_files">
+    <xs:annotation>
+      <xs:documentation>References to various XML stylesheet files used for preparing the HTML reports.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="test_results" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Information about test results XML file stylesheet.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="path" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Path to the test results XML file stylesheet.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="type" use="required" type="csi:absolute_relative">
+                        <xs:annotation>
+                          <xs:documentation>Path type.</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- gui data -->
+  
+  <!-- allow to have any contents in this elements -->
+  
+  <xs:element name="gui_data">
+    <xs:annotation>
+      <xs:documentation>Element to store data and settings specific to the GUI.
+      </xs:documentation>
+    </xs:annotation>    
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="solver_options" minOccurs="1"  maxOccurs="1" type="csi:solver_options" />        
+        <xs:element name="analysis_options" minOccurs="1"  maxOccurs="1" type="csi:analysis_options" />
+        <xs:element name="force_32_bit" minOccurs="1"  maxOccurs="1" type="csi:yes_no">
+          <xs:annotation>
+            <xs:documentation>Force 32 bit solver.</xs:documentation>
+          </xs:annotation>                   
+        </xs:element>
+        <xs:element name="run_using_batch_file" minOccurs="1"  maxOccurs="1" type="csi:yes_no">
+          <xs:annotation>
+            <xs:documentation>Run using batch file.</xs:documentation>
+          </xs:annotation>                 
+        </xs:element>
+      </xs:sequence>  
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- advanced -->
+  
+  <xs:element name="advanced">
+    <xs:annotation>
+      <xs:documentation>Setup of additional advanced configuration.</xs:documentation>
+    </xs:annotation>   
+    <xs:complexType>
+      <xs:sequence>       
+        <xs:element name="control_file" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              Control XML file that can control run of RegTest.exe,
+              such as to cancel the current test.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="path" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Path to the control file.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="take_screenshots_after_model_run_timeouts" minOccurs="1" maxOccurs="1" type="csi:yes_no">
+          <xs:annotation>
+            <xs:documentation>
+              Controls whether screenshots should be taken just before the model run process is
+              killed after the model run process times out. Such screenshots can help to conveniently
+              identify the problems.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>       
+      </xs:sequence>  
+    </xs:complexType>    
+  </xs:element>
+        
+  
+  <!-- experimental -->
+  
+  <!-- allow to have any contents in this elements -->
+  
+  <xs:element name="experimental">
+    <xs:annotation>
+      <xs:documentation>Experimental element for child elements used to evaluate
+        new feature during development.
+      </xs:documentation>
+    </xs:annotation>
+    
+    <!--
+    <xs:complexType>
+      <xs:sequence>
+        <xs:any minOccurs="0"/>
+      </xs:sequence>  
+    </xs:complexType>
+    -->
+    
+  </xs:element>
+      
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+  <!-- definition of elements that are used more than once -->
+  
+  <!-- element path -->
+  
+  <xs:element name="path">
+    <xs:annotation>
+      <xs:documentation>Path to a file or directory.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" use="required" type="csi:absolute_relative">
+            <xs:annotation>
+              <xs:documentation>Path type.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- definition of simple types -->
+  
+  <!-- definition of complex types -->
+  
+  <!-- element path -->
+  
+  <xs:complexType name="path">
+    <xs:annotation>
+      <xs:documentation>Path to a file or directory.</xs:documentation>
+    </xs:annotation>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" use="required" type="csi:absolute_relative">
+            <xs:annotation>
+              <xs:documentation>Path type.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- element directory_path_with_optional_subdirectory -->
+  
+  <xs:complexType name="directory_path_with_optional_subdirectory">
+    <xs:annotation>
+      <xs:documentation>Path to a directory with optional subdirectory.</xs:documentation>
+    </xs:annotation>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" use="required" type="csi:absolute_relative">
+            <xs:annotation>
+              <xs:documentation>Path type.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="create_subdirectory_named_as_test_id" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Create subdirectory named as test id.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="terminate_if_subdirectory_exists" use="required" type="csi:yes_no">
+            <xs:annotation>
+              <xs:documentation>Terminate the program if the subdirectory already exists.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+  </xs:complexType>
+
+
+
+
+  
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ reusable enumeration types ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ 
+	<!-- type "range_operation" -->
+	<xs:simpleType name="range_operation">
+		<xs:annotation>
+			<xs:documentation>Operation to be applied when evaluating ranges and formulas for post-processed results.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+		  <xs:minLength value="1" />
+		  <xs:enumeration value="sum" />
+		  <xs:enumeration value="sumabs" />
+		  <xs:enumeration value="srss" />
+		  <xs:enumeration value="max">
+			<xs:annotation>
+				<xs:documentation>Get the maximum value from the range.</xs:documentation>
+			</xs:annotation>
+		  </xs:enumeration>
+		  <xs:enumeration value="min" />
+		  <xs:enumeration value="avg" />
+		  <xs:enumeration value="maxabs" />
+		  <xs:enumeration value="minabs" />
+		  <xs:enumeration value="avgabs" />
+		</xs:restriction>
+	</xs:simpleType>
+	  
+	  
+	<!-- type "program_name" -->
+	<xs:simpleType name="program_name">
+	  <xs:annotation>
+		<xs:documentation>Program name.</xs:documentation>
+	  </xs:annotation>
+	  <xs:restriction base="xs:string">
+		  <xs:enumeration value="SAP2000" />
+		  <xs:enumeration value="CSiBridge" />
+		  <xs:enumeration value="ETABS" />
+		  <xs:enumeration value="SAFE" />
+		  <xs:enumeration value="Perform3D" />
+	  </xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- type "yes_no" -->
+	<xs:simpleType name="yes_no">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="yes"/>
+		  <xs:enumeration value="no"/>
+		</xs:restriction>
+	</xs:simpleType>
+	  
+	<!-- type "yes_no_unknown" -->
+	<xs:simpleType name="yes_no_unknown">
+		<xs:union memberTypes="yes_no
+							   optional_empty" />
+	</xs:simpleType>
+	  
+	<!-- type "absolute_relative" -->
+	<xs:simpleType name="absolute_relative">
+	  <xs:restriction base="xs:string">
+		<xs:enumeration value="absolute" />
+		<xs:enumeration value="relative" />
+	  </xs:restriction>
+	</xs:simpleType>
+		
+  
+	<!-- elements tests -->
+	<xs:simpleType name="tests">
+	    <xs:annotation>
+            <xs:documentation>Name of the test that should be run</xs:documentation>
+	    </xs:annotation>
+		<xs:union memberTypes="tests_basic
+							   tests_bridge
+							   optional_empty" />
+	</xs:simpleType>
+	
+	<!-- test to run enumeration -->	
+	<xs:simpleType name="test_to_run_enumeration">
+		<xs:union memberTypes="tests_basic
+							   tests_psb
+							   tests_bridge
+							   optional_empty" />
+	</xs:simpleType>
+  
+    <xs:simpleType name="tests_basic">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="run as is" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="tests_psb">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="run as is with different sets of analysis parameters" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="tests_bridge">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="update bridge" />
+		  <xs:enumeration value="update bridge and run" />
+		</xs:restriction>
+	</xs:simpleType>
+  
+	<xs:simpleType name="run_job_test_type">           
+		<xs:annotation>
+			<xs:documentation>Type of test to be run</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="distributed test with local control" />
+		</xs:restriction>
+	</xs:simpleType>
+  
+
+	<xs:simpleType name="tasklist_type">
+		<xs:annotation>
+			<xs:documentation>Type of tasklist to be run</xs:documentation>
+		</xs:annotation>		  
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="dynamic continuous tasklist" />
+		</xs:restriction>
+	</xs:simpleType>
+  
+  
+	<xs:simpleType name="optional_empty">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="" />
+		</xs:restriction>
+	</xs:simpleType>
+		  
+	<xs:simpleType name="optional_any">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+		  
+    <!-- classification - level 1 -->
+	<xs:simpleType name="classifications_level1">
+		<xs:annotation>
+		  <xs:documentation>Level 1 classification of the model</xs:documentation>
+		</xs:annotation>                
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="Regression Example" />
+		  <xs:enumeration value="Published Verification Example" />
+		  <xs:enumeration value="Internal Verification Example" />
+		  <xs:enumeration value="" />
+		</xs:restriction>
+	</xs:simpleType>
+          
+	<!-- classification - level 2 -->		  
+	<xs:simpleType name="classifications_level2">
+		<xs:annotation>
+		  <xs:documentation>Level 2 classification of the model</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="classification_level2_regression
+							   classification_level2_verification_internal
+							   classification_level2_verification_external" />		
+	  
+	</xs:simpleType>
+
+	<!-- Regression Example Classifications-->
+	<xs:simpleType name="classification_level2_regression">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Template" />
+			<xs:enumeration value="Functional Test" />
+			<xs:enumeration value="Resolved Incident" />
+			<xs:enumeration value="Unresolved Issue" />
+			<xs:enumeration value="Misc Regression" /> 
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- Published Verification Example Classifications -->
+	<xs:simpleType name="classification_level2_verification_internal">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SAP2000 Analysis Verification Suite" />
+			<xs:enumeration value="ETABS Analysis Verification Suite" />
+			<xs:enumeration value="SAFE Verification Suite" />
+			<xs:enumeration value="Design Verification Suite - Steel Frame" />
+			<xs:enumeration value="Design Verification Suite - Concrete Frame" />
+			<xs:enumeration value="Design Verification Suite - Shear Wall" />
+			<xs:enumeration value="Design Verification Suite - Composite Beam" />
+			<xs:enumeration value="Design Verification Suite - Composite Column" /> 
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- Internal Verification Example Classifications -->
+	<xs:simpleType name="classification_level2_verification_external">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ANSYS" />
+			<xs:enumeration value="NAFEMS" />
+			<xs:enumeration value="Resolved Incident" />
+			<xs:enumeration value="Analysis" />
+			<xs:enumeration value="Steel Design" />
+			<xs:enumeration value="Concrete Design" />
+			<xs:enumeration value="Shear Wall Design" />
+			<xs:enumeration value="Composite Beam Design" />
+			<xs:enumeration value="Composite Column Design" />
+			<xs:enumeration value="Misc Verification" /> 
+		</xs:restriction>
+	</xs:simpleType>
+		  
+    <!-- simple type predefined_keyword -->
+    <xs:simpleType name="predefined_keyword">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="blocker"/>
+      <xs:enumeration value="bug"/>
+      <xs:enumeration value="enhancement request"/>
+      <xs:enumeration value="limitation"/>
+      <xs:enumeration value="nice model"/>
+      <xs:enumeration value="p1"/>
+      <xs:enumeration value="regression testing candidate"/>
+      <xs:enumeration value="test manually"/>
+      <xs:enumeration value="test problem model"/>
+      <xs:enumeration value="tutorial model"/>
+      <xs:enumeration value="unconventional"/>
+      <xs:enumeration value="warning messages blocking automatic testing"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+	<!-- file_extensions_main -->  
+	<xs:simpleType name="file_extensions_main">
+		<xs:annotation>
+		  <xs:documentation>
+			Model file extension.
+		  </xs:documentation>
+		</xs:annotation>  
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="sdb" />
+		  <xs:enumeration value="bdb" />
+		  <xs:enumeration value="edb" />
+		  <xs:enumeration value="fdb" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <!-- models source -->
+	<xs:simpleType name="models_source">
+		<xs:annotation>
+		  <xs:documentation>Location of the models to be used for the regression test.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="local models database" />
+			<xs:enumeration value="download from server" />
+		</xs:restriction>
+	</xs:simpleType>
+  
+	<!-- solver_options --> 
+	<xs:simpleType name="solver_options">
+ 	    <xs:annotation>
+		  <xs:documentation>Solver options.</xs:documentation>
+ 	    </xs:annotation>
+		<xs:restriction base="xs:string">                          
+		  <xs:enumeration value="standard solver" />
+		  <xs:enumeration value="advanced solver" />
+		  <xs:enumeration value="multi-threaded solver" />
+		</xs:restriction>
+	</xs:simpleType>   
+	
+	<!-- analysis_options --> 
+	<xs:simpleType name="analysis_options">
+		<xs:annotation>
+			<xs:documentation>Analysis options.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">                          
+			<xs:enumeration value="auto" />
+			<xs:enumeration value="gui process" />
+			<xs:enumeration value="separate process" />
+		</xs:restriction>
+	</xs:simpleType>   
+		  
+		<!-- status_model --> 
+		<xs:simpleType name="status_model">
+          <xs:annotation>
+            <xs:documentation>Status for the model and its XML file: done, to do, add benchmark values, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="to do" />
+            <xs:enumeration value="complete XML file" />
+            <xs:enumeration value="add benchmark values" />
+            <xs:enumeration value="finalize" />
+            <xs:enumeration value="done" />
+            <xs:enumeration value="add benchmark values after bug fixed" />
+            <xs:enumeration value="add benchmark values after output tabulated" />
+            <xs:enumeration value="initial" />
+          </xs:restriction>
+        </xs:simpleType>
+		
+		<!-- status_documentation --> 
+		<xs:simpleType name="status_documentation">
+          <xs:annotation>
+            <xs:documentation>Status for the documentation distributed with the model file.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="not applicable" />
+            <xs:enumeration value="to do" />
+            <xs:enumeration value="in progress" />
+            <xs:enumeration value="benchmark needs updating" />
+            <xs:enumeration value="done" />
+            <xs:enumeration value="" />
+          </xs:restriction>
+        </xs:simpleType>
+  
+</xs:schema>

@@ -1,0 +1,47 @@
+#if !BUILD_ETABS2015 && !BUILD_ETABS2016
+
+#endif
+
+#if BUILD_ETABS2015 || BUILD_ETABS2016
+
+#endif
+
+#if BUILD_SAP2000v16 || BUILD_SAP2000v17 || BUILD_SAP2000v18 || BUILD_SAP2000v19
+
+#endif
+
+#if BUILD_CSiBridgev18 || BUILD_CSiBridgev19
+
+#endif
+
+#if !BUILD_CSiBridgev18 && !BUILD_CSiBridgev19
+
+#endif
+
+#if BUILD_SAP2000v19 || BUILD_CSiBridgev19
+
+#endif
+
+ && !BUILD_SAP2000v16 && !BUILD_SAP2000v17 && !BUILD_CSiBridgev16 && !BUILD_CSiBridgev17
+
+#if !BUILD_SAP2000v16 && !BUILD_SAP2000v17 && !BUILD_CSiBridgev16 && !BUILD_CSiBridgev17
+
+Note: To do a global find/replace of multiline (e.g. when adding a new API version), use something like the following:
+
+Replace (or Find in Files to avoid opening them):
+
+Find: 
+#elif BUILD_CSiBridgev18\r\nusing CSiProgram = CSiBridge18;\r\n#elif BUILD_CSiBridgev19\r\nusing CSiProgram = CSiBridge19;
+
+Replace: 
+#elif BUILD_CSiBridgev16\r\nusing CSiProgram = CSiBridge16;\r\n#elif BUILD_CSiBridgev17\r\nusing CSiProgram = CSiBridge17;\r\n#elif BUILD_CSiBridgev18\r\nusing CSiProgram = CSiBridge18;\r\n#elif BUILD_CSiBridgev19\r\nusing CSiProgram = CSiBridge19;
+
+Search MOde: Extended
+
+If 'Find in Files':
+
+Directory:
+C:\TFS\Regression Tester\Main\DLLs\MPT.Tools\MPT.CSI\API
+
+Filter:
+*.cs

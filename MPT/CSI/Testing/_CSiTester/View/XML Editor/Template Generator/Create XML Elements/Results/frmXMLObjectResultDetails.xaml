@@ -1,0 +1,472 @@
+﻿<Window x:Class="frmXMLObjectResultDetails"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Result Details" 
+    SizeToContent="WidthAndHeight" 
+    ResizeMode="NoResize" 
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}" 
+    Icon="/CSiTester;component/CSiTester.ico"
+    FontFamily="Microsoft Sans Serif">
+    <Window.Resources>
+       <!-- Style for text in text boxes -->
+        <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Key="fieldPrompt" TargetType="{x:Type TextBox}">
+            <Style.Resources>
+                <VisualBrush x:Key="CueBannerBrushOptional" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                    <VisualBrush.Visual>
+                        <StackPanel Orientation="Horizontal"  Background="White" VerticalAlignment="Bottom">
+                            <Label Content="Optional" Foreground="LightGray" Width="500" FontWeight="Black" FontStyle="Italic" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+                <VisualBrush x:Key="CueBannerBrushRequired" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                    <VisualBrush.Visual>
+                        <StackPanel Orientation="Horizontal"  Background="White" >
+                            <Label Content="Required" Foreground="Tomato" Width="500" Height="500" FontWeight="Black" FontStyle="Italic" VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Style.Resources>
+            <Style.Triggers>
+                <!--'Optional' multitrigger does not specify a particular field, but is overritten by the 'Required' multitrigger for specific fields-->
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Text" Value="{x:Static sys:String.Empty}"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrushOptional}" />
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Text" Value="{x:Null}"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrushOptional}" />
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Text" Value="{x:Static sys:String.Empty}"/>
+                        <Condition Property="Name" Value="txtBxComment" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrushRequired}" />
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Text" Value="{x:Null}"/>
+                        <Condition Property="Name" Value="txtBxComment" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="{StaticResource CueBannerBrushRequired}" />
+                </MultiTrigger>
+                <Trigger Property="IsKeyboardFocused" Value="True">
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style for visibility animations -->
+        <Style TargetType="FrameworkElement" x:Key="VisibleAnimation">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="Visibility" Value="Visible">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                        From="0.0" To="1.0" Duration="0:0:0.5"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <GroupBox Padding="5">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Grid x:Name="gridMain">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox 
+                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                        Header="Result">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <Grid x:Name="gridResult">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="260"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label x:Name="lblComment"
+                                        Grid.Row="0" Grid.Column="0"
+                                        Content="Result Title" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                                        Margin="5"/>
+                                    <TextBox x:Name="txtBxComment" 
+                                        Grid.Row="0" Grid.Column="1" 
+                                        Height="44" 
+                                        Margin="0,10,8,10"
+                                        TextWrapping="Wrap"
+                                        Text="{Binding result.name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        Style="{StaticResource fieldPrompt}"/>     
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="0,0,5,0"
+                                        x:Name="spResultAdvanced"
+                                        Style="{StaticResource VisibleAnimation}">
+                                <Grid x:Name="gridResultAdvanced">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="105"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Line Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
+                                          StrokeThickness="1" 
+                                          Stroke="Black"
+                                          StrokeDashArray="2 2"
+                                          VerticalAlignment="Stretch" Y2="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                          />
+
+                                    <Label x:Name="lblPassingPercDiff"
+                                        Content="+/- % Diff Pass" 
+                                       Grid.Row="0" Grid.Column="0"
+                                       VerticalAlignment="Center"/>
+
+                                    <TextBox x:Name="txtBxPassingPercDiff" 
+                                        Grid.Row="0" Grid.Column="1"
+                                        HorizontalAlignment="Left" 
+                                        Height="22" Width="138"
+                                        Margin="0,5"
+                                        TextWrapping="NoWrap"
+                                        Text="{Binding result.benchmark.valuePassingPercentDifferenceRange, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        Style="{StaticResource fieldPrompt}"/>
+
+                                    <CheckBox x:Name="chkBxUnitsConversion"
+                                          Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                          Content="Convert Units from Table if Different?" 
+                                          Margin="7,5"
+                                          IsChecked="{Binding result.unitsConversion, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox 
+                        Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        Header="Benchmark Result">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <GroupBox x:Name="grpBxIsCorrect"
+                                      Header="Is Correct" Margin="5,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton x:Name="radBtnUnknown"
+                                                 Content="Unknown" 
+                                                 Margin="5" 
+                                                 GroupName="IsCorrect"/>
+                                        <RadioButton x:Name="radBtnYes"
+                                                 Content="Yes" 
+                                                 Margin="5"
+                                                 GroupName="IsCorrect"/>
+                                        <RadioButton x:Name="radBtnNo"
+                                                 Content="No" 
+                                                 Margin="5,5,5,0"
+                                                 GroupName="IsCorrect"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <Grid x:Name="gridBM">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="260"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Label 
+                                        Grid.Row="0" Grid.Column="0"
+                                        Content="Table Result" 
+                                        VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txtBxTableResult" 
+                                        Grid.Row="0" Grid.Column="1"
+                                        Height="22" Width="200"
+                                        HorizontalAlignment="Left"
+                                        Margin="0,5"
+                                        Background="White"
+                                        TextWrapping="NoWrap"
+                                         IsEnabled="False"
+                                        Text="{Binding result.benchmark.valueTable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <Label x:Name="lblBenchmark" 
+                                            Grid.Row="1" Grid.Column="0"
+                                            Content="Benchmark Result" 
+                                            VerticalAlignment="Top"
+                                            Margin="0,5,0,0"/>
+                                    <StackPanel Orientation="Horizontal"
+                                        Grid.Row="1" Grid.Column="1">
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBox x:Name="txtBxBenchmark" 
+                                                Height="22" Width="200"
+                                                Margin="0,5"
+                                                Background="White"
+                                                TextWrapping="NoWrap"
+                                                Text="{Binding result.benchmark.valueBenchmark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <Button x:Name="btnResetBM"
+                                            Content="Reset to Table Result" 
+                                                Width="140" Height="22"/>
+                                        </StackPanel>
+                                        <CheckBox x:Name="chkBxBmEdit"
+                                              VerticalAlignment="Top"
+                                              Margin="5,10,5,5"
+                                              Content="Edit"
+                                              IsChecked="{Binding bmEdit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,5,0"
+                                        x:Name="spBMAdvanced"
+                                        Style="{StaticResource VisibleAnimation}">
+                                <Grid x:Name="gridBMAdvanced">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="105"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Line Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" 
+                                          StrokeThickness="1" 
+                                          Stroke="Black"
+                                          StrokeDashArray="2 2"
+                                          VerticalAlignment="Stretch" Y2="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                          />
+
+                                    <Label x:Name="lblSigFig"
+                                        Content="Sig Fig Rounding" 
+                                       Grid.Row="0" Grid.Column="0"
+                                       VerticalAlignment="Center"/>
+
+                                    <TextBox x:Name="txtBxSigFig" 
+                                        Grid.Row="0" Grid.Column="1"
+                                        HorizontalAlignment="Left" 
+                                        Height="22" Width="138"
+                                        Margin="0,5"
+                                        TextWrapping="NoWrap"
+                                        Text="{Binding result.benchmark.roundBenchmark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        Style="{StaticResource fieldPrompt}"/>
+
+                                    <Label x:Name="lblZeroTol"
+                                        Content="Zero Tolerance" 
+                                       Grid.Row="1" Grid.Column="0"
+                                       VerticalAlignment="Center"/>
+
+                                    <TextBox x:Name="txtBxZeroTol" 
+                                        Grid.Row="1" Grid.Column="1"
+                                        HorizontalAlignment="Left" 
+                                        Height="22" Width="138"
+                                        Margin="0,5"
+                                        TextWrapping="NoWrap"
+                                        Text="{Binding result.benchmark.zeroTolerance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        Style="{StaticResource fieldPrompt}"/>
+
+
+                                    <Label x:Name="lblCalcShift"
+                                        Content="Calculation Shift" 
+                                       Grid.Row="2" Grid.Column="0" 
+                                       VerticalAlignment="Center"/>
+                                    <TextBox x:Name="txtBxCalcShift" 
+                                        Grid.Row="2" Grid.Column="1"    
+                                        Height="22" Width="60"
+                                         HorizontalAlignment="Left"
+                                        Margin="0,5"
+                                        Background="White"
+                                        TextWrapping="NoWrap"
+                                        Text="{Binding result.benchmark.shiftCalc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox 
+                        Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                        Header="Theoretical Result">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <Grid x:Name="gridTheoretical">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="260"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label x:Name="lblTheoretical"
+                                        Grid.Row="0" Grid.Column="0"
+                                        Content="Theoretical Result" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Row="0" Grid.Column="1">
+                                        <TextBox x:Name="txtBxTheoretical" 
+                                            HorizontalAlignment="Left"
+                                            Height="22" Width="200"
+                                            Margin="0,5"
+                                            TextWrapping="NoWrap"
+                                            Text="{Binding result.benchmark.valueTheoretical, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                            Style="{StaticResource fieldPrompt}"/>
+                                        <Button x:Name="btnTheoreticalUseBM"
+                                            Content="Use BM" 
+                                            Margin="5"/>
+                                    </StackPanel>
+                                    
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="0,0,5,0"
+                                        x:Name="spTheoreticalAdvanced"
+                                        Style="{StaticResource VisibleAnimation}">
+                                <Grid x:Name="gridTheoreticalAdvanced">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="105"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="lblSigFigTheoretical"
+                                        Content="Sig Fig Rounding" 
+                                       Grid.Row="0" Grid.Column="0"
+                                       VerticalAlignment="Center"/>
+
+                                    <Line Grid.Row="0" Grid.Column="0" 
+                                          StrokeThickness="1" 
+                                          Stroke="Black"
+                                          StrokeDashArray="2 2"
+                                          VerticalAlignment="Stretch" Y2="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                          />
+
+                                    <TextBox x:Name="txtBxSigFigTheoretical" 
+                                        Grid.Row="0" Grid.Column="1"
+                                        HorizontalAlignment="Left" 
+                                        Height="22" Width="138"
+                                        Margin="0,5"
+                                        TextWrapping="NoWrap"
+                                        Text="{Binding result.benchmark.roundTheoretical, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        Style="{StaticResource fieldPrompt}"/>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox 
+                        Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                        Header="Last Best Result">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <Grid x:Name="gridLastBest">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="260" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label x:Name="lblLastBest"
+                                        Grid.Row="0" Grid.Column="0"
+                                        Content="Last Best Result" 
+                                        HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Row="0" Grid.Column="1">
+                                        <TextBox x:Name="txtBxLastBest" 
+                                            HorizontalAlignment="Left"
+                                            Height="22" Width="200" 
+                                            Margin="0,5"
+                                            TextWrapping="NoWrap"
+                                            Text="{Binding result.benchmark.valueLastBest, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                            Style="{StaticResource fieldPrompt}"/>
+                                        <Button x:Name="btnLastBestUseBM"
+                                            Content="Use BM" 
+                                            Margin="5"/>
+                                    </StackPanel>       
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="0,0,5,0"
+                                        x:Name="spLastBestAdvanced"
+                                        Style="{StaticResource VisibleAnimation}">
+                                <Grid x:Name="gridLastBestAdvanced">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="105"/>
+                                        <ColumnDefinition Width="138" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Line Grid.Row="0" Grid.Column="0" 
+                                          StrokeThickness="1" 
+                                          Stroke="Black"
+                                          StrokeDashArray="2 2"
+                                          VerticalAlignment="Stretch" Y2="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"
+                                          />
+                                    
+                                    <Label x:Name="lblSigFigLastBest"
+                                            Content="Sig Fig Rounding" 
+                                           Grid.Row="0" Grid.Column="0"
+                                           VerticalAlignment="Center"/>
+
+                                    <TextBox x:Name="txtBxSigFigLastBest" 
+                                            Grid.Row="0" Grid.Column="1"
+                                            HorizontalAlignment="Left" 
+                                            Height="22" Width="138"
+                                            Margin="0,5"
+                                            TextWrapping="NoWrap"
+                                            Text="{Binding result.benchmark.roundLastBest, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                            Style="{StaticResource fieldPrompt}"/>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>  
+                    
+                    <Button x:Name="btnAdvanced"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Height="40"
+                            Content=">>"
+                            Margin="5,0,0,0"/>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">                   
+                    <Button x:Name="btnOK" 
+                        Content="OK"
+                        Width="60"
+                        Margin="10,0"/>
+                    <Button x:Name="btnCancel" 
+                        Content="Cancel"
+                        Width="60"
+                        Margin="10,0"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

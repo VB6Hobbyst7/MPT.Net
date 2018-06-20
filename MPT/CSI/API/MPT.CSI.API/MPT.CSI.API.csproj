@@ -1,0 +1,1178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug-ETABS2017</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6460B748-90A5-4409-88F4-DE9F46C6AE86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MPT.CSI.API</RootNamespace>
+    <AssemblyName>MPT.CSI.API</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABS2017|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-ETABS2017\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2017</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Debug-ETABS2017\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABS2016|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-ETABS2016\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2016</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Debug-ETABS2016\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABS2015|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-ETABS2015\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2015</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Debug-ETABS2015\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v20|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v20\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v20</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Debug-SAP2000v20\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v19|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v19\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v19</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Debug-SAP2000v19\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v18|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v18\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v18</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Debug-SAP2000v18\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v17|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v17\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v17</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Debug-SAP2000v17\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v16|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v16\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v16</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Debug-SAP2000v16\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev20|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev20\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev20</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Debug-CSiBridgev20\MPT.CSI.API.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev19|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev19\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev19</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Debug-CSiBridgev19\MPT.CSI.API.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev18|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev18\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev18</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Debug-CSiBridgev18\MPT.CSI.API.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev17|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev17\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev17</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Debug-CSiBridgev17\MPT.CSI.API.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev16|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev16\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev16</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Debug-CSiBridgev16\MPT.CSI.API.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABS2017|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-ETABS2017\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2017</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Release-ETABS2017\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABS2016|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-ETABS2016\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2016</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Release-ETABS2016\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABS2015|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-ETABS2015\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2015</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Release-ETABS2015\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v20|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v20\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v20</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Release-SAP2000v20\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v19|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v19\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v19</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Release-SAP2000v19\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v18|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v18\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v18</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Release-SAP2000v18\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v17|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v17\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v17</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Release-SAP2000v17\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v16|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v16\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v16</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\AnyCPU\Release-SAP2000v16\MPT.CSI.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev20|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev20\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev20</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Release-CSiBridgev20\MPT.CSI.API.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev19|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev19\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev19</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Release-CSiBridgev19\MPT.CSI.API.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev18|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev18\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev18</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Release-CSiBridgev18\MPT.CSI.API.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev17|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev17\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev17</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Release-CSiBridgev17\MPT.CSI.API.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev16|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev16\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev16</DefineConstants>
+    <DocumentationFile>bin\AnyCPU\Release-CSiBridgev16\MPT.CSI.API.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSiBridge18, Version=18.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\CSiBridge18.dll</HintPath>
+    </Reference>
+    <Reference Include="CSiBridge19, Version=19.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\CSiBridge19.dll</HintPath>
+    </Reference>
+    <Reference Include="ETABS2015, Version=15.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ETABS2015.dll</HintPath>
+    </Reference>
+    <Reference Include="ETABS2016, Version=16.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ETABS2016.dll</HintPath>
+    </Reference>
+    <Reference Include="ETABSv17">
+      <HintPath>..\lib\ETABSv17.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.Batch">
+      <HintPath>..\lib\MPT.Batch.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.Enums, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MPT.Enums.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.Files">
+      <HintPath>..\lib\MPT.Files.dll</HintPath>
+    </Reference>
+    <Reference Include="SAP2000v17, Version=17.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SAP2000v17.dll</HintPath>
+    </Reference>
+    <Reference Include="SAP2000v18, Version=18.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SAP2000v18.dll</HintPath>
+    </Reference>
+    <Reference Include="SAP2000v19, Version=19.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SAP2000v19.dll</HintPath>
+    </Reference>
+    <Reference Include="SAP2000v20">
+      <HintPath>..\lib\SAP2000v20.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Helpers\AngleLocalAxes.cs" />
+    <Compile Include="Core\Helpers\CableModifier.cs" />
+    <Compile Include="Core\Helpers\Coordinate2DCartesian.cs" />
+    <Compile Include="Core\Helpers\Coordinate3DCartesian.cs" />
+    <Compile Include="Core\Helpers\Coordinate3DCylindrical.cs" />
+    <Compile Include="Core\Helpers\Coordinate3DSpherical.cs" />
+    <Compile Include="Core\Helpers\Displacements.cs" />
+    <Compile Include="Core\Helpers\FrameModifier.cs" />
+    <Compile Include="Core\Helpers\Validation.cs" />
+    <Compile Include="Core\Helpers\PDeltaParameters.cs" />
+    <Compile Include="Core\Helpers\Reactions.cs" />
+    <Compile Include="Core\Helpers\Loads.cs" />
+    <Compile Include="Core\Helpers\MassWeight.cs" />
+    <Compile Include="Core\Helpers\MassVolume.cs" />
+    <Compile Include="Core\Helpers\Mass.cs" />
+    <Compile Include="Core\Helpers\StiffnessPendulum.cs" />
+    <Compile Include="Core\Helpers\Stiffness.cs" />
+    <Compile Include="Core\Helpers\StiffnessCoupled.cs" />
+    <Compile Include="Core\Helpers\Stress.cs" />
+    <Compile Include="Core\Program\e2DFrameType.cs" />
+    <Compile Include="Core\Program\e3DFrameType.cs" />
+    <Compile Include="Core\Program\eForce.cs" />
+    <Compile Include="Core\Program\eLength.cs" />
+    <Compile Include="Core\Program\eTemperature.cs" />
+    <Compile Include="Core\Program\ExtendedEntityData.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableConstraint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadDisplacement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadForce.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableOffset.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\eAnalysisMultiStepOptions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\eAnalysisMultiValuedOptions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\eAnalysisPSDOptions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\eAnalysisSteadyStateOptions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\eDirection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\eSteadyStateOptions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\IAnalysisResultsSetup.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\IResults.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\BridgeType\eSectionCutItem.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\BridgeType\eTendonCutItem.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\BridgeType\eCutStatus.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\BridgeType\eWebCutItem.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\BridgeType\IConcreteBoxGirder.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\ISuperstructure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstractions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\IDiaphragm.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\IPierLabel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\ISpandrelLabel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\IStory.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\ITower.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\Story.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\Tower.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLoadTypeModal.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\AASHTO_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\AASHTO_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\AS_1170_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\BOCA_1996.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\CJJ_166_2011.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\Eurocode_8.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\Eurocode_8_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\File.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\IBC_2003.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\IBC_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\IS_1893_2002.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\Italian_3274.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\JTG_B02_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NBCC_1995.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NBCC_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NBCC_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NBCC_2015.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NCHRP_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NEHRP_1997.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NZS_1170_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NZS_4203_1992.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\ResponseSpectrumFunction.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\SP_14_13330_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\UBC_94.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\UBC_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\User.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\eFileValueType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eFrequencyType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eIsland_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eLevel_Italian_3274.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eLimitState_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eParameters_Eurocode_8_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eParameters_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSeismicCoefficient_AASHTO_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSeismicCoefficient_IBC_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSeismicCoefficient_NCHRP_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSeismicIntensity_Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSeismicIntensity_SP_14_13330_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_AASHTO_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_AASHTO_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_AS_1170_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_Eurocode_8.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_Eurocode_8_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_IBC_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_IS_1893_2002.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_Italian_3274.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NBCC_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NBCC_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NBCC_2015.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NBCC_1995.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NCHRP_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NZS_1170_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NZS_4203_1992.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_SP_14_13330_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSpectrumDirection_CJJ_166_2011.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSpectrumDirection_Eurocode_8_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSpectrumDirection_JTG_B02_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSpectrumDirection_SP_14_13330_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSpectrumType_Eurocode_8_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSpectrumType_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eTopography_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eUsageClass_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\IPowerSpectralDensity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\IResponseSpectrum.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\ISteadyState.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\ITimeHistory.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\GridSystems.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IAbstraction.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IBridgeObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IConstraints.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\ICoordinateSystems.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IFunctions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IGeneralizedDisplacements.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IGeneralReferenceLines.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IGridSystem.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IGroups.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IJointPatterns.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\ILoadCases.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\ILoadCombinations.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\ILoadPatterns.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IMassSource.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\INamedAssigns.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\INamedSets.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\IProperties.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\ISectionCuts.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eLoadControlDisplacement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eDampingType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eDampingTypeHysteretic.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eDampingTypeInterpolated.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eDampingTypeProportional.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eDirectionalCombination.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eHingeUnloadingType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eLoadControl.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eModalCombination.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eMonitoredDisplacementType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eMotionType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ePeriodicPlusRigidModalCombination.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eObjectType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eStageOperations.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eStageSavedOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eTimeIntegrationType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IBuckling.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IChangeableModalCases.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IDampingModal.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IDampingProportional.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IDampingSteadyState.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IDirectionalCombination.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IEccentricity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IExternalResults.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IGeometricNonlinearity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IHingeUnloading.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IHyperstatic.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IInitialLoadCase.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ILoadResponseSpectrum.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ILoadStatic.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ILoadSteadyState.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ILoadTimeHistory.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IMassSource.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IModal.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IObservableModalCase.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IModalCombination.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IModalEigen.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IModalRitz.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IMovingLoad.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\INLMTHSolutionControlParameters.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\INonlinearSolutionControlParameters.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\INLTHSolutionControlParameters.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IResponseSpectrum.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ISetLoadCase.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IStaticLinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IStaticNonlinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\IStaticNonlinearStaged.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ISteadyState.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ITargetForceParameters.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ITimeHistoryDirectLinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ITimeHistoryModalLinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ITimeHistoryModalNonlinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ITimeHistoryDirectNonlinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ITimeIntegration.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ITimeStep.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\AutoLoad.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\AS_1170_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\AutoSeismicLoad.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\BOCA_96.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\Eurocode_8_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IBC_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IBC_2009.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IBC_2012.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IS_1893_2002.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NBCC_1995.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NBCC_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NBCC_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NBCC_2015.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NEHRP_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NZS_1170_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\UBC_94.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\UBC_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\UBC_97_ISO.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wave\AutoWaveLoad.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\API_4F_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\API_4F_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ASCE_7_05.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ASCE_7_88.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ASCE_7_95.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\AS_NZS_1170_2_2002.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\AutoWindLoad.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\BOCA_96.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\BS_63_9995.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\eCodeClass.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\eExposureTypeAToD.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\eExposureTypeBToD.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\eTerrainCategory.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\Eurocode_1_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\IS_875_1987.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\Mexican.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NBCC_1995.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NBCC_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NBCC_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NBCC_2015.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\UBC_94.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\UBC_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\eRoughnessBToD.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eCtType_IBC_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eCtType_NBCC_1995.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eCtType_NBCC_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSeismicGroup_IBC_2003.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSeismicGroup_NEHRP_1997.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_IBC_2003.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_NEHRP_1997.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSiteClass_UBC_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eSourceType_UBC_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eZa_NBCC_1995.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eZv_NBCC_1995.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\IAutoSeismic.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\IAutoWave.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\IAutoWind.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\IAreaModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\ICableModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\IFrameModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\IFrameReleases.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\AreaSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eAluminumType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eAreaSectionType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eAxialDirections.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eConcreteStressStrainCurveType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\Frame\ISectionDesigner.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\IAreaSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\ICableSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\IFrameSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\ILinkProperties.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\IMaterialProperties.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\ISolidProperties.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\ITendonSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\CodesConcrete\TimeDependentConcreteMethod.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\CodesTendon\TimeDependentTendonMethod.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\ITimeDependentConcrete.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\ITimeDependentTendon.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\AluminumCode.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\ColdFormedSteelCode.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ConcreteCode.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\SteelCode.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eConfinementType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eDegreeOfFreedom.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eDeckType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eLocalAxisPlane.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\IAreaEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\IFrameEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\IGeneralEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\IPointEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\ISolidEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eRebarConfiguration.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eSectionDesignerDesignOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eFrameSectionType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eHysteresisType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eLinkDirection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eLinkHysteresisType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eLinkPropertyType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eMaterialComponentBehaviorType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eMaterialPerVolumeOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eMaterialSymmetryType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eMaterialPropertyType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\ePlaneType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\ePrismaticInertiaType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\ePrismaticType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eRebarStressStrainCurveType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eSectionDesignerSectionType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eShellLayerType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eShellSteelLayoutOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eShellType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eSlabType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eSpringStiffnessDerivation.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eSteelStressStrainCurveType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eTendonStressStrainCurveType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eStressStrainPointID.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eWallPropertyType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\Frame\SectionDesigner.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\IAreaSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\ILineSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\IPointSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\LineSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\PointSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\CodesConcrete\CEB_FIP_90.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\CodesTendon\CEB_FIP_90.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\CodesTendon\eCEBFIP90Class.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\eIntegrationType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\TimeDependentConcrete.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\TimeDependentTendon.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\eOverwrites_AA_LRFD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\eOverwrites_AA_ASD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\ePreferences_AA_ASD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\ePreferences_AA_LRFD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\eOverwrites_AISI_ASD_96.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\eOverwrites_AISI_LRFD_96.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\ePreferences_AISI_ASD_96.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\ePreferences_AISI_LRFD_96.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\AASHTO_07.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\AASHTO_LRFD_2012.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\AASHTO_LRFD_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ACI_318_11.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\AS_3600_09.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\BS_8110_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Chinese_2002.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\CSA_A23_3_04.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_AASHTO_07.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_AASHTO_LRFD_2012.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_AASHTO_LRFD_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_ACI_318_08.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_AS_3600_09.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_BS_8110_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_CSA_A23_3_04.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_Eurocode_2_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_Hong_Kong_CP_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_Indian_IS_456_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_KCI_1999.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_Singapore_CP_6599.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\eOverwrites_TS_500_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_AASHTO_07.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_AASHTO_LRFD_2012.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_AASHTO_LRFD_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_ACI_318_08.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_AS_3600_09.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_BS_8110_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_CSA_A23_3_04.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_Eurocode_2_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_Hong_Kong_CP_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_Indian_IS_456_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_KCI_1999.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_Singapore_CP_6599.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ePreferences_TS_500_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Eurocode_2_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Hong_Kong_CP_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Indian_IS_456_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Italian_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\KCI_1999.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Mexican_RCDF_2004.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\NZS_3101_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Singapore_CP_6599.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\TS_500_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AISC_360_10.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AISC_ASD_89.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AISC_LRFD_93.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\API_RP2A_LRFD_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\API_RP2A_WSD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\API_RP2A_WSD_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ASCE_10_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AS_4100_1998.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\BS_5950_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Chinese_2002.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\CSA_S16_09.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_AISC_360_05.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_AISC_360_10.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_AISC_ASD_89.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_AISC_LRFD_93.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_API_RP2A_LRFD_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_API_RP2A_WSD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_API_RP2A_WSD_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_ASCE_10_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_AS_4100_1998.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_BS_5950_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_CSA_S16_09.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_Eurocode_3_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_Indian_IS_800_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_Norsok_N_004_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\eOverwrites_NZS_3404_1997.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_AISC_360_05.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_AISC_360_10.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_AISC_ASD_89.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_AISC_LRFD_93.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_API_RP2A_LRFD_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_API_RP2A_WSD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_API_RP2A_WSD_2014.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_ASCE_10_97.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_AS_4100_1998.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_BS_5950_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_Chinese_2010.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_CSA_S16_09.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_Eurocode_3_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_Indian_IS_800_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_Norsok_N_004_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ePreferences_NZS_3404_1997.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Eurocode_3_2005.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Indian_IS_800_2007.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Italian_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Norsok_N_004_2013.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\NZS_3404_1997.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignCompositeBeam.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignDetailing.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IAutoSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IComboAuto.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IComboDeflection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IComboStrength.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignAluminum.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignColdFormed.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignCompositeBeam.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignConcrete.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignDetailing.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignSteel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IResettable.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignRun.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\eAreaOffsetType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\eAxisExtrusion.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\eAxisOrientation.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\ePointAlignOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eStation.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IAnalysisModeler.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IAnalysisResults.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IAnalyzer.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IChangeableCableModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IChangeableFrameModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IDefinitions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IDesigner.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObjectModeler.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableCableModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableFrameModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservablePointSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableRestraint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eSpringLocalOneType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eSpringSimpleType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eSpringType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IChangeablePDeltaForces.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssigns.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\Diaphragm.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableTransformationMatrixObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IOptions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ISelector.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IViewer.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eAreaDesignOrientation.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eDiaphragmOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eFrameDesignOrientation.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eLoadType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ePanelZoneConnectivity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ePanelZoneLocalAxis.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ePanelZonePropertyType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ePatternRestriction.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eColumnSpliceOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eSupportType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eWallPierRebarLayerType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eWallSpandrelRebarLayerType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IAddableCoordinate.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableLocalAxes.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeablePointSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IDeletablePDeltaForces.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IDeletableSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ILineSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableConnectivity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableCoordinates.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableMerge.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservablePattern.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservablePDeltaForces.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eBracingLocation.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eBracingType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eCableGeometryDefinition.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eCardinalInsertionPoint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eCurvedFrameType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eDesignProcedureMaterial.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eDesignProcedure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eFireProofing.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eFrameType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eHingeBehavior.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eHingeType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eLoadDistributionType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eMeshType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eNotionalSizeType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eOutputStationType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eTendonGeometryDefinition.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eTendonJack.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eTendonLoadType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\eWindPressureApplication.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IAddableLinkObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IAreaAutoMesh.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ICableInsertionPoint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableAreaOffset.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableMerge.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeablePattern.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableRestraint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableThickness.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IColumnSpliceOverwrite.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IConstraint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ICountableLoadDisplacement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ICountableLoadForce.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDeletableLoadUniform.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDeletableMass.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDeletableModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDeletablePattern.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDeletableRestraint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDesignProcedure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableAreaOffset.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDiaphragmAreas.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDiaphragmPoints.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IDiscretizable.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IExternalAnalyisResults.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IGroupLoadable.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILabel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadDeformationUniaxial.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadDisplacement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadDistributedConstant.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadDistributedConstantWithGUID.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadForce.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadForceWithGUID.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadStrainUniaxial.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadTargetForceUniaxial.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadTemperature.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IMassLumped.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IObservableCommonTo.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IObservableDirectAnalysisModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IEndLengthOffset.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IFireProofing.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IFrameAutoMesh.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IFrameCurved.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IFrameEndSkew.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IFrameSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IFrameSectionTrapezoidal.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IFrameInsertionPoint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IGroupAssignable.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IAreaElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\ILineElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\ILinkElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadDeformation.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadGravity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadPoint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadPorePressure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadRotate.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadStrain.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadSurfacePressure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadTargetForce.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadTemperature.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadUniform.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLoadDistributed.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IPlaneElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IPointElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\ISolidElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eAreaFace.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eLoadDirection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eLoadTemperatureType.cs" />
+    <Compile Include="Core\Helpers\ForcesActive.cs" />
+    <Compile Include="Core\Helpers\Forces.cs" />
+    <Compile Include="Core\Helpers\Fixity.cs" />
+    <Compile Include="Core\Helpers\Deformations.cs" />
+    <Compile Include="Core\Helpers\DegreesOfFreedomLocal.cs" />
+    <Compile Include="Core\Helpers\DegreesOfFreedomGlobal.cs" />
+    <Compile Include="Core\Helpers\AreaModifier.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\AreaElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eItemTypeElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\LineElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\LinkElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\PlaneElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\PointElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\SolidElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\BridgeObjects.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eBridgeLinkAction.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eBridgeLinkModelType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eFunctionPowerSpectralDensityType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eFunctionResponseSpectrumType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eFunctionSteadyStateType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eFunctionTimeHistoryType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eFunctionType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eGeneralizedDisplacementType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLayoutCurveType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLayoutCurveValue1.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLayoutCurveValue2.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLayoutCurveValue3.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\eSource.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\eApplicationPointType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\eC1Type_NTC_2008.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\User.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ePhiZSource.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\eT1Source.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\eTerrainType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\eWindExposure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wave\eLoadMethod.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eCoordinateSystem.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eCaseStatus.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eObjectType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\eSeismicLoadDirection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\eTimePeriodOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\User.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Constraints.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\CoordinateSystems.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eAutoCreatedCase.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eCaseComboType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eConstraintAxis.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eConstraintType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLoadCaseSubTypeLinearHistory.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLoadCaseSubTypeModal.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLoadCaseSubTypeNonlinearStatic.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLoadCaseType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLoadComboType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLocationHorizontal.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLocationSign.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLocationVertical.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eSpectralResponse.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\ePlotType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eReferenceVector.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eReferenceVectorDirection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eSectionResultType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eSpecificationSource.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eVibrationUnit.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Functions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\PowerSpectralDensity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\ResponseSpectrum.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\SteadyState.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\TimeHistory.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\GeneralizedDisplacements.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\GeneralReferenceLines.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\IAutoLoad.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eTendonModelingOption.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eLineTypeObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eLinkTypeObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eLoadForceType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ePDeltaDirection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ePointTypeObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eSolverProcessType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eSolverType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eStrainComponent.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eAreaOffsetType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eAreaThicknessType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\JointPatterns.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\Buckling.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\MovingLoad.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\PowerSpectralDensity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ResponseSpectrum.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\StaticLinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\StaticLinearMultistep.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\StaticNonlinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\StaticNonlinearStaged.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\SteadyState.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\TimeHistoryDirectLinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\TimeHistoryDirectNonlinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ExternalResults.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\Hyperstatic.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ModalEigen.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ModalRitz.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\TimeHistoryModalLinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCases.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\TimeHistoryModalNonlinear.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCombinations.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\MassSource.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\AreaModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\CableModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\FrameModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\FrameReleases.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedSets.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\AreaSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\CableSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\FrameSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\LinkProperties.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\MaterialProperties.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\SolidProperties.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TendonSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\SectionCuts.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\AA_ASD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\AA_LRFD_2000.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\AISI_ASD_96.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\AISI_LRFD_96.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ACI_318_08_IBC_2009.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignMetal.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\IDesignCode.cs" />
+    <Compile Include="Core\Program\CSiApplication.cs" />
+    <Compile Include="Core\Program\CSiFile.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModeler.cs" />
+    <Compile Include="Core\Program\CSiModel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResults.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\AnalysisResultsSetup.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Analyzer.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\BridgeType\ConcreteBoxGirder.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\Superstructure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definitions.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IBC_2003.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wave\WaveLoadGeneric.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ASCE_7_02.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\AutoSeismic.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\AutoWave.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\AutoWind.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Groups.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPatterns.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Designer.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AISC_360_05_IBC_2006.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignAluminum.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignColdFormed.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignConcrete.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignSteel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Editor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\AreaEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\FrameEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\GeneralEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\PointEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\SolidEditor.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IChangeableReleases.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableElement.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableInsertionPoint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableReleases.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableSectionFrequencyDependent.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ISurfaceSpring.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IAddableObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IAreaObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ICountablePanelZone.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IOpening.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IPanelZone.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IPier.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IRebarDataPierSpandrel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ISolidAutoMesh.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ICableObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IChangeableAreaModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IChangeableName.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableMaterialOverwrite.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableMaterialTemperature.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ICountable.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IDeletable.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IListableNames.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\IObservableLocalAxes.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableMaterialOverwrite.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableMaterialTemperature.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableAreaModifiers.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservablePoints.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableSection.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableTransformationMatrix.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModeler.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\AreaObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\CableObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ExternalAnalysisResults.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\FrameObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableSectionFrequencyDependent.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IChangeableTensionCompressionLimits.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IEdgeConstraints.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IFrameObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILateralBracing.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILinkObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadTransfer.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadUniformToFrame.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadWindPressure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILocalAxesAdvancedWithPoints.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILocalAxesAdvanced.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IMass.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IGUID.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadDeformation.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadDistributed.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadDistributedWithGUID.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadForceStress.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadGravity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadPoint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadPointWithGUID.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadPorePressure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadRotate.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadStrain.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadSurfacePressure.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadTargetForce.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadTemperatureConstant.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ILoadUniform.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IObservableLocalAxes.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableTensionCompressionLimits.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\INotionalSize.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IObservableElementFrame.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IObservableHinges.cs" />
+    <Compile Include="Core\Program\ModelBehavior\IObservableThickness.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IOutputStations.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\IPointObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ISelectable.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ISelectableEdge.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ISolidObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ISpandrel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ISpecialPoint.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ISpringAssignment.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ITendonObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\LinkObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\PierLabel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\PointObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\SolidObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\SpandrelLabel.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\TendonObject.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Options.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\Results.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Properties.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Selector.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Viewer.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\eGeometricNonlinearity.cs" />
+    <Compile Include="Core\Program\ModelBehavior\eItemType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLoadPatternType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\eLoadType.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\eRebarType.cs" />
+    <Compile Include="Core\Program\eUnits.cs" />
+    <Compile Include="Core\Support\CSiException.cs" />
+    <Compile Include="Core\Support\CSiPlugin.cs" />
+    <Compile Include="Core\Support\CSiRegistration.cs" />
+    <Compile Include="Core\Support\CSiApiBase.cs" />
+    <Compile Include="Core\Support\CSiApiSeed.cs" />
+    <Compile Include="Core\Support\CSiReservedNameException.cs" />
+    <Compile Include="Core\Support\Helper.cs" />
+    <Compile Include="Core\Support\PluginCallback.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Wind\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,82 @@
+============================
+Find: 
+#elif BUILD_ETABS2016\r\nusing ETABS2016;
+
+Replace: 
+#elif BUILD_ETABS2016\r\nusing ETABS2016;\r\n#elif BUILD_ETABS2017\r\nusing ETABS2017;
+============================
+============================
+Find: 
+#elif BUILD_ETABS2016\r\nusing CSiProgram = ETABS2016;
+
+Replace: 
+#elif BUILD_ETABS2016\r\nusing CSiProgram = ETABS2016;\r\n#elif BUILD_ETABS2017\r\nusing CSiProgram = ETABS2017;
+============================
+============================
+Find:
+&& BUILD_ETABS2016
+
+Replace:
+&& BUILD_ETABS2016 && BUILD_ETABS2017
+============================
+============================
+Find:
+&& !BUILD_ETABS2016
+
+Replace:
+&& !BUILD_ETABS2016 && !BUILD_ETABS2017
+============================
+============================
+Find:
+|| BUILD_ETABS2016
+
+Replace:
+|| BUILD_ETABS2016 || BUILD_ETABS2017
+============================
+============================
+Find:
+|| !BUILD_ETABS2016
+
+Replace:
+|| !BUILD_ETABS2016 || !BUILD_ETABS2017
+============================
+============================
+Find:
+#if BUILD_ETABS2016
+
+Replace:
+#if BUILD_ETABS2016 || BUILD_ETABS2017
+============================
+============================
+Find:
+#if !BUILD_ETABS2016
+
+Replace:
+#if !BUILD_ETABS2016 && !BUILD_ETABS2017
+============================
+============================
+Find:
+#elif !BUILD_ETABS2016
+
+Replace:
+#elif !BUILD_ETABS2016 && !BUILD_ETABS2017
+============================
+============================
+Find:
+#elif BUILD_ETABS2016
+
+Replace:
+#elif BUILD_ETABS2016 || BUILD_ETABS2017
+
+Find: 
+#elif BUILD_ETABS2016 || BUILD_ETABS2017\r\nusing CSiProgram = ETABS2016;
+
+Replace: 
+#elif BUILD_ETABS2016\r\nusing CSiProgram = ETABS2016;
+
+Find: 
+#elif BUILD_ETABS2016 || BUILD_ETABS2017\r\nusing ETABS2016;
+
+Replace: 
+#elif BUILD_ETABS2016\r\nusing ETABS2016;
+============================

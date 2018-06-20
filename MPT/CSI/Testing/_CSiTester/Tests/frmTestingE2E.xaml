@@ -1,0 +1,148 @@
+﻿<Window x:Class="frmTestingE2E"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="CSiTester - End-To-End Testing"
+    SizeToContent="WidthAndHeight" 
+    ResizeMode="NoResize"     
+    WindowStartupLocation="CenterScreen"
+    Icon="/CSiTester;component/CSiTester.ico" 
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}" 
+    FontFamily="Microsoft Sans Serif" 
+    Closing="Window_Closing">
+    <Window.Resources>
+        <Style x:Key="filePathHeader"
+            TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="chkBxStyle" TargetType="CheckBox">
+            <Setter Property="Control.HorizontalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    <GroupBox Margin="5">
+        <Grid
+        x:Name="gridMain" 
+        Margin="5">
+            <StackPanel Orientation="Vertical">
+                <GroupBox Header="Testing Setup">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="btnInitialize"
+                            Content="Initialize Tests"
+                            Width="100" Height="22"
+                            Margin="5"/>
+                        <Button x:Name="btnCleanup"
+                            Content="Clean Up Tests"
+                            Width="100" Height="22"
+                            Margin="5"/>
+                        <Button x:Name="btnClearLogs"
+                            Content="Clear Log Files"
+                            Width="100" Height="22"
+                            Margin="5"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Tests">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="10">
+                        <!--Use Toggle Buttons-->
+                        <Button x:Name="btnSimple"
+                                Content="Simple"
+                                Width="80"
+                                Margin="5"/>
+                        <Button x:Name="btnComplex"
+                                Content="Complex"
+                                Width="80"
+                                Margin="5"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <DataGrid x:Name="dgTests"
+                        ItemsSource="{Binding e2eTester.controller.tests, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        AutoGenerateColumns="False" 
+                        Margin="5,0,5,5" 
+                        CanUserResizeColumns="True" 
+                        CanUserResizeRows="False" 
+                        CanUserAddRows="False"
+                        IsManipulationEnabled="True" 
+                        AlternationCount="1" AlternatingRowBackground="#FFF1F7F9" >
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn
+                            x:Name="dgColChkBxSelectFile"
+                            Header="Select"
+                            HeaderTemplate="{Binding Mode=OneWay, Source={StaticResource filePathHeader}}"
+                            CanUserResize="False">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox 
+                                        IsChecked="{Binding Path=selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                        Style="{StaticResource chkBxStyle}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn 
+                                x:Name="dgColTestName" 
+                                Header="Test Name" 
+                                Binding="{Binding name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                IsReadOnly="True" />
+                        <DataGridTextColumn 
+                                x:Name="dgColDescription" 
+                                Header="Description" 
+                                Binding="{Binding description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                IsReadOnly="True">
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+                <GroupBox Header="Testing Actions">                
+                    <StackPanel Orientation="Vertical"
+                                 HorizontalAlignment="Center" >
+                        <StackPanel Orientation="Horizontal">
+                            <GroupBox>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                        <Button x:Name="btnRun"
+                                            Content="Run Tests"
+                                            Width="100" Height="22" HorizontalAlignment="Left"
+                                            Margin="5"/>
+                                        <CheckBox x:Name="chkBxOpenLogSummary"
+                                            Content="Open Log Summary After Run" 
+                                            Margin="15,5,5,5"
+                                            IsChecked="{Binding logSummaryOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            />
+                                        <CheckBox x:Name="chkBxOpenLogFull"
+                                            Content="Open Full Log After Run" 
+                                            Margin="15,5,5,5"
+                                            IsChecked="{Binding logFullOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            />
+                                    </StackPanel>
+                            </GroupBox>  
+                            <GroupBox>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <Button x:Name="btnRevert"
+                                        Content="Revert Tester"
+                                        Width="100"
+                                        Height="22"
+                                        Margin="5,10,5,5"/>
+                                    <CheckBox x:Name="chkBxAlwaysRevert"
+                                        Content="Auto" 
+                                        Margin="5,17,5,5"
+                                        IsChecked="{Binding alwaysRevert, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        />
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                        <ProgressBar x:Name="ProgressBar1" 
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                Height="15"  Width="270" Margin="0,5,0,2.5"/>
+                        <Button x:Name="btnCancel"
+                                Content="Cancel Tests"
+                                Width="100"
+                                Margin="5"/>
+                    </StackPanel>
+                </GroupBox>
+                <Button x:Name="btnClose"
+                        Content="Close"
+                        Width="100"
+                        Margin="5"/>
+            </StackPanel>
+        </Grid>
+    </GroupBox>
+</Window>

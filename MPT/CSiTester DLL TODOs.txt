@@ -1,0 +1,97 @@
+TODO
+
+Error Handling
+
+MPT.XML
+	cLibFilesXML
+	cXMLNode
+	cXMLObject
+	cXMLEditor
+	
+Complete
+MPT.Units
+
+MPT.Time
+  cLibTime
+
+MPT.Reflections
+	cLibReflection
+
+MPT.PropertyChanger
+	PropertyChanger
+
+MPT.Cursors
+	cCursorWait
+
+MPT.Enums
+	cEnumerations
+
+MPT.Verification
+	cLibVerification (rename to cObject)
+	(add cDataBase and move of cLibVerification to this)
+	cLibMisc (rename as cStruct)
+
+MPT.Forms
+	cLibDataGrid
+	cLibForms
+	cLibWinForms
+
+MPT.Lists
+	cLibLists
+
+
+MPT.String
+	cLibStringConversion
+	?? (many from cLibPath)
+
+MPT.FileSystem
+	cLibFolders
+		(Factor out:
+			CreateDatabaseDirectory
+		(
+	cLibPath
+		(Factor out: 
+			ExceptionProgramSource
+		)
+	cPath
+	cPaths
+	cFilePaths (see if this can be the same as cPaths)
+		(Refactor: SetPathsFiltered -> 'Generate list of files to ignore - > If p_removeFilesWithMCxml Then ...
+				Into object implementing the IFileFilter interface)
+MPT.Files
+	cLibFiles
+	cLibFilesBatch
+
+MPT.Excel
+	cLibFilesExcel
+
+MPT.Database
+	cLibQueries
+	cDatabaseAccess
+	cDataTableController
+				
+
+
+cPath
+
++ fileName
++ path
++ directory
++ pathChildStub
++ isValidPath
++ isSelected (replaces fileNameUse)
+
+
+Very simlar classes. Consider combining at work on Monday when 2 screens can be used to better compare.
+	cFilePaths
+		folderSource
+		pathsAll
+		fileExtensionFilter
+		pathsFiltered
+		pathsSelected
+
+	cPaths
+		folderSource
+		pathsAll
+		fileExtensionFilter
+		pathsFiltered

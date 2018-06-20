@@ -1,0 +1,76 @@
+ SAP2000 v17.0.0 Ultimate (Analysis Build 9238/32)                              
+ File: C:\TFS\Regression Teste....CSI.API.EndToEndTests\Resources\Seed\Query.OUT
+                                                                     
+ FooBar                                                                
+
+ D I S P L A C E M E N T   D E G R E E S   O F   F R E E D O M
+
+         (A) = Active DOF, equilibrium equation
+         (-) = Restrained DOF, reaction computed
+         (+) = Constrained DOF
+         (>) = External substructure DOF
+         ( ) = Null DOF
+
+  JOINTS              U1  U2  U3  R1  R2  R3
+ estrain               -   -   -   A   A   A
+
+  JOINTS              U1  U2  U3  R1  R2  R3
+       2 TO  Point1    A   A   A   A   A   A
+       4               -   -   -   A   A   A
+       5 TO       6    A   A   A   A   A   A
+       7               -   -   -   A   A   A
+       8 TO       9    A   A   A   A   A   A
+      10               A   A   A   A   A   +
+      11               A   A   A   +   A   A
+      12               A   A   A   A   A   A
+      13               -   -   -   A   A   A
+      14 TO      15    A   A   A   A   A   A
+      16               -   -   -   A   A   A
+      17 TO      18    A   A   A   A   A   A
+      19               -   -   -   A   A   A
+      20 TO      21    A   A   A   A   A   A
+      22               -   -   -   A   A   A
+      23 TO      24    A   A   A   A   A   A
+      25               -   -   -   A   A   A
+      26 TO      27    A   A   A   A   A   A
+      28               -   -   -   A   A   A
+
+  JOINTS              U1  U2  U3  R1  R2  R3
+ ransfor               A   A   A   A   A   A
+
+  WELD MASTERS        U1  U2  U3  R1  R2  R3   (LABELS OF ONE WELDED JOINT)
+ assJoin               A   A   A   A   A   A
+
+  JOINTS              U1  U2  U3  R1  R2  R3
+      31               -   -   -   A   A   A
+
+  JOINTS              U1  U2  U3  R1  R2  R3
+ ransfor               A   A   A   A   A   A
+
+  JOINTS              U1  U2  U3  R1  R2  R3
+      33               A   A   A   A   A   A
+      34               -   -   -   A   A   A
+      35 TO      37    A   A   A   A   A   A
+
+  WELD MASTERS        U1  U2  U3  R1  R2  R3   (LABELS OF ONE WELDED JOINT)
+ eshAtTo               A   A   A   A   A   A
+
+  JOINTS              U1  U2  U3  R1  R2  R3
+      39 TO      30    A   A   A   A   A   A
+      32               A   A   A            
+      38               A   A   A   A   A   A
+      43 TO      59    A   A   A            
+      67 TO     ~10    A   A   A   A   A   A
+     ~11               A   A   A            
+     ~12               A   A   A   A   A   A
+     ~13 TO     ~15    A   A   A            
+     ~16               A   A   A   A   A   A
+     ~17 TO     ~18    A   A   A            
+     ~19 TO     ~20    A   A   A   A   A   A
+     ~21 TO     ~22    A   A   A            
+     ~23 TO     ~24    A   A   A   A   A   A
+     ~25 TO     ~26    A   A   A            
+     ~27 TO     ~32    A   A   A   A   A   A
+     ~33 TO     ~40    +   +   +   A   A   A
+ 10~Link               -   -   -   -   -   -
+    NULL                                    

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{305F13F5-2FDA-4F80-9F36-5A91674E2062}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MPT.GIS</RootNamespace>
+    <AssemblyName>MPT.GIS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper">
+      <HintPath>..\lib\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="gpx">
+      <HintPath>..\lib\gpx.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.Excel">
+      <HintPath>..\lib\MPT.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.Geometry">
+      <HintPath>..\lib\MPT.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.Math">
+      <HintPath>..\lib\MPT.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="MPT.String">
+      <HintPath>..\lib\MPT.String.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpKml">
+      <HintPath>..\lib\SharpKml.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Boundary.cs" />
+    <Compile Include="Coordinate.cs" />
+    <Compile Include="CoordinateOffset.cs" />
+    <Compile Include="Extents.cs" />
+    <Compile Include="Formation.cs" />
+    <Compile Include="FormationMatcher.cs" />
+    <Compile Include="IO\Csv.cs" />
+    <Compile Include="IO\Excel.cs" />
+    <Compile Include="IO\Gpx.cs" />
+    <Compile Include="IO\Kml.cs" />
+    <Compile Include="IO\MySQL.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Aggregator.cs" />
+    <Compile Include="IO\PeakbaggerLocation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Region.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

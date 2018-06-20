@@ -1,0 +1,82 @@
+============================
+Find: 
+#elif BUILD_SAP2000v19\r\nusing SAP2000v19;
+
+Replace: 
+#elif BUILD_SAP2000v19\r\nusing SAP2000v19;\r\n#elif BUILD_SAP2000v20\r\nusing SAP2000v20;
+============================
+============================
+Find: 
+#elif BUILD_SAP2000v19\r\nusing CSiProgram = SAP2000v19;
+
+Replace: 
+#elif BUILD_SAP2000v19\r\nusing CSiProgram = SAP2000v19;\r\n#elif BUILD_SAP2000v20\r\nusing CSiProgram = SAP2000v20;
+============================
+============================
+Find:
+&& BUILD_SAP2000v19
+
+Replace:
+&& BUILD_SAP2000v19 && BUILD_SAP2000v20
+============================
+============================
+Find:
+&& !BUILD_SAP2000v19
+
+Replace:
+&& !BUILD_SAP2000v19 && !BUILD_SAP2000v20
+============================
+============================
+Find:
+|| BUILD_SAP2000v19
+
+Replace:
+|| BUILD_SAP2000v19 || BUILD_SAP2000v20
+============================
+============================
+Find:
+|| !BUILD_SAP2000v19
+
+Replace:
+|| !BUILD_SAP2000v19 || !BUILD_SAP2000v20
+============================
+============================
+Find:
+#if BUILD_SAP2000v19
+
+Replace:
+#if BUILD_SAP2000v19 || BUILD_SAP2000v20
+============================
+============================
+Find:
+#if !BUILD_SAP2000v19
+
+Replace:
+#if !BUILD_SAP2000v19 && !BUILD_SAP2000v20
+============================
+============================
+Find:
+#elif !BUILD_SAP2000v19
+
+Replace:
+#elif !BUILD_SAP2000v19 && !BUILD_SAP2000v20
+============================
+============================
+Find:
+#elif BUILD_SAP2000v19
+
+Replace:
+#elif BUILD_SAP2000v19 || BUILD_SAP2000v20
+
+Find: 
+#elif BUILD_SAP2000v19 || BUILD_SAP2000v20\r\nusing CSiProgram = SAP2000v19;
+
+Replace: 
+#elif BUILD_SAP2000v19\r\nusing CSiProgram = SAP2000v19;
+
+Find: 
+#elif BUILD_SAP2000v19 || BUILD_SAP2000v20\r\nusing SAP2000v19;
+
+Replace: 
+#elif BUILD_SAP2000v19\r\nusing SAP2000v19;
+============================

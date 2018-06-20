@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="xs3p.xsl"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.csiberkeley.com/resources" targetNamespace="http://www.csiberkeley.com/resources" elementFormDefault="qualified">  
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ reusable simple types ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+ <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ reusable enumeration types ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+ 
+	<!-- type "range_operation" -->
+	<xs:simpleType name="range_operation">
+		<xs:annotation>
+			<xs:documentation>Operation to be applied when evaluating ranges and formulas for post-processed results.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+		  <xs:minLength value="1" />
+		  <xs:enumeration value="sum" />
+		  <xs:enumeration value="sumabs" />
+		  <xs:enumeration value="srss" />
+		  <xs:enumeration value="max">
+			<xs:annotation>
+				<xs:documentation>Get the maximum value from the range.</xs:documentation>
+			</xs:annotation>
+		  </xs:enumeration>
+		  <xs:enumeration value="min" />
+		  <xs:enumeration value="avg" />
+		  <xs:enumeration value="maxabs" />
+		  <xs:enumeration value="minabs" />
+		  <xs:enumeration value="avgabs" />
+		</xs:restriction>
+	</xs:simpleType>
+	  
+	  
+	<!-- type "program_name" -->
+	<xs:simpleType name="program_name">
+	  <xs:annotation>
+		<xs:documentation>Program name.</xs:documentation>
+	  </xs:annotation>
+	  <xs:restriction base="xs:string">
+		  <xs:enumeration value="SAP2000" />
+		  <xs:enumeration value="CSiBridge" />
+		  <xs:enumeration value="ETABS" />
+		  <xs:enumeration value="SAFE" />
+		  <xs:enumeration value="Perform3D" />
+	  </xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- type "yes_no" -->
+	<xs:simpleType name="yes_no">
+		<xs:restriction base="xs:string">
+		  <xs:whiteSpace value="collapse" />
+              <!-- to remove white spaces left over from the comments in the XML file -->
+		  <xs:enumeration value="yes"/>
+		  <xs:enumeration value="no"/>
+		</xs:restriction>
+	</xs:simpleType>
+	  
+	<!-- type "yes_no_unknown" -->
+	<xs:simpleType name="yes_no_unknown">
+		<xs:union memberTypes="yes_no
+							   optional_empty" />
+	</xs:simpleType>
+	  
+	<!-- type "absolute_relative" -->
+	<xs:simpleType name="absolute_relative">
+	  <xs:restriction base="xs:string">
+		<xs:enumeration value="absolute" />
+		<xs:enumeration value="relative" />
+	  </xs:restriction>
+	</xs:simpleType>
+		
+  
+	<!-- elements tests -->
+	<xs:simpleType name="tests">
+	    <xs:annotation>
+            <xs:documentation>Name of the test that should be run</xs:documentation>
+	    </xs:annotation>
+		<xs:union memberTypes="tests_no_empty
+							   optional_empty" />
+	</xs:simpleType>
+
+	<xs:simpleType name="tests_no_empty">
+	    <xs:annotation>
+            <xs:documentation>Name of the test that should be run</xs:documentation>
+	    </xs:annotation>
+		<xs:union memberTypes="tests_basic
+							   tests_bridge" />
+	</xs:simpleType>
+
+	
+	<!-- test to run enumeration -->	
+	<xs:simpleType name="test_to_run_enumeration">
+		<xs:union memberTypes="tests_basic
+							   tests_psb
+							   tests_bridge
+							   optional_empty" />
+	</xs:simpleType>
+  
+    <xs:simpleType name="tests_basic">
+		<xs:restriction base="xs:string">
+		  <xs:whiteSpace value="collapse" />
+		  <!-- to remove white spaces left over from the comments in the XML file -->
+		  <xs:enumeration value="run as is" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="tests_psb">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="run as is with different sets of analysis parameters" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="tests_bridge">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="update bridge" />
+		  <xs:enumeration value="update bridge and run" />
+		</xs:restriction>
+	</xs:simpleType>
+  
+	<xs:simpleType name="run_job_test_type">           
+		<xs:annotation>
+			<xs:documentation>Type of test to be run</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="distributed test with local control" />
+		</xs:restriction>
+	</xs:simpleType>
+  
+
+	<xs:simpleType name="tasklist_type">
+		<xs:annotation>
+			<xs:documentation>Type of tasklist to be run</xs:documentation>
+		</xs:annotation>		  
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="dynamic continuous tasklist" />
+		</xs:restriction>
+	</xs:simpleType>
+  
+  
+	<xs:simpleType name="optional_empty">
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="" />
+		</xs:restriction>
+	</xs:simpleType>
+		  
+	<xs:simpleType name="optional_any">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+		  
+    <!-- classification - level 1 -->
+	<xs:simpleType name="classifications_level1">
+		<xs:annotation>
+		  <xs:documentation>Level 1 classification of the model</xs:documentation>
+		</xs:annotation>                
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="Regression Example" />
+		  <xs:enumeration value="Published Verification Example" />
+		  <xs:enumeration value="Internal Verification Example" />
+		  <xs:enumeration value="" />
+		</xs:restriction>
+	</xs:simpleType>
+          
+	<!-- classification - level 2 -->		  
+	<xs:simpleType name="classifications_level2">
+		<xs:annotation>
+		  <xs:documentation>Level 2 classification of the model</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="classification_level2_regression
+							   classification_level2_verification_internal
+							   classification_level2_verification_external" />		
+	  
+	</xs:simpleType>
+
+	<!-- Regression Example Classifications-->
+	<xs:simpleType name="classification_level2_regression">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Template" />
+			<xs:enumeration value="Functional Test" />
+			<xs:enumeration value="Resolved Incident" />
+			<xs:enumeration value="Unresolved Issue" />
+			<xs:enumeration value="Misc Regression" /> 
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- Published Verification Example Classifications -->
+	<xs:simpleType name="classification_level2_verification_internal">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SAP2000 Analysis Verification Suite" />
+			<xs:enumeration value="ETABS Analysis Verification Suite" />
+			<xs:enumeration value="SAFE Verification Suite" />
+			<xs:enumeration value="Design Verification Suite - Steel Frame" />
+			<xs:enumeration value="Design Verification Suite - Concrete Frame" />
+			<xs:enumeration value="Design Verification Suite - Shear Wall" />
+			<xs:enumeration value="Design Verification Suite - Composite Beam" />
+			<xs:enumeration value="Design Verification Suite - Composite Column" /> 
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!-- Internal Verification Example Classifications -->
+	<xs:simpleType name="classification_level2_verification_external">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ANSYS" />
+			<xs:enumeration value="NAFEMS" />
+			<xs:enumeration value="Resolved Incident" />
+			<xs:enumeration value="Analysis" />
+			<xs:enumeration value="Steel Design" />
+			<xs:enumeration value="Concrete Design" />
+			<xs:enumeration value="Shear Wall Design" />
+			<xs:enumeration value="Composite Beam Design" />
+			<xs:enumeration value="Composite Column Design" />
+			<xs:enumeration value="Misc Verification" /> 
+		</xs:restriction>
+	</xs:simpleType>
+		  
+    <!-- simple type predefined_keyword -->
+    <xs:simpleType name="predefined_keyword">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="blocker"/>
+      <xs:enumeration value="bug"/>
+      <xs:enumeration value="enhancement request"/>
+      <xs:enumeration value="limitation"/>
+      <xs:enumeration value="nice model"/>
+      <xs:enumeration value="p1"/>
+      <xs:enumeration value="regression testing candidate"/>
+      <xs:enumeration value="test manually"/>
+      <xs:enumeration value="test problem model"/>
+      <xs:enumeration value="tutorial model"/>
+      <xs:enumeration value="unconventional"/>
+      <xs:enumeration value="warning messages blocking automatic testing"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+	<!-- file_extensions_main -->  
+	<xs:simpleType name="file_extensions_main">
+		<xs:annotation>
+		  <xs:documentation>
+			Model file extension.
+		  </xs:documentation>
+		</xs:annotation>  
+		<xs:restriction base="xs:string">
+		  <xs:enumeration value="sdb" />
+		  <xs:enumeration value="bdb" />
+		  <xs:enumeration value="edb" />
+		  <xs:enumeration value="fdb" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+    <!-- models source -->
+	<xs:simpleType name="models_source">
+		<xs:annotation>
+		  <xs:documentation>Location of the models to be used for the regression test.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse" />
+			<!-- to remove white spaces left over from the comments in the XML file -->
+			<xs:enumeration value="local models database" />
+			<xs:enumeration value="download from server" />
+		</xs:restriction>
+	</xs:simpleType>
+  
+	<!-- solver_options --> 
+	<xs:simpleType name="solver_options">
+ 	    <xs:annotation>
+		  <xs:documentation>Solver options.</xs:documentation>
+ 	    </xs:annotation>
+		<xs:restriction base="xs:string">                          
+		  <xs:enumeration value="standard solver" />
+		  <xs:enumeration value="advanced solver" />
+		  <xs:enumeration value="multi-threaded solver" />
+		</xs:restriction>
+	</xs:simpleType>   
+	
+	<!-- analysis_options --> 
+	<xs:simpleType name="analysis_options">
+		<xs:annotation>
+			<xs:documentation>Analysis options.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">                          
+			<xs:enumeration value="auto" />
+			<xs:enumeration value="gui process" />
+			<xs:enumeration value="separate process" />
+		</xs:restriction>
+	</xs:simpleType>   
+		  
+		<!-- status_model --> 
+		<xs:simpleType name="status_model">
+          <xs:annotation>
+            <xs:documentation>Status for the model and its XML file: done, to do, add benchmark values, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="to do" />
+            <xs:enumeration value="complete XML file" />
+            <xs:enumeration value="add benchmark values" />
+            <xs:enumeration value="finalize" />
+            <xs:enumeration value="done" />
+            <xs:enumeration value="add benchmark values after bug fixed" />
+            <xs:enumeration value="add benchmark values after output tabulated" />
+            <xs:enumeration value="initial" />
+          </xs:restriction>
+        </xs:simpleType>
+		
+		<!-- status_documentation --> 
+		<xs:simpleType name="status_documentation">
+          <xs:annotation>
+            <xs:documentation>Status for the documentation distributed with the model file.</xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="not applicable" />
+            <xs:enumeration value="to do" />
+            <xs:enumeration value="in progress" />
+            <xs:enumeration value="benchmark needs updating" />
+            <xs:enumeration value="done" />
+            <xs:enumeration value="" />
+          </xs:restriction>
+        </xs:simpleType>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ reusable complex types ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+</xs:schema>

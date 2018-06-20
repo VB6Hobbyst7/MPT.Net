@@ -1,0 +1,26 @@
+﻿<Window x:Class="frmExampleEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Title" 
+    Height="800" Width="1280" 
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    Icon="/CSiTester;component/CSiTester.ico" 
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+    FontFamily="Microsoft Sans Serif" >
+    <GroupBox Margin="5">
+        <Grid
+        x:Name="gridMain" 
+        Margin="5">
+            <StackPanel Orientation="Vertical"
+                        Margin="10">
+                
+                <Button x:Name="btnClose" 
+                        Content="Close" 
+                        Margin="0" Height="22" Width="90" 
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                
+            </StackPanel>
+        </Grid>
+    </GroupBox>
+</Window>

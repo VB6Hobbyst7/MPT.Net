@@ -1,0 +1,11 @@
+﻿<Window x:Class="frmResultPostProcessed"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:view="clr-namespace:CSiTester.View"
+    Title="frmResultPostProcessed" 
+    Style="{StaticResource defaultFormStyle}">
+    <!--xmlns:view="clr-namespace:CSiTester.View"-->
+    <Grid>
+        <view:ctrlResultPostProcessedRange />
+    </Grid>
+</Window>

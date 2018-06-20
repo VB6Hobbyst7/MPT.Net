@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug-ETABS2017</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1553F351-AAAA-431F-9E1C-FF7753DE33F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MPT.CSI.API.EndToEndTests</RootNamespace>
+    <AssemblyName>MPT.CSI.API.EndToEndTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABS2017|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-ETABS2017\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2017</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABS2016|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-ETABS2016\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2016</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-ETABS2015|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-ETABS2015\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2015</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v20|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v20\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v20</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v19|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v19\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v19</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v18|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v18\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v18</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v17|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v17\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v17</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-SAP2000v16|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-SAP2000v16\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v16</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev20|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev20\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev20</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev19|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev19\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev19</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev18|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev18\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev18</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev17|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev17\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev17</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-CSiBridgev16|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Debug-CSiBridgev16\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev16</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABS2017|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-ETABS2017\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2017</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABS2016|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-ETABS2016\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2016</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-ETABS2015|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-ETABS2015\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_ETABS2015</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v20|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v20\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v20</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v19|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v19\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v19</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v18|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v18\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v18</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v17|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v17\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v17</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-SAP2000v16|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-SAP2000v16\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_SAP2000v16</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev20|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev20\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev20</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev19|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev19\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev19</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev18|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev18\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev18</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev17|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev17\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev17</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-CSiBridgev16|AnyCPU'">
+    <OutputPath>bin\AnyCPU\Release-CSiBridgev16\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;BUILD_CSiBridgev16</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\API\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Core\BaseTests.cs" />
+    <Compile Include="Core\CSiBaseRunEachTimeTests.cs" />
+    <Compile Include="Core\CSiData.cs" />
+    <Compile Include="Core\CSiDataArea.cs" />
+    <Compile Include="Core\CSiDataLine.cs" />
+    <Compile Include="Core\CSiDataLink.cs" />
+    <Compile Include="Core\CSiDataMaterial.cs" />
+    <Compile Include="Core\CSiDataPoint.cs" />
+    <Compile Include="Core\CSiDataSolid.cs" />
+    <Compile Include="Core\CsiGet.cs" />
+    <Compile Include="Core\CsiGetAnalysisModel.cs" />
+    <Compile Include="Core\CsiGetSetBase.cs" />
+    <Compile Include="Core\CsiSet.cs" />
+    <Compile Include="Core\CsiSetAnalysisModel.cs" />
+    <Compile Include="Core\Program\CSiApplicationTests.cs" />
+    <Compile Include="Core\CSiBaseRunOnceTests.cs" />
+    <Compile Include="Core\Program\CSiFileTests.cs" />
+    <Compile Include="Core\Program\CSiModelTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModelerTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\AreaElementTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\LineElementTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\LinkElementTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\PlaneElementTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\PointElementTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisModel\SolidElementTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResultsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\AnalysisResultsSetupTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalysisResult\ResultsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\AnalyzerTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\BridgeType\ConcreteBoxGirderTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\BridgeAdvanced\SuperstructureTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\DefinitionsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\AbstractionsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\DiaphragmTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\PierLabelTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\SpandrelLabelTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\StoryTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Abstraction\TowerTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\BridgeObjectsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\ConstraintsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\CoordinateSystemsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\FunctionsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\AASHTO_2006Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\AASHTO_2007Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\AS_1170_2007Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\BOCA_1996Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\Chinese_2010Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\CJJ_166_2011Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\Eurocode_8Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\Eurocode_8_2004Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\FileTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\IBC_2003Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\IBC_2006Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\IS_1893_2002Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\Italian_3274Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\JTG_B02_2013Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NBCC_1995Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NBCC_2005Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NBCC_2010Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NBCC_2015Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NCHRP_2007Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NEHRP_1997Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NTC_2008Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NZS_1170_2004Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\NZS_4203_1992Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\SP_14_13330_2014Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\UBC_94Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\UBC_97Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\CodesResponseSpectrum\UserTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\PowerSpectralDensityTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\ResponseSpectrumTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\SteadyStateTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Function\TimeHistoryTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\GeneralizedDisplacementsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\GeneralReferenceLinesTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\GridSystemsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\GroupsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\JointPatternsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCasesTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\BucklingTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ExternalResultsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\HyperstaticTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\LoadCaseTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ModalEigenTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ModalRitzTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\MovingLoadTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\PowerSpectralDensityTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\ResponseSpectrumTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\StaticLinearMultistepTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\StaticLinearTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\StaticNonlinearStagedTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\SteadyStateTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\TimeHistoryDirectLinearTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\TimeHistoryDirectNonlinearTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\TimeHistoryModalLinearTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCase\TimeHistoryModalNonlinearTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadCombinationsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPatternsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\AutoSeismicTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\AutoWaveTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\AutoWindTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\AS_1170_2007Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\BOCA_1996Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\Chinese_2010Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\Eurocode_8_2004Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IBC_2003Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IBC_2006Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IBC_2009Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IBC_2012Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\IS_1893_2002Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NBCC_1995Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NBCC_2005Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NBCC_2010Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NBCC_2015Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NEHRP_1997Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NTC_2008Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\NZS_1170_2004Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\SiesmicTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\UBC_97Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\UBC_97_ISOTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Seismic\UserTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wave\WaveLoadGenericTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\API_4F_2008Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\API_4F_2013Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ASCE_7_02Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ASCE_7_05Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ASCE_7_88Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\ASCE_7_95Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\AS_NZS_1170_2_2002Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\BOCA_1996Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\BS_63_9995Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\Chinese_2010Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\Eurocode_1_2005Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\IS_875_1987Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\MexicanTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NBCC_1995Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NBCC_2005Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NBCC_2010Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NBCC_2015Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\NTC_2008Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\UBC_94Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\UBC_97Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\LoadPattern\CodesAutoLoad\Wind\UserTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\MassSourceTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssignsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\AreaModifiersTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\CableModifiersTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\FrameModifiersTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedAssign\FrameReleasesTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\NamedSetsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\PropertiesTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\AreaSectionTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\AreaSpringTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\CableSectionTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\FrameSectionTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\Frame\SectionDesignerTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\LineSpringTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\LinkPropertiesTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\MaterialPropertiesTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\PointSpringTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\SolidPropertiesTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TendonSectionTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\CodesConcrete\CEB_FIP_90Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\CodesTendon\CEB_FIP_90Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\TimeDependentConcreteTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\Property\TimeDependent\TimeDependentTendonTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Definition\SectionCutsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\DesignerTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\AA_ASD_2000Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Aluminum\AA_LRFD_2000Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\AISI_ASD_96Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\ColdFormed\AISI_LRFD_96Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\AASHTO_2007Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\AASHTO_LRFD_2012Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\AASHTO_LRFD_2014Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ACI_318_08_IBC_2009Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\ACI_318_11Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\AS_3600_09Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\BS_8110_97Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Chinese_2002Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Chinese_2010Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\CSA_A23_3_04Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Eurocode_2_2004Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Hong_Kong_CP_2013Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Italian_NTC_2008Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\KCI_1999Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Mexican_RCDF_2004Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\NZS_3101_2006Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\Singapore_CP_6599Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Concrete\TS_500_2000Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AISC_360_05_IBC_2006Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AISC_360_10Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AISC_ASD_89Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AISC_LRFD_93Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\API_RP2A_LRFD_97Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\API_RP2A_WSD_2000Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\API_RP2A_WSD_2014Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\ASCE_10_97Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\AS_4100_1998Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\BS_5950_2000Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Chinese_2002Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Chinese_2010Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\CSA_S16_09Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Eurocode_3_2005Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Italian_NTC_2008Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\Norsok_N_004_2013Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\CodesDesign\Steel\NZS_3404_1997Tests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignAluminumTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignColdFormedTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignCompositeBeamTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignConcreteTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignDetailingTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Design\DesignSteelTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\AreaEditorTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\FrameEditorTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\GeneralEditorTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\PointEditorTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\Edit\SolidEditorTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModelerTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\AreaObjectTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\CableObjectTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\ExternalAnalysisResultsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\FrameObjectTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\LinkObjectTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\PointObjectTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\SolidObjectTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ObjectModel\TendonObjectTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\OptionsTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\SelectorTests.cs" />
+    <Compile Include="Core\Program\ModelBehavior\ViewerTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MPT.CSI.API\MPT.CSI.API.csproj">
+      <Project>{6460b748-90a5-4409-88f4-de9f46c6ae86}</Project>
+      <Name>MPT.CSI.API</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Helpers\" />
+    <Folder Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Seismic\" />
+    <Folder Include="Core\Program\ModelBehavior\Definition\LoadLateralCode\Wind\" />
+    <Folder Include="Core\Support\" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

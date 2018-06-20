@@ -1,0 +1,1430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77830EE1-2D30-4980-8E88-B3403C733592}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CSiTester</RootNamespace>
+    <AssemblyName>CSiTester</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\MPT-CSI\Regression &amp; Verification Suites\CSiTester Betas\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\AnyCPU\Debug\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\AnyCPU\Release\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>CSiTester.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>91A466E455109DF7F799E2BFA9DCFD7C7C35CCD8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CSiTester_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Internal|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\AnyCPU\Debug - Internal\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Internal|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug - Internal\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Release|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug - Release\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_RELEASE=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug - Release\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_RELEASE=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Internal|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\AnyCPU\Release - Internal\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Internal|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release - Internal\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Release|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\AnyCPU\Release - Release\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_RELEASE=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release - Release\</OutputPath>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>COMPILE_RELEASE=True</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Internal|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug - Internal\</OutputPath>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug - Release\</OutputPath>
+    <DefineConstants>COMPILE_RELEASE=True</DefineConstants>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Internal|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release - Internal\</OutputPath>
+    <DefineConstants>COMPILE_INTERNAL=True</DefineConstants>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release - Release\</OutputPath>
+    <DefineConstants>COMPILE_RELEASE=True</DefineConstants>
+    <DocumentationFile>CSiTester.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Microsoft.Office.Interop.Access1">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 11.0\Visual Studio Tools for Office\PIA\Office14\Microsoft.Office.Interop.Access.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="ribboncontrolslibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Application.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Tests\frmTestingE2E.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Helpers\frmLongListPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProjectStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Testing\CSiTester.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Application.xaml.vb">
+      <DependentUpon>Application.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listeners\LoggerListenerShared.vb" />
+    <Compile Include="Listeners\MessengerListenerShared.vb" />
+    <Compile Include="Model\Enumerations\eCellSelectOperation.vb" />
+    <Compile Include="Model\Enumerations\eCheckType.vb" />
+    <Compile Include="Model\Enumerations\eCSiInstallMethod.vb" />
+    <Compile Include="Model\Enumerations\eCSiProgram.vb" />
+    <Compile Include="Model\Enumerations\eCSiTesterCheckAction.vb" />
+    <Compile Include="Model\Enumerations\eCSiTesterLevel.vb" />
+    <Compile Include="Model\Enumerations\eDesignType.vb" />
+    <Compile Include="Model\Enumerations\eExampleEditMode.vb" />
+    <Compile Include="Model\Enumerations\eRegTestAction.vb" />
+    <Compile Include="Model\Enumerations\eResultCompare.vb" />
+    <Compile Include="Model\Enumerations\eResultOverall.vb" />
+    <Compile Include="Model\Enumerations\eResultRun.vb" />
+    <Compile Include="Model\Enumerations\eSuiteAction.vb" />
+    <Compile Include="Model\Enumerations\eTestResults.vb" />
+    <Compile Include="Model\Enumerations\eTestType.vb" />
+    <Compile Include="Model\Enumerations\eXMLEditorAction.vb" />
+    <Compile Include="Model\Enumerations\eXMLObjectType.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\Comparers\cFieldLookupNameComparer.vb" />
+    <Compile Include="Model\Files\cProgramControlUnitsAdapter.vb" />
+    <Compile Include="Model\Misc\cLibrary.vb" />
+    <Compile Include="Model\XML Editor\cXMLCSi.vb" />
+    <Compile Include="ViewModel\Examples\ResultPostProcessedRangeVM.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cMCPropsSync.vb" />
+    <Compile Include="Model\Examples\Collections\cExamplePropsSync.vb" />
+    <Compile Include="Model\cCSiTesterLogger.vb" />
+    <Compile Include="Model\Examples\Formulation\cMCIDGenerator.vb" />
+    <Compile Include="Model\Examples\Formulation\cMCReader.vb" />
+    <Compile Include="Model\Examples\Formulation\cMCSeedReader.vb" />
+    <Compile Include="Model\Examples\Model Control File\Comparers\cMCAttachmentComparer.vb" />
+    <Compile Include="Model\Examples\Model Control File\Comparers\cMCExampleNameComparer.vb" />
+    <Compile Include="Model\Examples\Model Control File\Comparers\cMCIDComparer.vb" />
+    <Compile Include="Model\Examples\Model Control File\Comparers\cMCLinkComparer.vb" />
+    <Compile Include="Model\Examples\Model Control File\Comparers\cMCModelNameComparer.vb" />
+    <Compile Include="Model\Examples\Model Control File\Comparers\cMCUpdateComparer.vb" />
+    <Compile Include="Model\Examples\Path Classes\Comparers\cPathComparer.vb" />
+    <Compile Include="Model\Exceptions\ModelIDException.vb" />
+    <Compile Include="Model\Misc\Form Helpers\cDataGridHeaderButtonsSizer.vb" />
+    <Compile Include="Model\CSi Tester Classes\cProgramInitializer.vb" />
+    <Compile Include="Model\CSi Tester Settings\Path Classes\cPathSettings.vb" />
+    <Compile Include="Model\Examples\File Classes\cFileExcelResult.vb" />
+    <Compile Include="Model\Examples\File Classes\cFileModel.vb" />
+    <Compile Include="Model\Examples\File Classes\cFileModelControl.vb" />
+    <Compile Include="Model\Examples\File Classes\cFileModelExportedTable.vb" />
+    <Compile Include="Model\Examples\Model Control File\cMCModelID.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCQuery.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\ToFinish\cMCAttachmentImages.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\ToFinish\cMCAttachmentsOutputSettings.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCRange.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCResultBasic.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\Comparers\cResultBenchmarkNameComparer.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\Comparers\cResultQueryComparer.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCResultIDs.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathExcelResult.vb" />
+    <Compile Include="Model\Examples\File Classes\cMCFile.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathAttachment.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathModelControlReference.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cKeywords.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cKeywordsFilters.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cKeywordTags.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cMCFileOrganizer.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cMCNameSyncer.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathDataSource.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathModelControl.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathModel.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathOutputSettings.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Doc ReaderWriter\cXmlReadWriteModelControl.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Doc ReaderWriter\cXmlReadWriteRegTest.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\AdapterXmlFile.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\AdapterModelControl.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterAttachments.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterClassificationLevel1.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterDocumentationStatus.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterExampleStatus.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterLinks.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterRangeOperations.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResults.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResultsExcel.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResultLookupFields.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResultsPostProcessed.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResultRanges.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResultUnits.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResultVariables.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResultValue.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterProgramNames.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterImages.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterIncidents.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterKeywords.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterTests.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterTickets.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterUpdates.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\Model Control\ConverterResults\ConverterResultsUpdates.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\OutputSettings\AdapterOutputSettings.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\RegTest\AdapterRegTest.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\OutputSettings\ConverterEnumMultiStep.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\OutputSettings\ConverterEnumsTables.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\OutputSettings\ConverterEnumUnits.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\RegTest\ConverterProgramName.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\RegTest\SetterRegTest.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Files\xmlModelControl.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Files\xmlModelControlBase.vb">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Files\xmlOutputSettings.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Files\xmlOutputSettingsBase.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Files\xmlRegTest.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Serialization\Files\xmlRegTestBase.vb">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="Model\Files\cPathSelected.vb" />
+    <Compile Include="Model\Misc\Form Helpers\cDataGridScroller.vb" />
+    <Compile Include="Model\Collections\cObsColUniqueInteger.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Node Adapter\cSettingsAdapter.vb" />
+    <Compile Include="Model\File ReaderWriter Patterns\XML Node Adapter\cOutputSettingsAdapter.vb" />
+    <Compile Include="Tests\e2eTesting\cE2ELogger.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2EExample.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2EExampleResult.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2ETest.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2ETestComponent.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2ETestComponentSub.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2ETestInstructions.vb" />
+    <Compile Include="Tests\e2eTesting\cE2ETester.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cFieldProperties.vb" />
+    <Compile Include="Model\Misc\cHelper.vb" />
+    <Compile Include="Model\CSi Tester Classes\cCSiTester.vb" />
+    <Compile Include="Model\Examples\cExample.vb" />
+    <Compile Include="Model\Examples\cExampleItem.vb" />
+    <Compile Include="Model\Examples\cExampleTestSet.vb" />
+    <Compile Include="Model\RegTest\cRegTest.vb" />
+    <Compile Include="Model\CSi Tester Settings\cSettings.vb" />
+    <Compile Include="Model\CSi Tester Classes\cCSiTesterInt.vb" />
+    <Compile Include="Model\CSi Tester Classes\cCSiTesterPub.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2ETestController.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2ETestDestination.vb" />
+    <Compile Include="Tests\e2eTesting\Components\cE2ETestSuite.vb" />
+    <Compile Include="Model\Examples\Collections\cExampleItems.vb" />
+    <Compile Include="Model\Examples\Collections\cExampleTestSets.vb" />
+    <Compile Include="Model\Examples\Collections\cMCModels.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathExample.vb" />
+    <Compile Include="Model\Examples\Path Classes\cPathsExamples.vb" />
+    <Compile Include="Model\Files\cFileManager.vb" />
+    <Compile Include="Model\DataGrid - Tables\cDatabaseAccess.vb" />
+    <Compile Include="Model\DataGrid - Tables\cDataTableController.vb" />
+    <Compile Include="Model\DataGrid - Tables\cDGEntry.vb" />
+    <Compile Include="Model\DataGrid - Tables\cDGUnitsBtns.vb" />
+    <Compile Include="Model\Misc\MessageBoxLong.vb" />
+    <Compile Include="Model\Files\cPath.vb" />
+    <Compile Include="Model\Files\cPaths.vb" />
+    <Compile Include="Model\DataGrid - Tables\cHeaderAndValue.vb" />
+    <Compile Include="Model\Collections\cObsColUniqueString.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCResults.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCResultsExcel.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCResultsPostProcessed.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCTargetPrograms.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCAttachments.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCIncidentsTickets.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCLinks.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCUpdates.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCResultUpdate.vb" />
+    <Compile Include="Model\Examples\File Classes\cFileOutputSettings.vb" />
+    <Compile Include="Model\Files\cOSFileCopy.vb" />
+    <Compile Include="Model\Files\cProgramControl.vb" />
+    <Compile Include="Model\RegTest\Path Classes\cPathRegTest.vb" />
+    <Compile Include="Model\TableQueries\cTableQueryIDs.vb" />
+    <Compile Include="Model\TableQueries\cTableQueryView.vb" />
+    <Compile Include="Model\TableQueries\cTableQueryViewSummary.vb" />
+    <Compile Include="Model\TableQueries\cTableQueries.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cFieldLookup.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cFieldOutput.vb" />
+    <Compile Include="Model\Examples\File Classes\cFileAttachment.vb" />
+    <Compile Include="Model\Examples\Model Control File\cMCAuthor.vb" />
+    <Compile Include="Model\Examples\Model Control File\cMCBenchmarkRef.vb" />
+    <Compile Include="Model\Examples\Model Control File\cMCClassification.vb" />
+    <Compile Include="Model\Examples\Model Control File\cMCDate.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCFormula.vb" />
+    <Compile Include="Model\Examples\Model Control File\cMCLink.vb" />
+    <Compile Include="Model\Examples\Model Control File\cMCModel.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCRangeAll.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCResult.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCResultPostProcessed.vb" />
+    <Compile Include="Model\Examples\Model Control File\cMCUpdate.vb" />
+    <Compile Include="Model\Examples\Model Control File\Collections\cMCTestTypes.vb" />
+    <Compile Include="Model\Examples\Model Control File\Results\cMCVariable.vb" />
+    <Compile Include="Model\TableQueries\cTableQueriesCollection.vb" />
+    <Compile Include="Model\TableQueries\cTableQueryViews.vb" />
+    <Compile Include="Model\XML Editor\cXMLEditor.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cClassification.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cKeyword.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cKeywordsManager.vb" />
+    <Compile Include="Model\Examples\Supporting Classes\cMCValidator.vb" />
+    <Compile Include="Tests\frmTestingE2E.xaml.vb">
+      <DependentUpon>frmTestingE2E.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Helpers\frmLongListPrompt.xaml.vb">
+      <DependentUpon>frmLongListPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Testing\CSiTester.xaml.vb">
+      <DependentUpon>CSiTester.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\Suite Operations\frmGenerateTextFiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Examples\frmExampleEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Testing\frmCheckResultsSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\frmHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Testing\frmDeleteFiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Testing\frmTimeFactor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Testing\frmSettingsTableExport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Suite Operations\frmSuiteOperations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\frmUnits.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\Results\frmResultPostProcessed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\Results\frmXMLObjectResultDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\frmXMLObjectBenchmarkVersion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\Results\frmXMLObjectResults.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Suite Operations\frmFileFolderOperations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Suite Operations\frmMCValidate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Create XML Elements\frmXMLNodeCreateByPath.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Helpers\frmDeleteFilesFolders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Testing\frmExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tooltip and Popup Templates\frmPopupPercentChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tooltip and Popup Templates\frmPopupRunTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Testing\frmStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\frmXMLEditorBulk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\Keywords\frmXMLNodeCreateKeywords.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Create XML Elements\frmXMLObjectCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\frmXMLObjectCreateItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\Results\frmXMLObjectResultsSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\Keywords\frmMCKeywords.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\Create XML Elements\Results\ctrlResultPostProcessedRange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\frmXMLTemplateGenerator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\frmXMLTemplateGeneratorAdvanced.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\XML Editor\Template Generator\frmXMLTemplateGeneratorUnique.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Windows.Controls.Ribbon" />
+    <Import Include="System.Windows.Controls.Ribbon.Primitives" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Shapes" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="View\Suite Operations\frmGenerateTextFiles.xaml.vb">
+      <DependentUpon>frmGenerateTextFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Examples\frmExampleEditor.xaml.vb">
+      <DependentUpon>frmExampleEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Testing\frmCheckResultsSummary.xaml.vb">
+      <DependentUpon>frmCheckResultsSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmHome.xaml.vb">
+      <DependentUpon>frmHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Testing\frmDeleteFiles.xaml.vb">
+      <DependentUpon>frmDeleteFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Testing\frmTimeFactor.xaml.vb">
+      <DependentUpon>frmTimeFactor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Testing\frmSettingsTableExport.xaml.vb">
+      <DependentUpon>frmSettingsTableExport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Suite Operations\frmSuiteOperations.xaml.vb">
+      <DependentUpon>frmSuiteOperations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Examples\Formulation\cMCGenerator.vb" />
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\frmUnits.xaml.vb">
+      <DependentUpon>frmUnits.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\Results\frmResultPostProcessed.xaml.vb">
+      <DependentUpon>frmResultPostProcessed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\Results\frmXMLObjectResultDetails.xaml.vb">
+      <DependentUpon>frmXMLObjectResultDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\frmXMLObjectBenchmarkVersion.xaml.vb">
+      <DependentUpon>frmXMLObjectBenchmarkVersion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\Results\frmXMLObjectResults.xaml.vb">
+      <DependentUpon>frmXMLObjectResults.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Suite Operations\frmFileFolderOperations.xaml.vb">
+      <DependentUpon>frmFileFolderOperations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Suite Operations\frmMCValidate.xaml.vb">
+      <DependentUpon>frmMCValidate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Create XML Elements\frmXMLNodeCreateByPath.xaml.vb">
+      <DependentUpon>frmXMLNodeCreateByPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Helpers\frmDeleteFilesFolders.xaml.vb">
+      <DependentUpon>frmDeleteFilesFolders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Testing\frmExample.xaml.vb">
+      <DependentUpon>frmExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tooltip and Popup Templates\frmPopupPercentChange.xaml.vb">
+      <DependentUpon>frmPopupPercentChange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tooltip and Popup Templates\frmPopupRunTime.xaml.vb">
+      <DependentUpon>frmPopupRunTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Testing\frmStatus.xaml.vb">
+      <DependentUpon>frmStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\frmXMLEditorBulk.xaml.vb">
+      <DependentUpon>frmXMLEditorBulk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\Keywords\frmXMLNodeCreateKeywords.xaml.vb">
+      <DependentUpon>frmXMLNodeCreateKeywords.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Create XML Elements\frmXMLObjectCreate.xaml.vb">
+      <DependentUpon>frmXMLObjectCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\frmXMLObjectCreateItem.xaml.vb">
+      <DependentUpon>frmXMLObjectCreateItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\Results\frmXMLObjectResultsSummary.xaml.vb">
+      <DependentUpon>frmXMLObjectResultsSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\Keywords\frmMCKeywords.xaml.vb">
+      <DependentUpon>frmMCKeywords.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\Create XML Elements\Results\ctrlResultPostProcessedRange.xaml.vb">
+      <DependentUpon>ctrlResultPostProcessedRange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\frmXMLTemplateGenerator.xaml.vb">
+      <DependentUpon>frmXMLTemplateGenerator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\frmXMLTemplateGeneratorAdvanced.xaml.vb">
+      <DependentUpon>frmXMLTemplateGeneratorAdvanced.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\XML Editor\Template Generator\frmXMLTemplateGeneratorUnique.xaml.vb">
+      <DependentUpon>frmXMLTemplateGeneratorUnique.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\tbaCopyFilesFolders.vb" />
+    <Compile Include="Modules\tbaFilterModelList.vb" />
+    <Compile Include="Modules\mVariablesFriend.vb" />
+    <Compile Include="Modules\tbaReport.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWpfExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.WPF.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Class Diagram\ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="CSiTester_TemporaryKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <AppDesigner Include="My Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CSiTester.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\csi.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CSI_icon_logo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CSiBridge.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\error[1].ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ETABS.ICO">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Help.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\INFO[1].ICO">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SAFEv12 Icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SAP2000 Icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Test.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\warning[1].ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ButtonArrowRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ButtonArrowLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\ButtonArrowLeftHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\ButtonArrowLeftPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\ButtonArrowRightHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\ButtonArrowRightPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ButtonArrowLeftHover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonArrowLeftPressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonArrowRightHover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonArrowRightPressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{00000205-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="FileViewLib">
+      <Guid>{BE79C475-D632-4A57-91B3-DA044FA27CDA}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Access.Dao">
+      <Guid>{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}</Guid>
+      <VersionMajor>12</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Scripting">
+      <Guid>{420B2830-E718-11CF-893D-00A0C9054228}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Resources\Splash Screen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Resources\Splash Screen_800x520.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </SplashScreen>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Arrow-Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Arrow-LeftClick.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Arrow-LeftHover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Arrow-Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Arrow-RightClick.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Arrow-RightHover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Batch File - No Label.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Batch File.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\check-corner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\check-rounded.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Database.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Links.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Lock2-Locked.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Lock2-Unlocked.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Lock-Locked.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Lock-Unlocked.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Models Destination.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Models Source.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\New File.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\run.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Select Program.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Selection Add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Selection Remove.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Selection Replace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Tabs Merge.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Tabs Split.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Trash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\check-corner-subdued.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\check-rounded-subdued.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Folder - Dir Reset Var1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Folder - Dir Reset.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Models Destination Var1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check_corner_subdued.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check_rounded_subdued.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Arrow-Left-Blue - Working.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Arrow-Right-Blue - Working.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\48px\Arrow-Left-Blue - Working.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\48px\Arrow-Right-Blue - Working.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Folder - Dir Reset.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Models Destination.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Tabs Merge Var1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Tabs Merge.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Tabs Split Var1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Tabs Split.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\New File.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Tabs Merge Var1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\64px\Tabs Split Var1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Folder - Dir Reset.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\32px\Models Destination.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\32px\New File.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\32px\Tabs Merge Var1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\32px\Tabs Split Var1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Lock2-Locked.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\32px\Lock2-Unlocked.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\32px\run.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\32px\Save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Models Source.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Select Program.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\File ReaderWriter Patterns\XML Serialization\Adapters and Converters\CSiTesterSettings\" />
+    <Folder Include="ViewModel\CSiTester Suites\" />
+    <Folder Include="ViewModel\Helpers\" />
+    <Folder Include="ViewModel\Suite Operations\" />
+    <Folder Include="ViewModel\Testing\" />
+    <Folder Include="ViewModel\XML Editor\" />
+    <Folder Include="ViewModel\_ModelView Helpers\" />
+    <Folder Include="View\CSiTesterSuites\" />
+    <Folder Include="View\_Delete\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Program Sections - Bulk XML Editor.png" />
+    <Resource Include="Resources\Icons\Program Sections - Examples.png" />
+    <Resource Include="Resources\Icons\Program Sections - Suite.png" />
+    <Resource Include="Resources\Icons\Program Sections - Tester.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\File Results.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Links 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Incident 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\File - Table 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\File - Model Text Export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\View Attachments - 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Documentation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Attachment 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\File - Excel 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\View Results 2 - 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\File - Excel Export 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\View Table 3 - 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\File - Model.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\64px\Example Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Time Update 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Benchmark Update 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Example Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Link Checks 3D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Tables 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\32px\Models &amp; Files Destination.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Program Section\Program Sections - Bulk XML Editor.png" />
+    <Resource Include="Resources\Icons\Program Section\Program Sections - Examples.png" />
+    <Resource Include="Resources\Icons\Program Section\Program Sections - Suite.png" />
+    <Resource Include="Resources\Icons\Program Section\Program Sections - Tester.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Full Size\Example New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Full Size\Example Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Cursors\MPT.Cursors\MPT.Cursors.vbproj">
+      <Project>{408f9db1-1b41-44db-92cf-540ed7e5796e}</Project>
+      <Name>MPT.Cursors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Database\MPT.Database\MPT.Database.vbproj">
+      <Project>{871021b3-5d0d-406d-8aab-e3e4713dcf42}</Project>
+      <Name>MPT.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Enums\MPT.Enums\MPT.Enums.vbproj">
+      <Project>{8ea032d6-8fc5-45d7-9009-c67a00febaef}</Project>
+      <Name>MPT.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Excel\MPT.Excel\MPT.Excel.vbproj">
+      <Project>{4e88e09f-f01c-444e-9ece-097288aacb22}</Project>
+      <Name>MPT.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.FileSystem\MPT.FileSystem\MPT.FileSystem.vbproj">
+      <Project>{c3cd3f55-ba37-4d2e-901b-fa941aa80084}</Project>
+      <Name>MPT.FileSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Files\MPT.Files\MPT.Files.vbproj">
+      <Project>{c1e49d0b-8946-4204-8b07-41ec958cd418}</Project>
+      <Name>MPT.Files</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Forms\MPT.Forms\MPT.Forms.vbproj">
+      <Project>{860e8388-7da3-4ca7-aae4-b96ec7e7a7c5}</Project>
+      <Name>MPT.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Lists\MPT.Lists\MPT.Lists.vbproj">
+      <Project>{941d20b5-00e3-47c2-9014-bd50fa19d902}</Project>
+      <Name>MPT.Lists</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.PropertyChanger\MPT.PropertyChanger\MPT.PropertyChanger.vbproj">
+      <Project>{27433f28-9585-4929-9208-653c797a0471}</Project>
+      <Name>MPT.PropertyChanger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Reflections\MPT.Reflections\MPT.Reflections.vbproj">
+      <Project>{83531b3b-3af1-478f-a29a-f6fcf3217d78}</Project>
+      <Name>MPT.Reflections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Reporting\MPT.Reporting\MPT.Reporting.vbproj">
+      <Project>{fb3e2e93-e159-4843-a45b-3f11fb684481}</Project>
+      <Name>MPT.Reporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.String\MPT.String\MPT.String.vbproj">
+      <Project>{85e859cc-f317-4b39-a1dd-ec1a791367be}</Project>
+      <Name>MPT.String</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Time\MPT.Time\MPT.Time.vbproj">
+      <Project>{e2ec05c1-5296-47f4-8711-8640c3e409e0}</Project>
+      <Name>MPT.Time</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Units\MPT.Units\MPT.Units.vbproj">
+      <Project>{f333eb53-d5b8-400c-9686-25e07e7e1f96}</Project>
+      <Name>MPT.Units</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.Verification\MPT.Verification\MPT.Verification.vbproj">
+      <Project>{2891f52e-1f9b-4a50-b87b-b27edf9aee04}</Project>
+      <Name>MPT.Verification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\MPT.Tools\MPT.XML\MPT.XML\MPT.XML.vbproj">
+      <Project>{18b1d1db-d4e7-4360-99e2-2ef35ef281a4}</Project>
+      <Name>MPT.XML</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(XamlSpyInstallPath)MSBuild\FirstFloor.XamlSpy.WPF.targets" Condition="'$(XamlSpyInstallPath)' != '' and '$(Configuration)' == 'DEBUG'" />
+  <PropertyGroup>
+    <PreBuildEvent>cd "$(SolutionDir)"
+pre_build_events.bat "$(TargetDir)"</PreBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" xmlns="http://www.csiberkeley.com" targetNamespace="http://www.csiberkeley.com" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="tabularOutput">
+		<xs:complexType>
+		  <xs:sequence>
+			<xs:element name="filename" type="xs:string" />
+			<xs:element name="v9units" type="xs:boolean" default="false"/>
+			<xs:element name="tableSet">
+			  <xs:complexType>
+				<xs:sequence>
+				  <xs:element name="options">
+					<xs:complexType>
+					  <xs:sequence>
+						<xs:element name="showSelectionOnly" type="xs:boolean" default="true"/>
+						<xs:element name="showOnlyIfUsedInModel" type="xs:boolean" default="true"/>
+						<xs:element name="showAllFields" type="xs:boolean" default="false"/>
+						<xs:element name="units">
+						  <xs:complexType>
+							<xs:sequence>
+							  <xs:element name="forceUnit" default="">
+								<xs:simpleType>
+								  <xs:restriction base="xs:string">
+									<xs:enumeration value=""/>
+									<xs:enumeration value="lb"/>
+									<xs:enumeration value="kip"/>
+									<xs:enumeration value="N"/>
+									<xs:enumeration value="kN"/>
+									<xs:enumeration value="kgf"/>
+									<xs:enumeration value="tonf"/>
+								  </xs:restriction>
+								</xs:simpleType>
+							  </xs:element>
+							  <xs:element name="lengthUnit" default="">
+								<xs:simpleType>
+								  <xs:restriction base="xs:string">
+									<xs:enumeration value=""/>
+									<xs:enumeration value="in"/>
+									<xs:enumeration value="ft"/>
+									<xs:enumeration value="micron"/>
+									<xs:enumeration value="mm"/>
+									<xs:enumeration value="cm"/>
+									<xs:enumeration value="m"/>
+								  </xs:restriction>
+								</xs:simpleType>
+							  </xs:element>
+							  <xs:element name="temperatureUnit" default="">
+								<xs:simpleType>
+								  <xs:restriction base="xs:string">
+									<xs:enumeration value=""/>
+									<xs:enumeration value="F"/>
+									<xs:enumeration value="C"/>
+								  </xs:restriction>
+								</xs:simpleType>
+							  </xs:element>
+							</xs:sequence>
+						  </xs:complexType>
+						</xs:element>
+						<xs:element name="groups">
+						  <xs:complexType>
+							<xs:sequence>
+							  <xs:element name="group" type="xs:string" />
+							</xs:sequence>
+						  </xs:complexType>
+						</xs:element>
+						<xs:element name="loadPatterns">
+						  <xs:complexType>
+							<xs:sequence>
+							  <xs:element name="loadPattern" type="xs:string" />
+							</xs:sequence>
+						  </xs:complexType>
+						</xs:element>
+						<xs:element name="loadCases">
+						  <xs:complexType>
+							<xs:sequence>
+							  <xs:element name="loadCase" type="xs:string" />
+							</xs:sequence>
+						  </xs:complexType>
+						</xs:element>
+						<xs:element name="loadCombinations">
+						  <xs:complexType>
+							<xs:sequence>
+							  <xs:element name="loadCombination" type="xs:string" />
+							</xs:sequence>
+						  </xs:complexType>
+						</xs:element>
+						<xs:element name="multiStep">
+						  <xs:simpleType>
+							<xs:restriction base="xs:string">
+							  <xs:enumeration value="Envelopes"/>
+							  <xs:enumeration value="Step-by-Step"/>
+							  <xs:enumeration value="Last Step"/>
+							</xs:restriction>
+						  </xs:simpleType>
+						</xs:element>
+						<xs:element name="combineCaseStepFields" type="xs:boolean" default="false"/>
+					  </xs:sequence>
+					</xs:complexType>
+				  </xs:element>
+				  <xs:element name="tables">
+					<xs:complexType>
+					  <xs:sequence>
+						<xs:element maxOccurs="unbounded" name="table">
+						  <xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Program Control"/>
+								<xs:enumeration value="Project Information"/>
+								<xs:enumeration value="General Structure Information"/>
+								<xs:enumeration value="Story Data"/>
+								<xs:enumeration value="Grid Systems"/>
+								<xs:enumeration value="Grid Lines"/>
+								<xs:enumeration value="Joint Coordinates Data"/>
+								<xs:enumeration value="Joint Coordinates"/>
+								<xs:enumeration value="Column Connectivity Data"/>
+								<xs:enumeration value="Column Connectivity"/>
+								<xs:enumeration value="Beam Connectivity Data"/>
+								<xs:enumeration value="Beam Connectivity"/>
+								<xs:enumeration value="Brace Connectivity Data"/>
+								<xs:enumeration value="Brace Connectivity"/>
+								<xs:enumeration value="Null Frame Connectivity Data"/>
+								<xs:enumeration value="Null Frame Connectivity"/>
+								<xs:enumeration value="Floor Connectivity Data"/>
+								<xs:enumeration value="Floor Connectivity"/>
+								<xs:enumeration value="Wall Connectivity Data"/>
+								<xs:enumeration value="Wall Connectivity"/>
+								<xs:enumeration value="Null Shell Connectivity Data"/>
+								<xs:enumeration value="Null Shell Connectivity"/>
+								<xs:enumeration value="Link Connectivity"/>
+								<xs:enumeration value="Objects and Elements - Joints"/>
+								<xs:enumeration value="Objects and Elements - Frames"/>
+								<xs:enumeration value="Objects and Elements - Shells"/>
+								<xs:enumeration value="Objects and Elements - Links"/>
+								<xs:enumeration value="Diaphragms"/>
+								<xs:enumeration value="Material Properties - Summary"/>
+								<xs:enumeration value="Material Properties - Steel"/>
+								<xs:enumeration value="Material Properties - Concrete"/>
+								<xs:enumeration value="Material Properties - Masonry"/>
+								<xs:enumeration value="Material Properties - Rebar"/>
+								<xs:enumeration value="Material Properties - Tendon"/>
+								<xs:enumeration value="Material Properties - Aluminum"/>
+								<xs:enumeration value="Material Properties - Cold Formed"/>
+								<xs:enumeration value="Material Properties - Other"/>
+								<xs:enumeration value="Frame Sections - Summary"/>
+								<xs:enumeration value="Frame Sections"/>
+								<xs:enumeration value="Concrete Column Rebar Data"/>
+								<xs:enumeration value="Concrete Beam Rebar Data"/>
+								<xs:enumeration value="Shell Sections - Summary"/>
+								<xs:enumeration value="Shell Sections - Slab"/>
+								<xs:enumeration value="Shell Sections - Deck"/>
+								<xs:enumeration value="Shell Sections - Wall"/>
+								<xs:enumeration value="Pier Section Properties"/>
+								<xs:enumeration value="Spandrel Section Properties"/>
+								<xs:enumeration value="Reinforcing Bar Sizes"/>
+								<xs:enumeration value="Link Properties - Summary"/>
+								<xs:enumeration value="Link Properties - Linear"/>
+								<xs:enumeration value="Link Properties - Damper"/>
+								<xs:enumeration value="Link Properties - Gap"/>
+								<xs:enumeration value="Link Properties - Hook"/>
+								<xs:enumeration value="Link Properties - Plastic (Wen)"/>
+								<xs:enumeration value="Link Properties - Rubber Isolator"/>
+								<xs:enumeration value="Link Properties - Friction Isolator"/>
+								<xs:enumeration value="Spring Properties - Point"/>
+								<xs:enumeration value="Spring Properties - Line"/>
+								<xs:enumeration value="Spring Properties - Area"/>
+								<xs:enumeration value="Mass Source"/>
+								<xs:enumeration value="Group Definitions"/>
+								<xs:enumeration value="Group Assignments"/>
+								<xs:enumeration value="Section Cuts"/>
+								<xs:enumeration value="Section Cuts - Quads"/>
+								<xs:enumeration value="Generalized Displacement - Translational"/>
+								<xs:enumeration value="Generalized Displacement - Rotational"/>
+								<xs:enumeration value="Load Patterns"/>
+								<xs:enumeration value="Shell Uniform Load Sets"/>
+								<xs:enumeration value="Auto Wind - ASCE 7-02"/>
+								<xs:enumeration value="Auto Wind - ASCE 7-05"/>
+								<xs:enumeration value="Auto Wind - ASCE 7-10"/>
+								<xs:enumeration value="Auto Wind - ASCE 7-88"/>
+								<xs:enumeration value="Auto Wind - ASCE 7-95"/>
+								<xs:enumeration value="Auto Wind - AS/NZS 1170.2:2002"/>
+								<xs:enumeration value="Auto Wind - AS/NZS 1170.2:2011"/>
+								<xs:enumeration value="Auto Wind - BOCA 96"/>
+								<xs:enumeration value="Auto Wind - BS 6399-95"/>
+								<xs:enumeration value="Auto Wind - Chinese 2010"/>
+								<xs:enumeration value="Auto Wind - Eurocode 1-2005"/>
+								<xs:enumeration value="Auto Wind - IS 875-1987"/>
+								<xs:enumeration value="Auto Wind - Mexican"/>
+								<xs:enumeration value="Auto Wind - NBCC 2005"/>
+								<xs:enumeration value="Auto Wind - NBCC 2010"/>
+								<xs:enumeration value="Auto Wind - NBCC 95"/>
+								<xs:enumeration value="Auto Wind - NTC 2008"/>
+								<xs:enumeration value="Auto Wind - TS 498-97"/>
+								<xs:enumeration value="Auto Wind - UBC 94"/>
+								<xs:enumeration value="Auto Wind - UBC 97"/>
+								<xs:enumeration value="Auto Wind - User Loads"/>
+								<xs:enumeration value="Auto Wind Loads to Stories"/>
+								<xs:enumeration value="Auto Wind Loads to Diaphragms"/>
+								<xs:enumeration value="Auto Seismic - AS 1170:2007"/>
+								<xs:enumeration value="Auto Seismic - ASCE 7-02"/>
+								<xs:enumeration value="Auto Seismic - ASCE 7-05"/>
+								<xs:enumeration value="Auto Seismic - ASCE 7-10"/>
+								<xs:enumeration value="Auto Seismic - BOCA 96"/>
+								<xs:enumeration value="Auto Seismic - Chinese 2010"/>
+								<xs:enumeration value="Auto Seismic - TSC-2007"/>
+								<xs:enumeration value="Auto Seismic - Eurocode 8-2004"/>
+								<xs:enumeration value="Auto Seismic - IS 1893:2002"/>
+								<xs:enumeration value="Auto Seismic - NBCC 2005"/>
+								<xs:enumeration value="Auto Seismic - NBCC 2010"/>
+								<xs:enumeration value="Auto Seismic - NBCC 95"/>
+								<xs:enumeration value="Auto Seismic - NEHRP 97"/>
+								<xs:enumeration value="Auto Seismic - NTC 2008"/>
+								<xs:enumeration value="Auto Seismic - NZS 1170:2004"/>
+								<xs:enumeration value="Auto Seismic - UBC 94"/>
+								<xs:enumeration value="Auto Seismic - UBC 97"/>
+								<xs:enumeration value="Auto Seismic - UBC 97 Isolated"/>
+								<xs:enumeration value="Auto Seismic - User Coefficients"/>
+								<xs:enumeration value="Auto Seismic - User Loads"/>
+								<xs:enumeration value="Auto Seismic Loads to Stories"/>
+								<xs:enumeration value="Auto Seismic Loads to Diaphragms"/>
+								<xs:enumeration value="Joint Loads - Force"/>
+								<xs:enumeration value="Joint Loads - Displacement"/>
+								<xs:enumeration value="Joint Loads - Temperature"/>
+								<xs:enumeration value="Frame Loads - Point"/>
+								<xs:enumeration value="Frame Loads - Distributed"/>
+								<xs:enumeration value="Frame Loads - Temperature"/>
+								<xs:enumeration value="Shell Loads - Uniform"/>
+								<xs:enumeration value="Shell Loads - Uniform Load Sets"/>
+								<xs:enumeration value="Shell Loads - Temperature"/>
+								<xs:enumeration value="Joint Assignments - Summary"/>
+								<xs:enumeration value="Joint Assignments - Restraints"/>
+								<xs:enumeration value="Joint Assignments - Springs"/>
+								<xs:enumeration value="Joint Assignments - Diaphragms"/>
+								<xs:enumeration value="Joint Assignments - Panel Zones"/>
+								<xs:enumeration value="Joint Assignments - Mass"/>
+								<xs:enumeration value="Joint Assignments - Mesh Options"/>
+								<xs:enumeration value="Frame Assignments - Summary"/>
+								<xs:enumeration value="Frame Assignments - Sections"/>
+								<xs:enumeration value="Frame Assignments - Property Modifiers"/>
+								<xs:enumeration value="Frame Assignments - Releases"/>
+								<xs:enumeration value="Frame Assignments - Offsets"/>
+								<xs:enumeration value="Frame Assignments - Insertion Points"/>
+								<xs:enumeration value="Frame Assignments - Local Axes"/>
+								<xs:enumeration value="Frame Assignments - Nonprismatic Parameters"/>
+								<xs:enumeration value="Frame Assignments - Output Stations"/>
+								<xs:enumeration value="Frame Assignments - T/C Limits"/>
+								<xs:enumeration value="Frame Assignments - Springs"/>
+								<xs:enumeration value="Frame Assignments - Mass"/>
+								<xs:enumeration value="Frame Assignments - Pier/Spandrel"/>
+								<xs:enumeration value="Frame Assignments - Mesh Options"/>
+								<xs:enumeration value="Frame Assignments - Moment Frame Beam Type"/>
+								<xs:enumeration value="Frame Assignments - Hinge Summary"/>
+								<xs:enumeration value="Frame Assignments - Hinge - ASCE 41-13 Concrete Column"/>
+								<xs:enumeration value="Frame Assignments - Hinge - ASCE 41-13 Concrete Beam"/>
+								<xs:enumeration value="Frame Assignments - Hinge - ASCE 41-13 Steel Column"/>
+								<xs:enumeration value="Frame Assignments - Hinge - ASCE 41-13 Steel Beam"/>
+								<xs:enumeration value="Frame Assignments - Hinge - ASCE 41-13 Steel Brace"/>
+								<xs:enumeration value="Frame Assignments - Hinge - Caltrans Flexural"/>
+								<xs:enumeration value="Shell Assignments - Summary"/>
+								<xs:enumeration value="Shell Assignments - Sections"/>
+								<xs:enumeration value="Shell Assignments - Property Modifiers"/>
+								<xs:enumeration value="Shell Assignments - Diaphragms"/>
+								<xs:enumeration value="Shell Assignments - Local Axes"/>
+								<xs:enumeration value="Shell Assignments - Springs"/>
+								<xs:enumeration value="Shell Assignments - Mass"/>
+								<xs:enumeration value="Shell Assignments - Wall Hinges"/>
+								<xs:enumeration value="Shell Assignments - Pier/Spandrel"/>
+								<xs:enumeration value="Shell Assignments - Floor Mesh Options"/>
+								<xs:enumeration value="Link Assignments - Summary"/>
+								<xs:enumeration value="Link Assignments - Properties"/>
+								<xs:enumeration value="Link Assignments - Local Axes"/>
+								<xs:enumeration value="Material List by Element Type"/>
+								<xs:enumeration value="Material List by Section"/>
+								<xs:enumeration value="Material List by Story"/>
+								<xs:enumeration value="Mass Summary by Story"/>
+								<xs:enumeration value="Mass Summary by Diaphragm"/>
+								<xs:enumeration value="Mass Summary by Group"/>
+								<xs:enumeration value="Assembled Joint Masses"/>
+								<xs:enumeration value="Active Degrees of Freedom"/>
+								<xs:enumeration value="P-delta Options"/>
+								<xs:enumeration value="Mass Source"/>
+								<xs:enumeration value="SAPFire Options"/>
+								<xs:enumeration value="Response Spectrum Function - From File"/>
+								<xs:enumeration value="Response Spectrum Function - AS 1170:2007"/>
+								<xs:enumeration value="Response Spectrum Function - ASCE 7-02"/>
+								<xs:enumeration value="Response Spectrum Function - ASCE 7-05"/>
+								<xs:enumeration value="Response Spectrum Function - ASCE 7-10"/>
+								<xs:enumeration value="Response Spectrum Function - BOCA 96"/>
+								<xs:enumeration value="Response Spectrum Function - GB50011-2010"/>
+								<xs:enumeration value="Response Spectrum Function - TSC-2007"/>
+								<xs:enumeration value="Response Spectrum Function - Eurocode 8-1994"/>
+								<xs:enumeration value="Response Spectrum Function - Eurocode 8-2004"/>
+								<xs:enumeration value="Response Spectrum Function - IS 1893:2002"/>
+								<xs:enumeration value="Response Spectrum Function - Italian 3274"/>
+								<xs:enumeration value="Response Spectrum Function - NBCC 2005"/>
+								<xs:enumeration value="Response Spectrum Function - NBCC 2010"/>
+								<xs:enumeration value="Response Spectrum Function - NBCC 95"/>
+								<xs:enumeration value="Response Spectrum Function - NEHRP 97"/>
+								<xs:enumeration value="Response Spectrum Function - NTC 2008"/>
+								<xs:enumeration value="Response Spectrum Function - NZS 1170:2004"/>
+								<xs:enumeration value="Response Spectrum Function - NZS 4203"/>
+								<xs:enumeration value="Response Spectrum Function - UBC 94"/>
+								<xs:enumeration value="Response Spectrum Function - UBC 97"/>
+								<xs:enumeration value="Response Spectrum Function - User"/>
+								<xs:enumeration value="Time History Function - From File"/>
+								<xs:enumeration value="Time History Function - Sine"/>
+								<xs:enumeration value="Time History Function - Cosine"/>
+								<xs:enumeration value="Time History Function - Ramp"/>
+								<xs:enumeration value="Time History Function - Sawtooth"/>
+								<xs:enumeration value="Time History Function - Triangular"/>
+								<xs:enumeration value="Time History Function - User"/>
+								<xs:enumeration value="Time History Function - User Periodic"/>
+								<xs:enumeration value="Load Cases - Summary"/>
+								<xs:enumeration value="Load Cases - Static - Linear"/>
+								<xs:enumeration value="Load Cases - Static - Nonlinear"/>
+								<xs:enumeration value="Load Cases - Modal - Eigen"/>
+								<xs:enumeration value="Load Cases - Modal - Ritz"/>
+								<xs:enumeration value="Load Cases - Response Spectrum"/>
+								<xs:enumeration value="Load Cases - Response Spectrum Eccentricity Override"/>
+								<xs:enumeration value="Load Cases - Staged Construction"/>
+								<xs:enumeration value="Load Cases - Time History - Linear Modal"/>
+								<xs:enumeration value="Load Cases - Time History - Linear Direct Integration"/>
+								<xs:enumeration value="Load Cases - Time History - Nonlinear Modal"/>
+								<xs:enumeration value="Load Cases - Time History - Nonlinear Direct Integration"/>
+								<xs:enumeration value="Load Cases - Buckling"/>
+								<xs:enumeration value="Load Cases - Proportional Damping"/>
+								<xs:enumeration value="Load Cases - Interpolated Damping"/>
+								<xs:enumeration value="Load Cases - Damping Overrides"/>
+								<xs:enumeration value="Load Combinations"/>
+								<xs:enumeration value="Joint Displacements"/>
+								<xs:enumeration value="Joint Displacements - Absolute"/>
+								<xs:enumeration value="Joint Displacements - Generalized"/>
+								<xs:enumeration value="Joint Velocities - Relative"/>
+								<xs:enumeration value="Joint Velocities - Absolute"/>
+								<xs:enumeration value="Joint Accelerations - Relative"/>
+								<xs:enumeration value="Joint Accelerations - Absolute"/>
+								<xs:enumeration value="Joint Drifts"/>
+								<xs:enumeration value="Diaphragm Center of Mass Displacements"/>
+								<xs:enumeration value="Diaphragm Drifts"/>
+								<xs:enumeration value="Diaphragm Accelerations"/>
+								<xs:enumeration value="Story Max/Avg Displacements"/>
+								<xs:enumeration value="Story Drifts"/>
+								<xs:enumeration value="Story Accelerations"/>
+								<xs:enumeration value="Base Reactions"/>
+								<xs:enumeration value="Joint Reactions"/>
+								<xs:enumeration value="Design Reactions"/>
+								<xs:enumeration value="Modal Periods and Frequencies"/>
+								<xs:enumeration value="Modal Participating Mass Ratios"/>
+								<xs:enumeration value="Modal Load Participation Ratios"/>
+								<xs:enumeration value="Modal Participation Factors"/>
+								<xs:enumeration value="Modal Direction Factors"/>
+								<xs:enumeration value="Response Spectrum Modal Information"/>
+								<xs:enumeration value="Buckling Factors"/>
+								<xs:enumeration value="Centers of Mass and Rigidity"/>
+								<xs:enumeration value="Story Forces"/>
+								<xs:enumeration value="Story Stiffness"/>
+								<xs:enumeration value="Shear Gravity Ratios"/>
+								<xs:enumeration value="Stiffness Gravity Ratios"/>
+								<xs:enumeration value="Frame Shear Ratios In Dual Systems And Modifiers"/>
+								<xs:enumeration value="Frame Overturning Moments In Dual Systems"/>
+								<xs:enumeration value="Total Energy Components"/>
+								<xs:enumeration value="Tributary Area and LLRF"/>
+								<xs:enumeration value="Section Cut Forces - Analysis"/>
+								<xs:enumeration value="Section Cut Forces - Design"/>
+								<xs:enumeration value="Column Forces"/>
+								<xs:enumeration value="Beam Forces"/>
+								<xs:enumeration value="Brace Forces"/>
+								<xs:enumeration value="Shell Forces"/>
+								<xs:enumeration value="Shell Stresses"/>
+								<xs:enumeration value="Pier Forces"/>
+								<xs:enumeration value="Spandrel Forces"/>
+								<xs:enumeration value="Link Forces"/>
+								<xs:enumeration value="Link Deformations"/>
+								<xs:enumeration value="Panel Zone Forces"/>
+								<xs:enumeration value="Panel Zone Deformations"/>
+								<xs:enumeration value="Hinge States"/>
+								<xs:enumeration value="Fiber Hinge States"/>
+								<xs:enumeration value="Fiber Hinge Fiber States"/>
+								<xs:enumeration value="Beam Energy/Virtual Work"/>
+								<xs:enumeration value="Column Energy/Virtual Work"/>
+								<xs:enumeration value="Brace Energy/Virtual Work"/>
+								<xs:enumeration value="Floor Energy/Virtual Work"/>
+								<xs:enumeration value="Wall Energy/Virtual Work"/>
+								<xs:enumeration value="PBD Ratios - Panel Zones"/>
+								<xs:enumeration value="Steel Frame Preferences - AISC 360-10"/>
+								<xs:enumeration value="Steel Frame Preferences - AISC 360-05"/>
+								<xs:enumeration value="Steel Frame Preferences - AISC ASD 89"/>
+								<xs:enumeration value="Steel Frame Preferences - AISC LRFD 93"/>
+								<xs:enumeration value="Steel Frame Preferences - AS 4100-1998"/>
+								<xs:enumeration value="Steel Frame Preferences - BS 5950-2000"/>
+								<xs:enumeration value="Steel Frame Preferences - CSA S16-09"/>
+								<xs:enumeration value="Steel Frame Preferences - Chinese 2010"/>
+								<xs:enumeration value="Steel Frame Preferences - Eurocode 3-2005"/>
+								<xs:enumeration value="Steel Frame Preferences - IS 800-2007"/>
+								<xs:enumeration value="Steel Frame Preferences - Italian NTC 2008"/>
+								<xs:enumeration value="Steel Frame Preferences - NZS 3404-1997"/>
+								<xs:enumeration value="Concrete Frame Preferences - ACI 318-11"/>
+								<xs:enumeration value="Concrete Frame Preferences - ACI 318-08"/>
+								<xs:enumeration value="Concrete Frame Preferences - AS 3600-09"/>
+								<xs:enumeration value="Concrete Frame Preferences - BS 8110-97"/>
+								<xs:enumeration value="Concrete Frame Preferences - Chinese 2010"/>
+								<xs:enumeration value="Concrete Frame Preferences - CSA A23.3-04"/>
+								<xs:enumeration value="Concrete Frame Preferences - Eurocode 2-2004"/>
+								<xs:enumeration value="Concrete Frame Preferences - Hong Kong CP 2013"/>
+								<xs:enumeration value="Concrete Frame Preferences - Hong Kong CP 2004"/>
+								<xs:enumeration value="Concrete Frame Preferences - IS 456-2000"/>
+								<xs:enumeration value="Concrete Frame Preferences - Italian NTC 2008"/>
+								<xs:enumeration value="Concrete Frame Preferences - KCI 1999"/>
+								<xs:enumeration value="Concrete Frame Preferences - Mexican RCDF 2004"/>
+								<xs:enumeration value="Concrete Frame Preferences - NZS 3101-06"/>
+								<xs:enumeration value="Concrete Frame Preferences - Singapore CP 65-99"/>
+								<xs:enumeration value="Concrete Frame Preferences - TS 500-2000"/>
+								<xs:enumeration value="Shear Wall Preferences - ACI 318-11"/>
+								<xs:enumeration value="Shear Wall Preferences - ACI 530-11 Masonry"/>
+								<xs:enumeration value="Shear Wall Preferences - ACI 318-08"/>
+								<xs:enumeration value="Shear Wall Preferences - AS 3600-09"/>
+								<xs:enumeration value="Shear Wall Preferences - BS 8110-97"/>
+								<xs:enumeration value="Shear Wall Preferences - CSA A23.3-04"/>
+								<xs:enumeration value="Shear Wall Preferences - Chinese 2010"/>
+								<xs:enumeration value="Shear Wall Preferences - Eurocode 2-2004"/>
+								<xs:enumeration value="Shear Wall Preferences - Hong Kong CP 2013"/>
+								<xs:enumeration value="Shear Wall Preferences - Hong Kong CP 2004"/>
+								<xs:enumeration value="Shear Wall Preferences - IS 456-2000"/>
+								<xs:enumeration value="Shear Wall Preferences - Mexican RCDF 2004"/>
+								<xs:enumeration value="Shear Wall Preferences - NZS 3101-06"/>
+								<xs:enumeration value="Shear Wall Preferences - Singapore CP 65:99"/>
+								<xs:enumeration value="Shear Wall Preferences - TS 500-2000"/>
+								<xs:enumeration value="Composite Beam Preferences - AISC 360-10"/>
+								<xs:enumeration value="Composite Beam Preferences - AISC 360-05"/>
+								<xs:enumeration value="Composite Beam Preferences - BS 5950-90"/>
+								<xs:enumeration value="Composite Beam Preferences - Chinese 2010"/>
+								<xs:enumeration value="Composite Beam Preferences - CSA S16-09"/>
+								<xs:enumeration value="Composite Beam Preferences - Eurocode 4-2004"/>
+								<xs:enumeration value="Composite Beam Preferences - IS 800-1998"/>
+								<xs:enumeration value="Composite Column Preferences - AISC 360-10"/>
+								<xs:enumeration value="Composite Column Preferences - Chinese 2010"/>
+								<xs:enumeration value="Steel Frame Overwrites - AISC 360-10"/>
+								<xs:enumeration value="Steel Frame Overwrites - AISC 360-05"/>
+								<xs:enumeration value="Steel Frame Overwrites - AISC ASD 89"/>
+								<xs:enumeration value="Steel Frame Overwrites - AISC LRFD 93"/>
+								<xs:enumeration value="Steel Frame Overwrites - AS 4100-1998"/>
+								<xs:enumeration value="Steel Frame Overwrites - BS 5950-2000"/>
+								<xs:enumeration value="Steel Frame Overwrites - Chinese 2010"/>
+								<xs:enumeration value="Steel Frame Overwrites - CSA S16-09"/>
+								<xs:enumeration value="Steel Frame Overwrites - Eurocode 3-2005"/>
+								<xs:enumeration value="Steel Frame Overwrites - IS 800-2007"/>
+								<xs:enumeration value="Steel Frame Overwrites - Italian NTC 2008"/>
+								<xs:enumeration value="Steel Frame Overwrites - NZS 3404-1997"/>
+								<xs:enumeration value="Concrete Column Overwrites - ACI 318-11"/>
+								<xs:enumeration value="Concrete Column Overwrites - ACI 318-08"/>
+								<xs:enumeration value="Concrete Column Overwrites - AS 3600-09"/>
+								<xs:enumeration value="Concrete Column Overwrites - BS 8110-97"/>
+								<xs:enumeration value="Concrete Column Overwrites - Chinese 2010"/>
+								<xs:enumeration value="Concrete Column Overwrites - CSA A23.3-04"/>
+								<xs:enumeration value="Concrete Column Overwrites - Eurocode 2-2004"/>
+								<xs:enumeration value="Concrete Column Overwrites - Hong Kong CP 2013"/>
+								<xs:enumeration value="Concrete Column Overwrites - Hong Kong CP 2004"/>
+								<xs:enumeration value="Concrete Column Overwrites - IS 456-2000"/>
+								<xs:enumeration value="Concrete Column Overwrites - Italian NTC 2008"/>
+								<xs:enumeration value="Concrete Column Overwrites - KCI 1999"/>
+								<xs:enumeration value="Concrete Column Overwrites - Mexican RCDF 2004"/>
+								<xs:enumeration value="Concrete Column Overwrites - NZS 3101-06"/>
+								<xs:enumeration value="Concrete Column Overwrites - Singapore CP 65-99"/>
+								<xs:enumeration value="Concrete Column Overwrites - TS 500-2000"/>
+								<xs:enumeration value="Concrete Beam Overwrites - ACI 318-11"/>
+								<xs:enumeration value="Concrete Beam Overwrites - ACI 318-08"/>
+								<xs:enumeration value="Concrete Beam Overwrites - AS 3600-09"/>
+								<xs:enumeration value="Concrete Beam Overwrites - BS 8110-97"/>
+								<xs:enumeration value="Concrete Beam Overwrites - Chinese 2010"/>
+								<xs:enumeration value="Concrete Beam Overwrites - CSA A23.3-04"/>
+								<xs:enumeration value="Concrete Beam Overwrites - Eurocode 2-2004"/>
+								<xs:enumeration value="Concrete Beam Overwrites - Hong Kong CP 2013"/>
+								<xs:enumeration value="Concrete Beam Overwrites - Hong Kong CP 2004"/>
+								<xs:enumeration value="Concrete Beam Overwrites - IS 456-2000"/>
+								<xs:enumeration value="Concrete Beam Overwrites - Italian NTC 2008"/>
+								<xs:enumeration value="Concrete Beam Overwrites - KCI 1999"/>
+								<xs:enumeration value="Concrete Beam Overwrites - Mexican RCDF 2004"/>
+								<xs:enumeration value="Concrete Beam Overwrites - NZS 3101-06"/>
+								<xs:enumeration value="Concrete Beam Overwrites - Singapore CP 65-99"/>
+								<xs:enumeration value="Concrete Beam Overwrites - TS 500-2000"/>
+								<xs:enumeration value="Composite Beam Overwrites - AISC 360-10"/>
+								<xs:enumeration value="Composite Beam Overwrites - AISC 360-05"/>
+								<xs:enumeration value="Composite Beam Overwrites - BS 5950-90"/>
+								<xs:enumeration value="Composite Beam Overwrites - Chinese 2010"/>
+								<xs:enumeration value="Composite Beam Overwrites - CSA S16-09"/>
+								<xs:enumeration value="Composite Beam Overwrites - Eurocode 4-2004"/>
+								<xs:enumeration value="Composite Beam Overwrites - IS 800-1998"/>
+								<xs:enumeration value="Composite Column Overwrites - AISC 360-10"/>
+								<xs:enumeration value="Composite Column Overwrites - Chinese 2010"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - ACI 318-11"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - ACI 530-11 Masonry"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - ACI 318-08"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - AS 3600-09"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - BS 8110-97"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - CSA A23.3-04"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - Chinese 2010"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - Eurocode 2-2004"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - Hong Kong CP 2013"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - Hong Kong CP 2004"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - IS 456-2000"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - Mexican RCDF 2004"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - NZS 3101-06"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - Singapore CP 65:99"/>
+								<xs:enumeration value="Shear Wall Pier Overwrites - TS 500-2000"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - ACI 318-11"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - ACI 530-11 Masonry"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - ACI 318-08"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - AS 3600-09"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - BS 8110-97"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - CSA A23.3-04"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - Chinese 2010"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - Eurocode 2-2004"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - Hong Kong CP 2013"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - Hong Kong CP 2004"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - IS 456-2000"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - Mexican RCDF 2004"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - NZS 3101-06"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - Singapore CP 65:99"/>
+								<xs:enumeration value="Shear Wall Spandrel Overwrites - TS 500-2000"/>
+								<xs:enumeration value="Beam Design Forces"/>
+								<xs:enumeration value="Column Design Forces"/>
+								<xs:enumeration value="Brace Design Forces"/>
+								<xs:enumeration value="Pier Design Forces"/>
+								<xs:enumeration value="Spandrel Design Forces"/>
+								<xs:enumeration value="Steel Column Envelope"/>
+								<xs:enumeration value="Steel Beam Envelope"/>
+								<xs:enumeration value="Steel Brace Envelope"/>
+								<xs:enumeration value="Steel Frame Summary - AISC 360-10"/>
+								<xs:enumeration value="Steel Frame Summary - AISC 360-05"/>
+								<xs:enumeration value="Steel Frame Summary - AISC ASD 89"/>
+								<xs:enumeration value="Steel Frame Summary - AISC LRFD 93"/>
+								<xs:enumeration value="Steel Frame Summary - AS 4100-1998"/>
+								<xs:enumeration value="Steel Frame Summary - BS 5950-2000"/>
+								<xs:enumeration value="Steel Frame Summary - Chinese 2010"/>
+								<xs:enumeration value="Steel Frame Summary - CSA S16-09"/>
+								<xs:enumeration value="Steel Frame Summary - Eurocode 3-2005"/>
+								<xs:enumeration value="Steel Frame Summary - IS 800-2007"/>
+								<xs:enumeration value="Steel Frame Summary - Italian NTC 2008"/>
+								<xs:enumeration value="Steel Frame Summary - NZS 3404-1997"/>
+								<xs:enumeration value="Concrete Column PMM Envelope"/>
+								<xs:enumeration value="Concrete Column Shear Envelope"/>
+								<xs:enumeration value="Concrete Column Summary - ACI 318-11"/>
+								<xs:enumeration value="Concrete Column Summary - ACI 318-08"/>
+								<xs:enumeration value="Concrete Column Summary - AS 3600-09"/>
+								<xs:enumeration value="Concrete Column Summary - BS 8110-97"/>
+								<xs:enumeration value="Concrete Column Summary - Chinese 2010"/>
+								<xs:enumeration value="Concrete Column Summary - CSA A23.3-04"/>
+								<xs:enumeration value="Concrete Column Summary - Eurocode 2-2004"/>
+								<xs:enumeration value="Concrete Column Summary - Hong Kong CP 2013"/>
+								<xs:enumeration value="Concrete Column Summary - Hong Kong CP 2004"/>
+								<xs:enumeration value="Concrete Column Summary - IS 456-2000"/>
+								<xs:enumeration value="Concrete Column Summary - Italian NTC 2008"/>
+								<xs:enumeration value="Concrete Column Summary - KCI 1999"/>
+								<xs:enumeration value="Concrete Column Summary - Mexican RCDF 2004"/>
+								<xs:enumeration value="Concrete Column Summary - NZS 3101-06"/>
+								<xs:enumeration value="Concrete Column Summary - Singapore CP 65-99"/>
+								<xs:enumeration value="Concrete Column Summary - TS 500-2000"/>
+								<xs:enumeration value="Concrete Beam Flexure Envelope"/>
+								<xs:enumeration value="Concrete Beam Shear Envelope"/>
+								<xs:enumeration value="Concrete Beam Summary - ACI 318-11"/>
+								<xs:enumeration value="Concrete Beam Summary - ACI 318-08"/>
+								<xs:enumeration value="Concrete Beam Summary - AS 3600-09"/>
+								<xs:enumeration value="Concrete Beam Summary - BS 8110-97"/>
+								<xs:enumeration value="Concrete Beam Summary - Chinese 2010"/>
+								<xs:enumeration value="Concrete Beam Summary - CSA A23.3-04"/>
+								<xs:enumeration value="Concrete Beam Summary - Eurocode 2-2004"/>
+								<xs:enumeration value="Concrete Beam Summary - Hong Kong CP 2013"/>
+								<xs:enumeration value="Concrete Beam Summary - Hong Kong CP 2004"/>
+								<xs:enumeration value="Concrete Beam Summary - IS 456-2000"/>
+								<xs:enumeration value="Concrete Beam Summary - Italian NTC 2008"/>
+								<xs:enumeration value="Concrete Beam Summary - KCI 1999"/>
+								<xs:enumeration value="Concrete Beam Summary - Mexican RCDF 2004"/>
+								<xs:enumeration value="Concrete Beam Summary - NZS 3101-06"/>
+								<xs:enumeration value="Concrete Beam Summary - Singapore CP 65-99"/>
+								<xs:enumeration value="Concrete Beam Summary - TS 500-2000"/>
+								<xs:enumeration value="Concrete Joint Envelope"/>
+								<xs:enumeration value="Concrete Joint Summary - ACI 318-11"/>
+								<xs:enumeration value="Concrete Joint Summary - ACI 318-08"/>
+								<xs:enumeration value="Concrete Joint Summary - AS 3600-09"/>
+								<xs:enumeration value="Concrete Joint Summary - BS 8110-97"/>
+								<xs:enumeration value="Concrete Joint Summary - Chinese 2010"/>
+								<xs:enumeration value="Concrete Joint Summary - CSA A23.3-04"/>
+								<xs:enumeration value="Concrete Joint Summary - Eurocode 2-2004"/>
+								<xs:enumeration value="Concrete Joint Summary - Hong Kong CP 2013"/>
+								<xs:enumeration value="Concrete Joint Summary - Hong Kong CP 2004"/>
+								<xs:enumeration value="Concrete Joint Summary - IS 456-2000"/>
+								<xs:enumeration value="Concrete Joint Summary - Italian NTC 2008"/>
+								<xs:enumeration value="Concrete Joint Summary - KCI 1999"/>
+								<xs:enumeration value="Concrete Joint Summary - Mexican RCDF 2004"/>
+								<xs:enumeration value="Concrete Joint Summary - NZS 3101-06"/>
+								<xs:enumeration value="Concrete Joint Summary - Singapore CP 65-99"/>
+								<xs:enumeration value="Concrete Joint Summary - TS 500-2000"/>
+								<xs:enumeration value="Shear Wall Pier Summary - ACI 318-11"/>
+								<xs:enumeration value="Shear Wall Pier Summary - ACI 530-11 Masonry"/>
+								<xs:enumeration value="Shear Wall Pier Summary - ACI 318-08"/>
+								<xs:enumeration value="Shear Wall Pier Summary - AS 3600-09"/>
+								<xs:enumeration value="Shear Wall Pier Summary - BS 8110-97"/>
+								<xs:enumeration value="Shear Wall Pier Summary - CSA A23.3-04"/>
+								<xs:enumeration value="Shear Wall Pier Summary - Chinese 2010"/>
+								<xs:enumeration value="Shear Wall Pier Summary - Eurocode 2-2004"/>
+								<xs:enumeration value="Shear Wall Pier Summary - Hong Kong CP 2013"/>
+								<xs:enumeration value="Shear Wall Pier Summary - Hong Kong CP 2004"/>
+								<xs:enumeration value="Shear Wall Pier Summary - IS 456-2000"/>
+								<xs:enumeration value="Shear Wall Pier Summary - Mexican RCDF 2004"/>
+								<xs:enumeration value="Shear Wall Pier Summary - NZS 3101-06"/>
+								<xs:enumeration value="Shear Wall Pier Summary - Singapore CP 65:99"/>
+								<xs:enumeration value="Shear Wall Pier Summary - TS 500-2000"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - ACI 318-11"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - ACI 530-11 Masonry"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - ACI 318-08"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - AS 3600-09"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - BS 8110-97"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - CSA A23.3-04"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - Chinese 2010"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - Eurocode 2-2004"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - Hong Kong CP 2013"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - Hong Kong CP 2004"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - IS 456-2000"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - Mexican RCDF 2004"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - NZS 3101-06"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - Singapore CP 65:99"/>
+								<xs:enumeration value="Shear Wall Spandrel Summary - TS 500-2000"/>
+								<xs:enumeration value="Composite Beam Envelope"/>
+								<xs:enumeration value="Composite Beam Summary - AISC 360-10"/>
+								<xs:enumeration value="Composite Beam Summary - AISC 360-05"/>
+								<xs:enumeration value="Composite Beam Summary - BS 5950-90"/>
+								<xs:enumeration value="Composite Beam Summary - Chinese 2010"/>
+								<xs:enumeration value="Composite Beam Summary - CSA S16-09"/>
+								<xs:enumeration value="Composite Beam Summary - Eurocode 4-2004"/>
+								<xs:enumeration value="Composite Beam Summary - IS 800-1998"/>
+								<xs:enumeration value="Composite Column Encased Summary - AISC 360-10"/>
+								<xs:enumeration value="Composite Column Filled Summary - AISC 360-10"/>
+								<xs:enumeration value="Composite Column Encased Summary - Chinese 2010"/>
+								<xs:enumeration value="Composite Column Filled Summary - Chinese 2010"/>
+							</xs:restriction>
+						  </xs:simpleType>
+						</xs:element>
+					  </xs:sequence>
+					</xs:complexType>
+				  </xs:element>
+				</xs:sequence>
+				<xs:attribute name="name" type="xs:string"/>
+			  </xs:complexType>
+			</xs:element>
+		  </xs:sequence>
+		  <xs:attribute name="save" type="xs:boolean" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

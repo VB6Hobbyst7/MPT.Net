@@ -1,0 +1,66 @@
+* change all regtest xml file paths to be relative!!!
+* Check that batch files not affected by move to 'Results'
+* Create batch file that clears _Testing\PSB & _Testing\Single and refills them with src & srcRegTest files.
+
+*NVC = Not Version Controlled. Unique to user machine.
+
+Models Database
+  |
+  |-_Tests
+  |   |   
+  |   |- Archive     (contains log files and html summary of test runs)
+  |   |   |
+  |   |   |- {Program Name} v{version} Build {build}
+  |   |   |     |- 32-bit
+  |   |   |     |   |- {Suite Name}    (*NVC - Contains all log files of the run, and the html run summary results)
+  |   |   |     |   
+  |   |   |     |- 64-bit
+  |   |   |        |- {Suite Name}     (*NVC - Contains all log files of the run, and the html run summary results)
+  |   |   ...
+  |   |
+  |   |- Results		       (Contains complete results for any regTest runs)
+  |   |   |
+  |   |   |- Examples Development      (*NVC - Single run suite results)
+  |   |   |    |- {Program Name}
+  |   |   |    ...
+  |   |   |
+  |   |   |- {Program Name}
+  |   |   |    |- {Suite Name}
+  |   |   |    |	|- Single      (*NVC - Single run results of the complete suite)
+  |   |   |    |	|- PSB	       (*NVC - PSB run results of the suite)
+  |   |   |    |
+  |   |   |    ...
+  |   |   |
+  |   |   ...
+  |   |   
+  |   |- Testing                                (Contains batch files for running all suites of a given program (or several), in series)
+  |       |- Examples Development
+  |       |   |- regTest-Development  (Contains run batch file, regTest & local instructions for examples under development)
+  |       |
+  |       |- Single                   (contains batch files for running all suites in parallel or series)
+  |       |   |- regTest-{Suite Name} (Contains run batch file, regTest & local instructions)
+  |       |
+  |       |- PSB                                (contains batch files for running all variations of all suites in series. Parallel is not included because it tends to have run problems)
+  |       |   |- {Suite Name}                   (contains batch files for running all variations in parallel & series)
+  |       |   |    |- regTest-P2S2B1 - Standard (Only naming exception) (Contains run batch file, regTest & local instructions)
+  |       |   |    |- regTest-P{n}S{n}B{n}      (for all 9 variations) (Contains run batch file, regTest & local instructions)
+  |       |   |    ...
+  |       |   ...
+  |       |
+  |       |- _src (contains source files for deployment)
+  |       |    |- PSB      (matches to ..\PSB)
+  |       |    |   
+  |       |    |- Single   (matches to ..\PSB)
+  |       |
+  |       |- _builds
+  |       |     |- {Program Name} (*NVC - contains all builds to be used for testing for a given program)
+  |       |     ... 
+  |       |   
+  |       |- _regTest (*NVC - regTest program to use for testing)
+  |
+  |- Examples Development 
+  |     |- {Program Name} (*NVC - Contains examples models under development.)
+  |
+  |- {Program Name}
+  |     |- {Suite Name} (Contains all model files)
+  |     ...

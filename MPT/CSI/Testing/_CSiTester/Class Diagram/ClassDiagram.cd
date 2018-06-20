@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Misc">
+    <Position X="0.5" Y="30.5" Height="0.418" Width="0.714" />
+  </Comment>
+  <Comment CommentText="Also attached to cXMLEditor">
+    <Position X="54.061" Y="8.82" Height="0.418" Width="1.124" />
+  </Comment>
+  <Comment CommentText="Templates">
+    <Position X="4.51" Y="30.479" Height="0.418" Width="1.08" />
+  </Comment>
+  <Comment CommentText="Model Control XML">
+    <Position X="35.5" Y="10.25" Height="0.344" Width="1.813" />
+  </Comment>
+  <Comment CommentText="Main Tester">
+    <Position X="8.5" Y="1.25" Height="0.344" Width="1.813" />
+  </Comment>
+  <Comment CommentText="Bulk Editor">
+    <Position X="8.75" Y="8.75" Height="0.344" Width="1.813" />
+  </Comment>
+  <Comment CommentText="Model Control Generator">
+    <Position X="9.517" Y="14.885" Height="0.344" Width="1.813" />
+  </Comment>
+  <Comment CommentText="Model Control - Unique Entries (attached to XMLEditor)">
+    <Position X="9.492" Y="17.837" Height="0.498" Width="2.171" />
+  </Comment>
+  <Comment CommentText="Also attached to cSettings">
+    <Position X="22.401" Y="7.802" Height="0.386" Width="2.438" />
+  </Comment>
+  <Comment CommentText="Modules">
+    <Position X="0.521" Y="23.604" Height="0.418" Width="1.08" />
+  </Comment>
+  <Class Name="CSiTester.Application" Collapsed="true">
+    <Position X="0.5" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Application.xaml.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cCsiTester" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CSiTester.cCsiTester.cMultiModel" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\cCSiTester.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>E8ChYAQSSA7CQkx6KEJAIgGggQSKGcgHRBBiDQTAMs0=</HashCode>
+      <FileName>Classes\cCSiTester.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cEnumerations" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\cEnumerations.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cExample" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>6KEAjykQSkCzRE2UoECKBFisijNGAAtCEgtBDFCApyI=</HashCode>
+      <FileName>Classes\cExample.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cExampleItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIUAEAAAQABgIAABAAACABAEgQhBgCABKEQAAGAAABA=</HashCode>
+      <FileName>Classes\cExampleItem.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cExampleTestSet" Collapsed="true">
+    <Position X="19" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAESABIEQAAoAAAAAIDAAQAAAABAAAABAAQAQ=</HashCode>
+      <FileName>Classes\cExampleTestSet.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.CLogger" Collapsed="true">
+    <Position X="0.5" Y="32.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAIAICAAACoAwAACBAACAIBAgAAAAAAAAAIAABAAiQ=</HashCode>
+      <FileName>Classes\CLogger.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cRegTest" Collapsed="true">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>1IFmHhEgrBlgJFYJoRvfS04pAgAiAAAgQglNjDoTWxw=</HashCode>
+      <FileName>Classes\cRegTest.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cSettings" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CYCS8gEk0iw3kK0gCYwBQcBQS5dZjUCw6ohCK4A1O/0=</HashCode>
+      <FileName>Classes\cSettings.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cClassification" Collapsed="true">
+    <Position X="24.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAIAAAAAEIAAAAAAAAAAEAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Classes\Examples\cClassification.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cKeywordEntry" Collapsed="true">
+    <Position X="26.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Examples\cKeywordEntry.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cKeywords" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABgAAAAIACACQAIAAAAAABgAAEAgAAAAACCQAAIAA=</HashCode>
+      <FileName>Classes\Examples\cKeywords.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cTestTypes" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="58.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gABQAAAEAAAAAEAAACACAAAAgAAAAAAAJAoCAAAACBA=</HashCode>
+      <FileName>Classes\Examples\cTestTypes.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cValidationModelXML" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="11.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAEAABAAiAoAAAAIQCAGCAgABEAFAACAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Examples\cValidationModelXML.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cCopyAction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="54.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAQAAAEgAIQAQAAAgAAAhAAAAQAAAEEgAAAAQBA=</HashCode>
+      <FileName>Classes\Misc\cCopyAction.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cDatabaseAccess" Collapsed="true">
+    <Position X="19.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACACgAAIAAAAAEgAAAIAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Classes\Misc\cDatabaseAccess.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cDGEntry" Collapsed="true">
+    <Position X="26.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Classes\Misc\cDGEntry.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cFilePaths" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAEAAAABAAAAQAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Misc\cFilePaths.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cTableQueries" Collapsed="true">
+    <Position X="18" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Misc\cTableQueries.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cFieldLookup" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAACAAAAAAAAAAAAAAAgAAGAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\Results\cFieldLookup.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cFieldOutput" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="39" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAgAIAAAAAAAIAAAAAAAAAgAgAAEQgAAQAAAABAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\Results\cFieldOutput.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCAttachment" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQIACAAAAAAACAAAAgAAAAAAAAAgAAAAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\cMCAttachment.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCAuthor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAIAAAAAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAABQ=</HashCode>
+      <FileName>Classes\Model Control XML\cMCAuthor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCBenchmarkRef" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44.25" Y="11.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAIAAAAgAEEAQAAAAAAEAAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\cMCBenchmarkRef.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCClassification" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAEAAAAAwAAAAAAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\cMCClassification.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCDate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="50" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAgAAAAgQIAAAAAAAAAAAgBAAAAAAAACAAAAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\cMCDate.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCImage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAQIACAAAAAAACAAAAgAAAAAAAAAgAAAAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\cMCImage.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCLink" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="57" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAQIAAAAAAAAAAAAAAgCAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\cMCLink.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCModel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="35.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgngUl0NV4CKTqQEZdCHJKiAkBhIAUwuBUikQYBUBFM=</HashCode>
+      <FileName>Classes\Model Control XML\cMCModel.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="37.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAmAAgAAIAAAAAAAAAgAAAACABAAgAAAIAgJA=</HashCode>
+      <FileName>Classes\Model Control XML\Results\cMCResult.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCResultExcel" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIACAAAAAAACAAAAgAAAAAAAAAgAAAAAABA=</HashCode>
+      <FileName>Classes\Model Control XML\Results\cMCResultExcel.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCResultPostProcessed" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="40.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAACAAAAAAAAAgBA=</HashCode>
+      <FileName>Classes\Model Control XML\Results\cMCResultPostProcessed.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cMCUpdate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEIIAAAAAAAAAABAAgQAAAAAAAIgAAACAABA=</HashCode>
+      <FileName>Classes\Model Control XML\cMCUpdate.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cXMLEditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>V0JlGJJAAIoKAgBEMMRAABhAgwYAaozFGMJAACIMCBE=</HashCode>
+      <FileName>Classes\XML Editor\cXMLEditor.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cXMLGenerator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BUgAkIACAUQ0AALQgAABBQBghgCCAUiEAAgCAACAEAE=</HashCode>
+      <FileName>Classes\XML Editor\cXMLGenerator.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.cXMLNode" Collapsed="true">
+    <Position X="12.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAQABAAAQAAAAgEFAOAAAEAAIIAAAIA=</HashCode>
+      <FileName>Classes\XML Editor\cXMLNode.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.cXMLObject" Collapsed="true">
+    <Position X="10.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAEAEAEAAAAABAAA=</HashCode>
+      <FileName>Classes\XML Editor\cXMLObject.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSiTester.CSiTester" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BESaJFxUiWGC4GgCKtpKhUqVSMAA4wYMFMqIgDcaIgU=</HashCode>
+      <FileName>Forms (WPF)\CSiTester.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmCheckResultsSummary" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms (WPF)\frmCheckResultsSummary.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmExample" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQACgAAEkAACCCBAAAAAMAAEEBABAQQAAAAAAA=</HashCode>
+      <FileName>Forms (WPF)\frmExample.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmStatus" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEgoKCmRAAFhACAARAAgEAQgIEiAgAEAAAAAAKkIAE=</HashCode>
+      <FileName>Forms (WPF)\frmStatus.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmPopupPercentChange" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="32" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms (WPF)\Tooltip and Popup Draft Forms\frmPopupPercentChange.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.RunTimePopup" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="31" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms (WPF)\Tooltip and Popup Draft Forms\frmPopupRunTime.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLNodeCreateByPath" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.25" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAEQAEBEAAAAAAAIBEECCAgABAQCAAAQAAAAIAQiA=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Create XML Elements\frmXMLNodeCreateByPath.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLNodeCreateKeywords" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABgAAFCgAAQAAACIEgIACSkgAwAgAAgAAQAE=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Create XML Elements\frmXMLNodeCreateKeywords.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLObjectBenchmarkVersion" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="19.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AgAACAAAEAAAAAAAAQBAAIAAgAICQAgAAAgAAACAAAA=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Create XML Elements\frmXMLObjectBenchmarkVersion.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLObjectCreate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAACAAAAAAAAIAAAAAAAAAAQAAIACAAAEgAAAA=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Create XML Elements\frmXMLObjectCreate.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLObjectCreateItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30.5" Y="11.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABQGAgwgFAAMAowQUQgUkAiAoABAwQiABElAEABEQEI=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Create XML Elements\frmXMLObjectCreateItem.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLObjectResults" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16" Y="19.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAQCrAAKAIAIQhAGgAHcRCoYwgAEAEAAARAYABJG4=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Create XML Elements\frmXMLObjectResults.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmDeleteFilesFolders" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.75" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAAEAAAQhAAAAAABEoAIAQQAAIMgAgQAACQA=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\frmDeleteFilesFolders.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmFileFolderOperations" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="10.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAAAAACAEAIEQAAAQAAgAAAQQAACAkAAAAAAAA=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\frmFileFolderOperations.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLEditorBulk" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AgQSWCAEgQUAGAQIAAAAIAAEaYAI2AiHBkqEAIAAAgM=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\frmXMLEditorBulk.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLModelValidate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAgAQAAAAAAAAAEAgIEAQAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\frmXMLModelValidate.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLTemplateGenerator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="15.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>JDjAkABMR+gcQQAUVYCpGBCIigGAw86JDCgAgACEEAE=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Template Generator\frmXMLTemplateGenerator.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLTemplateGeneratorAdvanced" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="16.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAJAAABAQAAAMAAgAAAAIiAAAgAAAAAIAA=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Template Generator\frmXMLTemplateGeneratorAdvanced.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.frmXMLTemplateGeneratorUnique" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="18.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>QCQAAIACXAABAAAgwIEABCCAggKQSBiAFCigQEgAARA=</HashCode>
+      <FileName>Forms (WPF)\XML Editor\Template Generator\frmXMLTemplateGeneratorUnique.xaml.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSiTester.MySettings" Collapsed="true">
+    <Position X="2.25" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="CSiTester.LoggerSeverity" Collapsed="true">
+    <Position X="2.25" Y="31" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAABAAAAAAAAAAAAAAAEgCAAA=</HashCode>
+      <FileName>Classes\CLogger.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CSiTester.LoggerCategory" Collapsed="true">
+    <Position X="0.5" Y="31" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAEAASAAAADAAAgEAAAAAACAAQEAAAAqARAA=</HashCode>
+      <FileName>Classes\CLogger.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Module Name="CSiTester._mDefunctFunctions" Collapsed="true">
+    <Position X="0.5" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAARAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modules\_mDefunctFunctions.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mDGFunctions" Collapsed="true">
+    <Position X="3" Y="26" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAAAAIEAAAAAgQAAAAAAAgAAAAQAAAAAAAAAAY=</HashCode>
+      <FileName>Modules\mDGFunctions.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mFiles" Collapsed="true">
+    <Position X="8.25" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAIgAAAAAAAAAAggAACAAAFAAABAAACABAAA=</HashCode>
+      <FileName>Modules\mFiles.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mFilesBatch" Collapsed="true">
+    <Position X="11" Y="26" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAABAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modules\mFilesBatch.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mFilesExcel" Collapsed="true">
+    <Position X="11" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Modules\mFilesExcel.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mFilesXML" Collapsed="true">
+    <Position X="11" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MEAQkAAMAgAIAAREBJHwEQkIAIBACJiAPIAAgQqACEA=</HashCode>
+      <FileName>Modules\mFilesXML.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mFolders" Collapsed="true">
+    <Position X="8.25" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEAAAAEDAAAAQAAEBACIFQFiAAAgABAAAAEBAQgOAAA=</HashCode>
+      <FileName>Modules\mFolders.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mForms" Collapsed="true">
+    <Position X="3" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAgAAAAAACCAAAAAAAEAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Modules\mForms.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mLists" Collapsed="true">
+    <Position X="8.25" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modules\mLists.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mPaths" Collapsed="true">
+    <Position X="8.25" Y="26" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAABAgAEIACgACAABIAAAAKQCBMABQACQFBAAQAAAo=</HashCode>
+      <FileName>Modules\mPaths.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mQueries" Collapsed="true">
+    <Position X="5.5" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Modules\mQueries.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mStringConversions" Collapsed="true">
+    <Position X="8.25" Y="26.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAAAAAEAAAQAAAAAAAABAAAAQBAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modules\mStringConversions.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mTime" Collapsed="true">
+    <Position X="5.5" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAgAAgAAABA=</HashCode>
+      <FileName>Modules\mTime.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mVariablesFriend" Collapsed="true">
+    <Position X="0.5" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAkgAAAAAAAAAFAEAACQAAACAAAAAAAIgAIAkIAAAA=</HashCode>
+      <FileName>Modules\mVariablesFriend.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mVariablesStrings" Collapsed="true">
+    <Position X="0.5" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MP0GRGwgJG8aJeBA8ooVSBiERTUABCAm0CxIgWlX8gA=</HashCode>
+      <FileName>Modules\mVariablesStrings.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.mWinForms" Collapsed="true">
+    <Position X="3" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACBCAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modules\mWinForms.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.tbaCopyFilesFolders" Collapsed="true">
+    <Position X="0.5" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAKACAADAFAAACAAAAQGAAAAAAEAAAAEAAAiABIEA=</HashCode>
+      <FileName>Modules\tbaCopyFilesFolders.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.tbaFilterModelList" Collapsed="true">
+    <Position X="2.25" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgggMAAAAAAADiAkAAgQBACAgEASAJBAYAABIAAAAAQ=</HashCode>
+      <FileName>Modules\tbaFilterModelList.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.tbaReport" Collapsed="true">
+    <Position X="4" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modules\tbaReport.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.My.MyWpfExtension" Collapsed="true">
+    <Position X="0.5" Y="34.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="CSiTester.My.MyWpfExtension.MyWindows" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>My Project\MyExtensions\MyWpfExtension.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AiABAAAAABAAAEAAAAAAAAAAAAgBABAAABAAAAAAAAA=</HashCode>
+      <FileName>My Project\MyExtensions\MyWpfExtension.vb</FileName>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.My.MySettingsProperty" Collapsed="true">
+    <Position X="2.25" Y="33.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="CSiTester.My.Resources.Resources" Collapsed="true">
+    <Position X="2.25" Y="34.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBIBIAgokAZChAIQBSZFI3CCUAZQANAyBABSAAIQNA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,1250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="xs3p.xsl"?>
+<!-- 
+
+REVISIONS (in chronological order):
+
+4/14/2012:
+
+- Added restrictions on the subelements of postprocessed_results and results elements. They should not be empty.
+
+4/18/2012:
+
+- Salman added //model/command_line element to store command line parameters.
+  This schema should be used with spreadsheet version 2012-04-24.
+  
+4/25/2014:
+
+The schema file will be updated to version 0.4 for the following changes:
+
+- added //model/@documentation_status attribute
+- revised //model/classification elements
+
+
+
+
+-->
+<xs:schema 	xmlns="http://www.csiberkeley.com"
+			xmlns:csi="http://www.csiberkeley.com/resources"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+			targetNamespace="http://www.csiberkeley.com" 
+			elementFormDefault="qualified">  
+  <xs:import schemaLocation="CSiResources_V0_1.xsd"
+			 namespace="http://www.csiberkeley.com/resources"/>
+  
+  
+  <xs:element name="model">
+    <xs:annotation>
+      <xs:documentation>Schema for the models to be stored in CSI models database and to be used for regression testing.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="id" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="id_secondary" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="title" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Title of the model. Should be short, but descriptive</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+		<xs:element name="path" type="path" minOccurs="1" maxOccurs="1">
+        </xs:element>
+        <xs:element name="database_file_name" type="xs:string"  minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Name of the database file (including extension) into which the results
+            of a model run are saved. If not provided, the name is assumed to be the same as the name of the
+            model file.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="command_line" type="xs:string" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Custom command line parameters to be used when running the program.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="description" type="xs:string"  minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Detailed description of the model. Provide as many details as possible.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="comments" type="xs:string"  minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Additional comments about the model. Usually reserved for temporary comments, such
+            as that the bug will be resolved in the next version.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="tests" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="updates" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="keywords" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="classification" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="images" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="attachments" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="links" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="results" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="postprocessed_results" minOccurs="0" maxOccurs="1" />
+		<xs:element ref="excel_results" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="incidents" minOccurs="0" />
+        <xs:element ref="tickets" minOccurs="0" />
+        <xs:element ref="program" />
+        <xs:element ref="target_program" />
+        <xs:element ref="author" />
+        <xs:element ref="date" />
+        <xs:element ref="run_time" minOccurs="0" />
+        <xs:element ref="regtest_internal_use" minOccurs="1" />
+      </xs:all>
+      <xs:attribute name="is_public" type="csi:yes_no_unknown">
+        <xs:annotation>
+          <xs:documentation>Specify whether or not the model is public.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="is_bug" type="csi:yes_no_unknown">
+        <xs:annotation>
+          <xs:documentation>Specify whether or not the model is a bug.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="status" type="csi:status_model" />
+      <xs:attribute name="documentation_status" type="csi:status_documentation" />
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element model id -->
+  
+  <xs:element name="id" type="xs:decimal">
+    <xs:annotation>
+      <xs:documentation>Model id, which is a unique double number in XXX.YY format assigned to each model in the
+      models database.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  
+  <!-- element secondary id -->
+  
+  <xs:element name="id_secondary" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Secondary ID to further classify the models. Can be used to store more descriptive
+	  ID within a certain model suite, such as "Example 1A".</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  
+  <!-- elements tests -->
+  
+  <xs:element name="tests">
+    <xs:annotation>
+      <xs:documentation>Specify tests that should be run.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="test" minOccurs="1" maxOccurs="unbounded" type="csi:tests" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element updates -->
+  
+  <xs:element name="updates">
+    <xs:annotation>
+      <xs:documentation>Description of updates of the model and its XML file. Each revision of benchmark values
+      should be logged as an update.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="update" minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Container for all data related to a single update.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:string" >
+                <xs:annotation>
+                  <xs:documentation>Id of the update.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="date" type="date">
+                <xs:annotation>
+                  <xs:documentation>Date of the update.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="person" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Name of the person who performed the update.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ticket" type="xs:string" >
+                <xs:annotation>
+                  <xs:documentation>Relevant ticket number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="build" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Relevant build number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="comment" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Additional comments pertinent to the update.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element classification -->
+  
+  <xs:element name="classification">
+    <xs:annotation>
+      <xs:documentation>Classification of the model file.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="value" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Classification of model type: user model, test model, etc.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>          
+            <xs:sequence>
+              <xs:element name="level_1" type="csi:classifications_level1" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="level_2" type="csi:classifications_level2" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>          
+          </xs:complexType>           
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- element keywords -->
+
+  <xs:element name="keywords">
+    <xs:annotation>
+      <xs:documentation>Keywords describing the model.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="keyword" minOccurs="0" maxOccurs="unbounded">
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element keyword -->
+  <xs:element name="keyword">
+    <xs:annotation>
+      <xs:documentation>Single keyword describing the model. The user can select from any of the predefined
+      keywords or enter any keyword which is text string.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleType>
+      <xs:union memberTypes="csi:predefined_keyword csi:optional_any" />
+    </xs:simpleType>
+  </xs:element>
+    
+  <!-- element images -->
+  
+  <xs:element name="images">
+    <xs:annotation>
+      <xs:documentation>Model images. The first image in the sequence should give a clear picture about the model.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="image" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Container for storing information about a single image</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Title of the image.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="path" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Relative path to the image file.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- element attachments -->
+
+  <xs:element name="attachments">
+    <xs:annotation>
+      <xs:documentation>Container element for various attachments related to the model file, such as hand calculations, etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="attachment" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Container for storing information about a single attachment</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Title of the attachment.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="path" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Relative path to the attachment file.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+        
+        
+  <!-- element links -->
+  
+  <xs:element name="links">
+    <xs:annotation>
+      <xs:documentation>Hyperlinks to web pages contaning relavant infomation relevant to the model, such as related wiki pages.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="link" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Container for storing information about a single link.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Title of the link.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="url" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Link target URL.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- element regular results -->
+  
+  <xs:element name="results">
+    <xs:annotation>
+      <xs:documentation>Container element storing all regular results to be checked. Regular
+      results are results that can be directly retrieved from the database tables.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="result" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element regular result -->
+  
+  <xs:element name="result">
+        <xs:annotation>
+          <xs:documentation>Container element containing various information about single regular result.
+          Regular result is a result that can be directly retrieved from the database tables.</xs:documentation>
+        </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+	    <xs:element name="id" type="result_id" minOccurs="1" maxOccurs="1" />
+        <!--<xs:element name="supplementary_ids" type="result_supplementary_ids" minOccurs="0" maxOccurs="1" />-->
+        <xs:element name="name" type="result_name" />
+        <xs:element name="units" type="result_units" />
+        <xs:element ref="table_name" />
+        <xs:element ref="lookup_fields" />
+        <xs:element ref="output_field" />
+        <xs:element name="updates" type="result_updates" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element lookup fields -->
+  
+  <xs:element name="lookup_fields">
+    <xs:annotation>
+      <xs:documentation>Container element containing the lookup fields and their values used to get the results from the database.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="field" type="lookup_field" minOccurs="0" maxOccurs="10" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element output field -->
+  
+  <xs:element name="output_field">
+    <xs:annotation>
+      <xs:documentation>Container element storing data for output field.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name">
+          <xs:annotation>
+            <xs:documentation>Output field name.</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:minLength value="1" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+		<xs:element name="value" type="result_value" />
+	  </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element post-processed results -->
+  
+  <xs:element name="postprocessed_results">
+    <xs:annotation>
+      <xs:documentation>Container element for all post-processed results to be checked.
+      Postprocessed results are results that cannot be directly retrieved from database, but
+      are obtained by performing various operations on the results retrieved from database,
+      such as calculating sum or average values.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="result" type="postprocessed_result" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- complex type post-processed result -->
+  
+  <xs:complexType name="postprocessed_result">
+    <xs:annotation>
+      <xs:documentation>Container for post-processed result element. Post-processed result is a simple value in the
+      output database table, but rather a derived result that is calculated from multiple other values, using operations
+      such as average, sum, etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+	  <xs:element name="id" type="result_id" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="name" type="result_name"/>
+      <xs:element name="units" type="result_units"/>
+      <xs:element ref="table_name" />
+      <xs:element name="range" type="range" minOccurs="0" maxOccurs="1" />
+      <xs:element name="range_all" type="range_all" minOccurs="0" />
+      <xs:element ref="formula" />
+      <xs:element name="updates" type="result_updates" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+  <!-- element formula -->
+
+  <xs:element name="formula">
+    <xs:annotation>
+      <xs:documentation>Container for formula element that is used to calculate the post-processed result.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="variables" />
+		<xs:element name="result" type="result_value" />
+      </xs:sequence>	  
+      <xs:attribute name="operation" type="csi:range_operation" />
+    </xs:complexType>
+  </xs:element>
+      
+  <!-- element variables -->
+  
+  <xs:element name="variables">
+    <xs:annotation>
+      <xs:documentation>Container element for all formula variables</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="variable" maxOccurs="100">
+          <xs:annotation>
+            <xs:documentation>Container element for single formula variable.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="scale_factor" type="xs:double">
+                <xs:annotation>
+                  <xs:documentation>Scale factor applied to the variable value prior to using the variable value
+                  in the formula.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="lookup_fields">
+                <xs:annotation>
+                  <xs:documentation>Container element for variable value lookup fields.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="range" type="range" minOccurs="0" />
+                    <xs:element name="range_all" type="range_all" minOccurs="0" />
+                    <xs:element name="field" type="lookup_field" minOccurs="0" maxOccurs="10">
+                      <xs:annotation>
+                        <xs:documentation>Container element for all lookup fields.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="output_field">
+                <xs:annotation>
+                  <xs:documentation>Container element for output field.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name">
+                      <xs:annotation>
+                        <xs:documentation>Output field name.</xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:minLength value="1" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+
+  <!-- element Excel results -->
+  
+  <xs:element name="excel_results">
+    <xs:annotation>
+      <xs:documentation>Container element for all Excel calculated results to be checked.
+      Excel calculated results are based on more complex post-processing and
+      are calculated by referenced Excel file, based on regular results, postprocessed results,
+      or results directly looked up by Excel from the database file saved by the program.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="excel_file" minOccurs="1" maxOccurs="1" />
+        <!--
+        <xs:element name="results">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="result" type="excel_result" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        -->
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element Excel file -->
+  
+  <xs:element name="excel_file">
+    <xs:annotation>
+      <xs:documentation>Container for storing information about Excel calculation file that
+      can be used to calculate excel results.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <!--
+        <xs:element name="title">
+          <xs:annotation>
+            <xs:documentation>Title of the Excel calculation file.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        -->
+        <xs:element name="path" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Relative path to the Excel calculation file.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+        
+  
+  <!-- element Excel result NOT USED -->
+  
+  <xs:element name="excel_result">
+    <xs:annotation>
+      <xs:documentation>Container element containing various information about single Excel result.
+      Excel result is a more complex postprocessed result that is calculated by Excel.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="result_id" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="name" type="result_name"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element incidents -->
+  
+  <xs:element name="incidents">
+    <xs:annotation>
+      <xs:documentation>Container element to store information about related support Incidents.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="incident" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Container element to store information about single related support Incident.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="number" type="xs:string" minOccurs="1" maxOccurs="1" ><!-- TODO: remove min/max occurs -->
+                <xs:annotation>
+                  <xs:documentation>Support Incident number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element tickets -->
+  
+  <xs:element name="tickets">
+    <xs:annotation>
+      <xs:documentation>Container element to store information about related development Tickets.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ticket" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Container element to store information about single related development Ticket.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="number" type="xs:string" minOccurs="1" maxOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>Development Ticket number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element program -->
+  
+  <xs:element name="program">
+    <xs:annotation>
+      <xs:documentation>Container element to store information about the program in which the model was created.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="csi:program_name">
+          <xs:annotation>
+            <xs:documentation>Program name.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="version" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Program version in which the original benchmark value was obtained.
+            Use only numerical program version, such as '14.2.3'.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="version_for_last_best_value"  type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Program version in which the last best value was obtained.
+            Use only numerical program version, such as '14.2.3'.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element target program -->
+  
+  <xs:element name="target_program">
+    <xs:annotation>
+      <xs:documentation>Container element for target programs in which the model should be run.</xs:documentation>
+    </xs:annotation>  
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="program" minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Container element for a single target program.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="csi:program_name">
+                <xs:annotation>
+                  <xs:documentation>Target program name. Name of the program in which the model should be run.
+                  Can contain multiple programs.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element author -->
+  
+  <xs:element name="author">
+        <xs:annotation>
+          <xs:documentation>Container element to store information about the author of the model.</xs:documentation>
+        </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Name of the model author.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="company" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Company name of the model author.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element date -->
+  
+  <xs:element name="date" type="date">
+    <xs:annotation>
+      <xs:documentation>Container element storing date when the model was created.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  
+  <!-- element run_time -->
+  
+  <xs:element name="run_time">
+    <xs:annotation>
+      <xs:documentation>Container element with estimated run-time for the model.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="minutes" type="xs:decimal">
+          <xs:annotation>
+            <xs:documentation>Time, in minutes, it takes to complete the analysis and design
+            for the model on a typical computer. Is primarily used to identify models that take long time to run.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- NOT USED element bridge_objects NOT USED -->
+  
+  <xs:element name="bridge_objects">
+    <xs:annotation>
+      <xs:documentation>Container element for bridge objects.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="bridge_object" type="xs:string" minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Name of bridge object in the model.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- element regtest_internal_use -->
+  
+  <xs:element name="regtest_internal_use">
+    <xs:annotation>
+      <xs:documentation>Container element for various data to be populated by regtest, but not the end user.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="excel_results" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Excel results read in from Excel calculated results Excel file for faster processing.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="result" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>Container element for individual Excel calculated result.</xs:documentation>
+                </xs:annotation>                
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="result_id" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>Result ID.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>Result name.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="units" type="result_units" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation>Result units.</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+					<xs:element name="value" type="result_value" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="updates" type="result_updates" minOccurs="0" maxOccurs="1" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+  <!-- definition of elements or complex types that are used more than once -->
+  
+  <!-- ~~~~~~~~~~~~~~~~~~ reusable simple elements ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+  <!-- element table name -->
+  <!-- TODO: consider making this type -->
+  
+  <xs:element name="table_name">
+    <xs:annotation>
+      <xs:documentation>Name of the program database table from which the result should be retrieved.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:minLength value="1" />
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  
+  <!-- element title -->
+  <!-- TODO: consider making this type -->
+
+  <xs:element name="title" type="xs:string">
+    <xs:annotation>
+      <xs:documentation>Title of the model, attachment, image, etc. Should be short, but descriptive</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ reusable complex elements ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+  
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ reusable simple types ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <!-- "result_id" -->
+  
+  <xs:simpleType name="result_id">
+    <xs:annotation>
+      <xs:documentation>Result id, which is a unique integer assigned to each result for a given model,
+      taking into consideration regular results, postprocessed results and Excel results.</xs:documentation>
+    </xs:annotation>
+	<xs:restriction base="xs:decimal">
+	</xs:restriction>
+  </xs:simpleType>
+  
+  
+  <!-- type "result_name" -->
+  
+  <xs:simpleType name="result_name">
+    <xs:annotation>
+      <xs:documentation>Brief description of the result.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <!--<xs:minLength value="1" />-->
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- type "result_units" -->
+  <!-- References:
+       [1] http://stackoverflow.com/questions/626319/add-attributes-to-a-simpletype-or-restriction-to-a-complextype-in-xml-schema -->
+  
+  <!-- define simple type without attribute first, see the reference [1] above -->
+  
+  <xs:simpleType name="result_units_without_attribute">
+    <xs:annotation>
+      <xs:documentation>Result units</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <!--<xs:minLength value="1" />-->
+    </xs:restriction>
+  </xs:simpleType>
+
+  
+   
+  <!-- define complex type to add the attribute, see reference [1] above -->
+  
+  <xs:complexType name="result_units">
+    <xs:simpleContent>
+      <xs:extension base="result_units_without_attribute">
+        <xs:attribute name="units_conversion" use="optional" type="csi:yes_no" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>  
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ reusable complex types ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+  <!-- complex type "path" -->
+  
+  <xs:complexType name="path">
+    <xs:annotation>
+      <xs:documentation>Path to a file or directory.</xs:documentation>
+    </xs:annotation>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="type" use="optional" type="csi:absolute_relative">
+            <xs:annotation>
+              <xs:documentation>Path type.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+	  
+   <!-- complex type "result_value" -->
+   <xs:complexType name="result_value">
+	  <xs:annotation>
+		<xs:documentation>Container element for various types of output field values.</xs:documentation>
+	  </xs:annotation>
+		<xs:sequence>
+		  <xs:element name="benchmark">
+			<xs:annotation>
+			  <xs:documentation>Benchmark value obtained from the original program version.</xs:documentation>
+			</xs:annotation>
+			<xs:complexType>
+			  <xs:simpleContent>
+				<xs:extension base="xs:string">
+				  <xs:attribute name="is_correct" type="csi:yes_no_unknown" />
+				  <xs:attribute name="significant_digits" />
+				</xs:extension>
+			  </xs:simpleContent>
+			</xs:complexType>
+		  </xs:element>
+		  <xs:element name="theoretical">
+			<xs:annotation>
+			  <xs:documentation>Theoretical value of the result obtained by independent calculations or from independent source.
+			  </xs:documentation>
+			</xs:annotation>
+			<xs:complexType>
+			  <xs:simpleContent>
+				<xs:extension base="xs:string">
+				  <xs:attribute name="significant_digits" />
+				</xs:extension>
+			  </xs:simpleContent>
+			</xs:complexType>
+		  </xs:element>
+		  <xs:element name="last_best" minOccurs="0">
+			<xs:annotation>
+			  <xs:documentation>Last best value obtained in a version of the program between the original model
+			  version and current tested version. To be deprecated.</xs:documentation>
+			</xs:annotation>
+			<xs:complexType>
+			  <xs:simpleContent>
+				<xs:extension base="xs:string">
+				  <xs:attribute name="significant_digits" />
+				</xs:extension>
+			  </xs:simpleContent>
+			</xs:complexType>
+		  </xs:element>
+		</xs:sequence>
+		<xs:attribute name="shift_for_calculating_percent_difference" type="xs:decimal">
+		  <xs:annotation>
+			<xs:documentation>Specify whether the percent difference should be calculated using shift, which would be appropriate for small noisy values.</xs:documentation>
+		  </xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="zero_tolerance" type="xs:decimal">
+		  <xs:annotation>
+			<xs:documentation>Limit for values that should be treated as zero. If absolute value of a result is smaller than or equal to this limit, then it will be considered to be zero.</xs:documentation>
+		  </xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="passing_percent_difference_range" type="xs:decimal" use="optional">
+		  <xs:annotation>
+			<xs:documentation>For numerically sensitive results, this parameter enables to set range for percent difference. If the result percent difference falls within the +/- of range, then it is considered to pass.</xs:documentation>
+		  </xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+  
+  <!-- complex type "lookup_field" -->
+  
+  <xs:complexType name="lookup_field">
+    <xs:annotation>
+      <xs:documentation>Container element storing lookup field data.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:annotation>
+          <xs:documentation>Name of the lookup field. This corresponds to the heading of the database table column.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="value">
+        <xs:annotation>
+          <xs:documentation>Name of the lookup field. This corresponds to the value in the database table.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+   
+   <!-- complex type "range_all" -->
+
+  <xs:complexType name="range_all">
+    <xs:annotation>
+      <xs:documentation>Container element to specify that rows of database table with result should be looked up
+      as variables when computing post-processed result.</xs:documentation>
+    </xs:annotation>  
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:annotation>
+          <xs:documentation>Name of the database table column.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+	<xs:attribute name="range_operation" type="csi:range_operation" />
+  </xs:complexType>
+
+
+  <!-- complex type "range" -->
+  
+  <xs:complexType name="range">
+    <xs:annotation>
+      <xs:documentation>Optional element to specify whether and how the formula should be evaluated for a range of fields. 
+	  If the range is specified for a variable, it should not be specified for the lookup fields of the formula variables.
+	  If the range is specified for the lookup fields of the formula variables, it should be specified only for one lookup field.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:annotation>
+          <xs:documentation>Name of the database table column based on which the range should be looked up.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="value_first">
+        <xs:annotation>
+          <xs:documentation>Mininum or first value for which the range should be looked up.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="value_last">
+        <xs:annotation>
+          <xs:documentation>Maximum or last value for which the range should be looked up.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+	<xs:attribute name="range_operation" type="csi:range_operation" />
+  </xs:complexType>
+  
+  
+  <!-- complex type "date" -->
+	<xs:complexType name="date">
+	  <xs:sequence>
+		<xs:element name="day" type="xs:string" >
+		  <xs:annotation>
+			<xs:documentation>Calendar day, such as '30'.</xs:documentation>
+		  </xs:annotation>
+		</xs:element>
+		<xs:element name="month" type="xs:string" >
+		  <xs:annotation>
+			<xs:documentation>Calendar month, such as '12'.</xs:documentation>
+		  </xs:annotation>
+		</xs:element>
+		<xs:element name="year" type="xs:string" >
+		  <xs:annotation>
+			<xs:documentation>Calendar year, such as '2012'.</xs:documentation>
+		  </xs:annotation>
+		</xs:element>
+	  </xs:sequence>
+	</xs:complexType>
+  
+  
+  <!--NOT USED complex type "result_supplementary_ids" NOT USED -->
+  
+  <xs:complexType name="result_supplementary_ids">
+    <xs:annotation>
+      <xs:documentation>Supplementary IDs for regular result.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="query_id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Query ID.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!-- <xs:minLength value="1" /> -->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="benchmark_id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Benchmark ID within a given query.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <!-- <xs:minLength value="1" /> -->
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+  <!-- complex type "result_updates" -->
+  
+  <xs:complexType name="result_updates">
+    <xs:annotation>
+      <xs:documentation>Keeps track of updates to individual results.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="update" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Container element for individual update
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1"  />
+            <xs:element name="comment" type="xs:string" minOccurs="1" maxOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+  <!-- complex type Excel result NOT USED -->
+  
+  <xs:complexType name="excel_result">
+    <xs:annotation>
+      <xs:documentation>Container element for more complex post-processed results calculated in Excel.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+	  <xs:element name="id" type="result_id" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="name" type="result_name"/>
+      <xs:element name="value" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Container element for various types of output field values.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="calculated" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Calculated value obtained from the tested program version.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                    <xs:attribute name="is_correct" />
+                    <xs:attribute name="significant_digits" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="benchmark" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Benchmark value obtained from the original program version.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                    <xs:attribute name="is_correct" />
+                    <xs:attribute name="significant_digits" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="theoretical" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Theoretical value of the result obtained by independent calculations or from independent source.
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                    <xs:attribute name="significant_digits" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+   
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ attribute groups ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+  <!-- attribute operation -->
+  
+  <!-- Kept as an example -->
+  <!-- <xs:attributeGroup name="operation">
+    <xs:annotation>
+      <xs:documentation>Operation to be applied when evaluating ranges and formulas for post-processed results.
+      </xs:documentation>
+    </xs:annotation>  
+    <xs:attribute name="operation" type="csi:range_operation" />
+  </xs:attributeGroup> -->
+ 
+  </xs:schema>

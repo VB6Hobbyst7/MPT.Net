@@ -1,0 +1,550 @@
+﻿<Window x:Class="frmXMLEditorBulk"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:CSiTester"
+    xmlns:XML="clr-namespace:MPT.XML;assembly=MPT.XML"
+    Title="XML Bulk Editor" 
+        Height="596" Width="1036" 
+        Icon="/CSiTester;component/CSiTester.ico" 
+        Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+        FontFamily="Microsoft Sans Serif">
+    <Window.Resources>
+        <Style x:Key="{x:Type TreeViewItem}"
+            TargetType="{x:Type TreeViewItem}">
+            <Setter Property="IsExpanded" Value="True"/>
+            <EventSetter Event="Selected" Handler="TreeViewItem_Selected" />
+        </Style>
+        
+        <Style x:Key="CellHyperLink" TargetType="TextBlock">
+            <EventSetter Event="Hyperlink.Click" Handler="OnHyperlinkClick" />
+        </Style>
+
+        <!--<ToolTip  x:Key="myToolTipXMLPath" DataContext="{Binding Path=PlacementTarget.DataContext, RelativeSource={x:Static RelativeSource.Self}}" > Background="{x:Null}"  BorderBrush="{x:Null}" >-->
+        <ToolTip  x:Key="myToolTipXMLPath" DataContext="{Binding Path=PlacementTarget.DataContext, RelativeSource={x:Static RelativeSource.Self}}" >
+            <TextBlock Text="{Binding filePath}"
+                x:Name="myXMLPathTTText"
+                FontSize="12" TextAlignment="Left"  VerticalAlignment="Center" FontFamily="Segoe UI" />
+        </ToolTip>
+
+        <Style x:Key="chkBxStyle" TargetType="CheckBox">
+            <Setter Property="Control.HorizontalAlignment" Value="Center" />
+        </Style>
+
+    </Window.Resources>
+    <Grid Margin="10">
+        <GroupBox Margin="-5">
+            <Grid x:Name="gridMain" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition x:Name="rowDG" Height="1*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="200" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel  Grid.Row="0"
+                     Grid.Column="0"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Orientation="Vertical">
+
+                    <Button x:Name="btnBrowseXMLSource" Content="Change XML Files Source ..." Margin="2" Height="22" VerticalAlignment="Top" ToolTip=""/>
+                    <Button x:Name="btnBrowseXMLTemplateSource" Content="Change XML Template File Source ..." Margin="2,2,2,2" Height="22" VerticalAlignment="Bottom" ToolTip=""/>
+                    <Button x:Name="btnRefresh" Content="Refresh All" Margin="2,10,2,2" Height="22" Width="90" VerticalAlignment="Bottom" ToolTip=""/>
+
+                </StackPanel>
+
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                   Text="XML Template Structure"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                   TextWrapping="Wrap" Margin="0,2,0,0" Height="16" Width="128"  />
+
+                <StackPanel Grid.Row="0" Grid.Column="1"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"  
+                    Orientation="Vertical" 
+                    Margin="10,0,0,0">
+                    <Border  BorderBrush="Black" BorderThickness="1" >
+                        <StackPanel Grid.Row="0" Grid.Column="1" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top"  
+                    Orientation="Vertical" >
+
+                            <Button x:Name="btnSaveXMLs" Content="Save Changes to Selected XML Files" Height="22" VerticalAlignment="Top" ToolTip=""/>
+
+                            <StackPanel 
+                    HorizontalAlignment="Center" VerticalAlignment="Top"  
+                    Orientation="Horizontal">
+                                <StackPanel 
+                    HorizontalAlignment="Left" VerticalAlignment="Top"  
+                    Orientation="Vertical">
+
+                                    <TextBlock Text="Select to Save"
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Margin="0,5,0,5"
+                               TextWrapping="Wrap" TextAlignment="Center"
+                                 />
+                                    <StackPanel
+                            HorizontalAlignment="Left" VerticalAlignment="Top"  
+                            Orientation="Horizontal"
+                            Margin="0,0,10,10">
+
+                                        <Button x:Name="btnRunAll" Content="All" 
+                            HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                            Margin="0"
+                            Height="22" Width="35"
+                             />
+
+                                        <Button x:Name="btnRunNone" Content="None" 
+                            HorizontalAlignment="Left"  VerticalAlignment="Bottom" 
+                            Margin="0,0,5,0"
+                            Height="22" Width="42"  />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel 
+                    HorizontalAlignment="Left" VerticalAlignment="Top"  
+                    Orientation="Vertical" Background="#FFFFFDD8">
+
+                                    <TextBlock Text="Selected Rows"
+                           HorizontalAlignment="Left" VerticalAlignment="Top" 
+                           Margin="10,5,0,5"
+                           TextWrapping="Wrap" TextAlignment="Center"
+                             />
+
+                                    <StackPanel
+                        HorizontalAlignment="Left" VerticalAlignment="Top"  
+                        Orientation="Horizontal"
+                        Margin="0,0,10,10">
+
+                                        <Button x:Name="btnRunSelectionAdd" Content="+" 
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                        Margin="10,0,0,0"
+                        Height="22" Width="21"  
+                        FontWeight="Bold" FontSize="14"/>
+
+                                        <Button x:Name="btnRunSelectionRemove" Content="-" 
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                Height="22" Width="21" 
+                                Margin="0" 
+                                FontWeight="Bold" FontSize="14" Grid.Column="1"/>
+
+                                        <Button x:Name="btnRunSelectionReplace" Content="Replace" 
+                                HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                                Height="22" Width="56" 
+                                Margin="10,0,0,0"/>
+
+                                    </StackPanel>
+
+                                </StackPanel>
+
+                                <StackPanel 
+                    HorizontalAlignment="Left" VerticalAlignment="Top"  
+                    Orientation="Vertical"
+                    Margin="10,0,0,0" Visibility="Collapsed"
+                    >
+
+                                    <TextBlock Text="Select to Rename"
+                               HorizontalAlignment="Left" VerticalAlignment="Top" 
+                               Margin="0,5,5,5"
+                               TextWrapping="Wrap" TextAlignment="Center"
+                                 />
+                                    <StackPanel
+                            HorizontalAlignment="Left" VerticalAlignment="Top"  
+                            Orientation="Horizontal"
+                            Margin="0,0,10,10">
+
+                                        <Button x:Name="btnRenameAll" Content="All" 
+                            HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                            Margin="0"
+                            Height="22" Width="35"
+                             />
+
+                                        <Button x:Name="btnRenameNone" Content="None" 
+                            HorizontalAlignment="Left"  VerticalAlignment="Bottom" 
+                            Margin="0,0,5,0"
+                            Height="22" Width="42"  />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel 
+                    HorizontalAlignment="Left" VerticalAlignment="Top"  
+                    Orientation="Vertical" Background="#FFFFFDD8" Visibility="Collapsed"
+                    >
+
+                                    <TextBlock Text="Selected Rows"
+                           HorizontalAlignment="Left" VerticalAlignment="Top" 
+                           Margin="10,5,0,5"
+                           TextWrapping="Wrap" TextAlignment="Center"
+                             />
+
+                                    <StackPanel
+                        HorizontalAlignment="Left" VerticalAlignment="Top"  
+                        Orientation="Horizontal"
+                        Margin="0,0,10,10">
+
+                                        <Button x:Name="btnRenameSelectionAdd" Content="+" 
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                        Margin="10,0,0,0"
+                        Height="22" Width="21"  
+                        FontWeight="Bold" FontSize="14"/>
+
+                                        <Button x:Name="btnRenameSelectionRemove" Content="-" 
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                Height="22" Width="21" 
+                                Margin="0" 
+                                FontWeight="Bold" FontSize="14" Grid.Column="1"/>
+
+                                        <Button x:Name="btnRenameSelectionReplace" Content="Replace" 
+                                HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                                Height="22" Width="56" 
+                                Margin="10,0,0,0"/>
+
+                                    </StackPanel>
+
+                                </StackPanel>
+
+                            </StackPanel>
+
+                            <!--<StackPanel 
+                    HorizontalAlignment="Left" VerticalAlignment="Top"  
+                    Orientation="Horizontal">
+
+            </StackPanel>-->
+
+                        </StackPanel>
+                    </Border>
+                    <StackPanel  Grid.Row="0"
+                     Grid.Column="1"
+                    HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                    Orientation="Horizontal" 
+                    Height="27" Width="195"
+                    Margin="0,5,0,2">
+
+                        <TextBlock
+                       Text="Value Node:"
+                       HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                       TextWrapping="Wrap" Margin="0,0,5,7"  />
+
+                        <TextBox x:Name="txtBoxValueNode" Text="TextBox" Width="125" HorizontalAlignment="Left" VerticalContentAlignment="Bottom" IsReadOnly="True" IsEnabled="False" Margin="0,0,0,5"/>
+
+                    </StackPanel>
+                </StackPanel>
+
+
+
+                <StackPanel Grid.Row="0"
+                    Grid.Column="2"
+                    Orientation="Vertical">
+
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <StackPanel 
+                    HorizontalAlignment="Left" VerticalAlignment="Center"  
+                    Orientation="Horizontal" Margin="0">
+
+                            <StackPanel 
+                    HorizontalAlignment="Right" VerticalAlignment="Top"  
+                    Orientation="Vertical" >
+
+                                <CheckBox x:Name="chkBox_Rename" Content="Rename As" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            	    Margin="10,2,5,0"/>
+
+                                <RadioButton x:Name="radBtn_RenameModelName" Content="Example Title" Margin="25,2,5,1"/>
+                                <RadioButton x:Name="radBtn_RenameModelID" Content="Database ID" Margin="25,1,5,2"/>
+
+                                <Button x:Name="btnConvertXMLs" Content="Convert Selected XML Files" Margin="0" Height="22" VerticalAlignment="Top" ToolTip=""/>
+                            </StackPanel>
+
+                            <StackPanel 
+                    HorizontalAlignment="Left" VerticalAlignment="Top"  
+                    Orientation="Vertical" >
+                                <CheckBox x:Name="chkBox_RenameXML" Content="XML File" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            	Margin="5,2,5,0"/>
+                                <CheckBox x:Name="chkBox_RenameModel" Content="Model File" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            	Margin="5,2,5,0"/>
+                                <CheckBox x:Name="chkBox_RenameFolder" Content="Folder Name" HorizontalAlignment="Left" VerticalAlignment="Top" 
+            	Margin="5,2,5,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+
+                <!--<ScrollViewer CanContentScroll="False" Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" >-->
+                <StackPanel Grid.Row="1" Grid.Column="0"
+                Orientation="Vertical" 
+                 >
+                    <StackPanel 
+                    Orientation="Vertical" 
+                    Background="#FFE5E5E5" >
+
+                        <TreeView x:Name="myTreeNavigator" ItemsSource="{Binding xmlMirror}"        
+                      HorizontalAlignment="Left" VerticalAlignment="Top" 
+                      Margin="10,10,10,10" 
+                      >
+
+                            <!-- Level 0 template -->
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate DataType="{x:Type XML:cXMLNode}" ItemsSource="{Binding xmlChildren}">
+                                    <TextBlock Text="{Binding name}">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding type}"
+                                                    Value="Header">
+                                                        <!--<Setter Property="Background" Value="Gold" />-->
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding type}"
+                                                    Value="Attribute">
+                                                        <Setter Property="Foreground" Value="Red" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding type}"
+                                                    Value="Node">
+                                                        <Setter Property="Foreground" Value="Blue" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+
+                                    <!-- Level 1 template -->
+                                    <!--<HierarchicalDataTemplate.ItemTemplate>
+                                    <HierarchicalDataTemplate DataType="{x:Type local:cXMLNode}"  ItemsSource="{Binding xmlChildren}">
+                                            <TextBlock Text="{Binding Name}" />-->
+
+                                    <!-- Player template -->
+                                    <!--<HierarchicalDataTemplate.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" />
+                                            </DataTemplate>
+                                        </HierarchicalDataTemplate.ItemTemplate>-->
+
+                                    <!--</HierarchicalDataTemplate>
+                                    </HierarchicalDataTemplate.ItemTemplate>-->
+
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
+
+                        </TreeView>
+
+                    </StackPanel>
+                </StackPanel>
+                <!--</ScrollViewer>-->
+
+                <!--<ScrollViewer CanContentScroll="False" Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" >-->
+                <StackPanel 
+            Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                Orientation="Vertical" >
+
+                    <StackPanel 
+                    Orientation="Vertical" 
+                    Background="#FFE5E5E5" >
+
+                        <DataGrid 
+                        x:Name="dataGrid_ValueNodeContent" 
+                        ItemsSource="{Binding myXMLEditor.suiteEditorXMLObjects}" 
+                        AutoGenerateColumns="False" 
+                        Margin="10,10,10,10" 
+                        CanUserResizeColumns="True" 
+                        CanUserResizeRows="False" 
+                        CanUserAddRows="False"
+                        IsManipulationEnabled="True" 
+                        IsReadOnly="False" 
+                        AlternationCount="1" 
+                        AlternatingRowBackground="#FFF1F7F9">
+                            <DataGrid.Resources>
+                                <!-- SINGLE CLICK EDITING  -->
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <EventSetter Event="KeyDown" Handler="DataGridCell_KeyDown"></EventSetter>
+                                    <!--Set cell style based on class data value -->
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding valueChanged}" Value="True">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                            <Setter Property="FontWeight" Value="Black"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                                <!--Tooltip-->
+                                <!--<Style TargetType="DataGridCell">
+                                    <Setter Property="ToolTip" Value="{DynamicResource myToolTipExample}" />
+                                </Style>-->
+                            </DataGrid.Resources>
+                            <DataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <!--<MenuItem Header="_Save All Changes to XML Files"
+                                        Click="" />-->
+                                    <MenuItem Header="_Save Selected Changes to XML Files"
+                                        Click="btnSaveXMLs_Click" />
+                                    <Separator />
+                                    <MenuItem Header="_Convert Selected XML Files"
+                                        Click="btnConvertXMLs_Click" />
+                                    <Separator />
+                                    <!--Header? Selection-->
+                                    <MenuItem Header="_Select All"
+                                        Click="btnRunAll_Click" />
+                                    <MenuItem Header="_Select None"
+                                        Click="btnRunNone_Click" />
+                                    <Separator />
+                                    <MenuItem Header="_Add to Selection"
+                                        Click="btnRunSelectionAdd_Click" />
+                                    <MenuItem Header="_Remove from Selection"
+                                        Click="btnRunSelectionRemove_Click" />
+                                    <MenuItem Header="_Replace Selection"
+                                        Click="btnRunSelectionReplace_Click" />
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.Columns>
+                                <!--<DataGridCheckBoxColumn 
+                                    x:Name="DataGrid_Select"  
+                                    Header="Select" 
+                                    Binding="{Binding Path=saveChanges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    ElementStyle="{StaticResource Select}"
+                                    CanUserResize="False"  />-->
+                                <DataGridTemplateColumn
+                                    x:Name="DataGrid_Select"
+                                    Header="Select"
+                                    CanUserResize="False">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox 
+                                                IsChecked="{Binding Path=saveChanges, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                Style="{StaticResource chkBxStyle}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridHyperlinkColumn 
+                                    x:Name="DataGrid_FileName" 
+                                    Header="File Name" 
+                                    Binding="{Binding fileName}" 
+                                    ElementStyle="{StaticResource CellHyperLink}"
+                                    IsReadOnly="True" 
+                                    ToolTipService.ShowDuration="30000">
+                                    <DataGridHyperlinkColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="ToolTip" Value="{DynamicResource myToolTipXMLPath}" />
+                                        </Style>
+                                    </DataGridHyperlinkColumn.CellStyle>
+                                </DataGridHyperlinkColumn>
+                                <DataGridTextColumn 
+                                    x:Name="DataGrid_Level" 
+                                    Header="Level" 
+                                    Binding="{Binding level}" 
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn 
+                                    x:Name="DataGrid_IndexFlat" 
+                                    Header="Index Flat" 
+                                    Binding="{Binding indexFlat}" 
+                                    IsReadOnly="True" />
+                                <DataGridTextColumn 
+                                    x:Name="DataGrid_NodeValue" 
+                                    Header="Node Value" 
+                                    Binding="{Binding value}" 
+                                    IsReadOnly="False" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </StackPanel>
+                <!--</ScrollViewer>-->
+
+                <Button x:Name="btnClose" 
+                        Content="Close" 
+                        Grid.Row="2" Grid.ColumnSpan="3" 
+                        Margin="0" Height="22" Width="90" 
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="3">
+                    <Button x:Name="btnDeleteNode" 
+                    Content="Delete Node"
+                    Margin="2" Height="22" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top" />
+                    <Button x:Name="btnXMLNodeCreateByPath" 
+                    Content="Add Child Node/Header/Attribute" 
+                    Margin="2" Height="22" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top" />
+
+                    <Button x:Name="btnXMLNodeCreateKeywords" 
+                    Content="Add/Remove Keywords"
+                    Margin="2" Height="22" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top" />
+
+                    <Button x:Name="btnXMLNodeCreateObjects" 
+                    Content="Add New Objects"
+                    Margin="2" Height="22" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top" />
+
+
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="3">
+                    <Button x:Name="btnValidateSchema" 
+                    Content="Validate Model XML"
+                    Margin="2,2,2,20" Height="22" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Top" />
+
+                    <Button x:Name="btnFlattenDirectories" 
+                        Content="Flatten Directories" 
+                        Margin="2" Height="22" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top" />
+                    <Button x:Name="btnCreateDBirectories" 
+                        Content="Create Database Directories" 
+                        Margin="2" Height="22" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top" />
+                    <Button x:Name="btnUpdateOutputSettingsFiles" 
+                        Content="Update OutputSettings Files"
+                        Margin="2" Height="22" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top" />
+                    <Button x:Name="btnUpdateModels" 
+                        Content="Update Models"
+                        Margin="2" Height="22" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top" />
+                    <Button x:Name="btnCreateTxtFiles" 
+                        Content="Create Model Text Files"
+                        Margin="2" Height="22" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top" />
+                    <Button x:Name="btnBulkAutoXMLGenerator" 
+                        Content="Create Examples"
+                        Margin="2,10,2,2" Height="22" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top" />
+                    <Button x:Name="btnEditExample" 
+                        Content="Edit Example"
+                        Margin="2,2,2,2" Height="22" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top" />
+                    <Button x:Name="btnEditExamples" 
+                        Content="Edit Examples"
+                        Margin="2,2,2,10" Height="22" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top" />
+
+                    <Button x:Name="btnUniqueXMLWriter" 
+                        Content="Add Unique values to XML"
+                        Margin="2" Height="22" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top" />
+
+                    <Button x:Name="btnAddMCXMLSuffix" 
+                    Content="Add Suffix to MC XML"
+                    Margin="2,20,2,2" Height="22" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" />
+
+                    <Button x:Name="btnRemoveOSImportTag" 
+                    Content="Remove OutputSettings Import Tag"
+                    Margin="2" Height="22" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+    </Grid>    
+</Window>
